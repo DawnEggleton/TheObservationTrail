@@ -1,71 +1,133 @@
+/***********************************
+    filter selection
+***********************************/
 .nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
-    background: #939fa2;
-    border-bottom: 1px solid #818181;
+    height: 60px;
+    background: #17a68a;
+    border-bottom: 1px solid #16957c;
     z-index: 2;
     display: none;
 }
 .nav a {
     color: #ffffff;
     text-transform: uppercase;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: calibri, sans-serif;
     font-size: 9px;
     letter-spacing: 1px;
 }
+.button-group {
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: calibri, sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+/*color swatches*/
+.swatch {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #0c7b65;
+    border-radius: 100%;
+}
+.swatch.reset {
+    background: #ffffff;
+}
+.swatch.red {
+    background: #ce6950;
+}
+.swatch.brown {
+    background: #5b4a2d;
+}
+.swatch.black {
+    background: #000000;
+}
+.swatch.grey {
+    background: #919191;
+}
+.swatch.orange {
+    background: #c67c03;
+}
 
+
+/***********************************
+    tab selection
+***********************************/
 .left {
     position: fixed;
-    top: 76px;
+    top: 61px;
     left: 0;
-    width: calc(50% + 2px);
-    height: calc(100% - 76px);
-    background: url(https://static.tumblr.com/f3f40a8e8cf49114d9c9583440b77d5c/t22pj5r/zxYplnobe/tumblr_static_62eidgwjym0wgk80s0ggkg4ws.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width: 30%;
+    height: calc(100% - 61px);
+    background: #35bea3;
 }
 .links {
     position: absolute;
     top: 40px;
-    right: 0;
-    height: calc(100% - 200px);
-    width: 100%;
+    right: 10px;
+    height: calc(100% - 80px);
+    width: 50px;
     text-align: right;
 }
-.links a {
-    display: inline-block;
-    background: #ffffff;
-    color: #707c7f;
-    font-family: 'Fira Sans', sans-serif;
-    font-size: 9px;
-    letter-spacing: 1px;
-    margin-top: 10px;
-    padding: 5px 15px;
-    line-height: 20px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+.links img {
+    display: block;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    text-align: right;
     cursor: pointer;
-    transition-duration: 0.5s;
 }
-.links a:hover {
-    padding-right: 25px;
+#clear {
+    margin-top: 50px;
 }
 
+
+/***********************************
+    grid display
+***********************************/
+.right {
+    position: fixed;
+    top: 61px;
+    right: 0;
+    width: 70%;
+    height: calc(100% - 61px);
+    background: #81e5d2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 25px;
+    box-sizing: border-box;
+}
 .grid {
-    max-width: 590px;
+    max-width: calc(100% - 20px);
     margin: 0 auto;
 }
 .grid-item {
-    width:235px;
-    height:300px;
+    width:140px;
+    height:140px;
     margin:30px;
     position: relative;
 }
-@keyframes example {
+.cardbg {
+    box-sizing: border-box;
+    width: 140px;
+    height: 140px;
+    background: #ffbb48;
+    border: 1px solid #ffae24;
+    padding: 5px;
+    transform: rotate(5deg);
+}
+@keyframes wiggle {
     0% {transform: rotate(5deg);}
     25% {transform: rotate(6deg);}
     50% {transform: rotate(5deg);}
@@ -73,71 +135,22 @@
     100% {transform: rotate(5deg);}
 }
 .grid-item:hover .cardbg {
-    animation-name: example;
+    animation-name: wiggle;
     animation-duration: 0.5s;
     animation-iteration-count: 3;
+}
+.card img {
+    width: 130px;
+    height: 130px;
 }
 .card {
     position: absolute;
     top: 0;
     left: 0;
     box-sizing: border-box;
-    width: 204px;
-    height: 279px;
-    background: #ffffff;
-    border: 1px solid #a1a1a1;
+    width: 140px;
+    height: 140px;
+    background: #ffd690;
+    border: 1px solid #ffae24;
     padding: 5px;
-    cursor: pointer;
-}
-.cardbg {
-    box-sizing: border-box;
-    width: 204px;
-    height: 279px;
-    background: #ffffff;
-    border: 1px solid #a1a1a1;
-    padding: 5px;
-    transform: rotate(5deg);
-}
-.card img {
-    width: 190px;
-    height: 265px;
-    border: 1px solid #a1a1a1;
-}
-.charname {
-    width: 180px;
-    padding: 0 5px;
-    text-align: right;
-    margin-top: -20px;
-    font-size: 50px;
-    text-transform: lowercase;
-    font-family: slowly_oneregular;
-    color: #ffffff;
-    text-shadow: -1px -1px 0 #989898, 1px -1px 0 #989898, -1px 1px 0 #989898, 1px 1px 0 #989898;
-    z-index: 5;
-    
-}
-.button-group {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-button {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-family: 'Fira Sans', sans-serif;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.right {
-    position: fixed;
-    top: 76px;
-    right: 0;
-    width: calc(50% - 2px);
-    height: calc(100% - 76px);
-    background: #e7e9e9;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 25px;
-    box-sizing: border-box;
 }

@@ -26,13 +26,13 @@
             <div class="nav species">
                 <div class="button-group" data-filter-group="species">
                     <button class="button is-checked" data-filter="">reset</button>
-                    <button class="button" data-filter=".bird">avian</button>
-                    <button class="button" data-filter=".dog">canine</button>
-                    <button class="button" data-filter=".cat">feline</button>
-                    <button class="button" data-filter=".hoof">hooved</button>
+                    <button class="button" data-filter=".avian">avian</button>
+                    <button class="button" data-filter=".canine">canine</button>
+                    <button class="button" data-filter=".feline">feline</button>
+                    <button class="button" data-filter=".hooved">hooved</button>
                     <button class="button" data-filter=".rodent">rodent</button>
-                    <button class="button" data-filter=".bear">ursine</button>
-                    <button class="button" data-filter=".oth">other mammal</button>
+                    <button class="button" data-filter=".ursine">ursine</button>
+                    <button class="button" data-filter=".mammal">other mammal</button>
                 </div>
             </div>
             <div class="nav size">
@@ -45,12 +45,12 @@
             </div>
             <div class="nav color">
                 <div class="button-group" data-filter-group="color">
-                    <button class="button is-checked" data-filter=""><img src="http://placehold.it/50"></button>
-                    <button class="button" data-filter=".red"><img src="http://placehold.it/50"></button>
-                    <button class="button" data-filter=".brown"><img src="http://placehold.it/50"></button>
-                    <button class="button" data-filter=".black"><img src="http://placehold.it/50"></button>
-                    <button class="button" data-filter=".grey"><img src="http://placehold.it/50"></button>
-                    <button class="button" data-filter=".orange"><img src="http://placehold.it/50"></button>
+                    <button class="button is-checked" data-filter=""><div class="swatch reset"></div></button>
+                    <button class="button" data-filter=".red"><div class="swatch red"></div></button>
+                    <button class="button" data-filter=".brown"><div class="swatch brown"></div></button>
+                    <button class="button" data-filter=".black"><div class="swatch black"></div></button>
+                    <button class="button" data-filter=".grey"><div class="swatch grey"></div></button>
+                    <button class="button" data-filter=".orange"><div class="swatch orange"></div></button>
                 </div>
             </div>
         </div>
@@ -58,11 +58,11 @@
         <div class="left">
             <div class="links" style="display: table;">
                 <div style="display: table-cell; vertical-align: bottom;">
-                    <a id="biome">biome</a><br>
-                    <a id="species">species</a><br>
-                    <a id="size">size</a><br>
-                    <a id="color">color</a><br>
-                    <a id="clear">clear</a><br>
+                    <img src="http://placehold.it/50" id="biome">
+                    <img src="http://placehold.it/50" id="species">
+                    <img src="http://placehold.it/50" id="size">
+                    <img src="http://placehold.it/50" id="color">
+                    <img src="http://placehold.it/50" id="clear" class="button--reset">
                 </div>
             </div>
         </div>
@@ -72,28 +72,39 @@
 
 
                 <div class="grid-item grasslands canine med grey">
-                        <div class="cardbg"></div>
-                        <div class="card">
-                            <a href="/alastair">
-                                <img src="https://files.jcink.net/uploads/bitteraftershock/thisantigravity/alastair_sml.jpg">
-                                <div class="charname">
-                                    alastair.
-                                </div>
-                            </a>
-                        </div>
+                    <div class="cardbg"></div>
+                    <div class="card">
+                        Grass, canine, med, grey
                     </div>
+                </div>
 
-                    <div class="grid-item deciduous avian sml grey">
-                        <div class="cardbg"></div>
-                        <div class="card">
-                            <a href="/alastair">
-                                <img src="https://files.jcink.net/uploads/bitteraftershock/thisantigravity/alastair_sml.jpg">
-                                <div class="charname">
-                                    alastair.
-                                </div>
-                            </a>
-                        </div>
+                <div class="grid-item deciduous avian sml black">
+                    <div class="cardbg"></div>
+                    <div class="card">
+                        deci, avian, sml, black
                     </div>
+                </div>
+
+                <div class="grid-item deciduous avian sml red">
+                    <div class="cardbg"></div>
+                    <div class="card">
+                        deci, avian, sml, red
+                    </div>
+                </div>
+
+                <div class="grid-item deciduous avian lrg grey">
+                    <div class="cardbg"></div>
+                    <div class="card">
+                        deci, avian, lrg, grey
+                    </div>
+                </div>
+
+                <div class="grid-item boreal avian lrg grey">
+                    <div class="cardbg"></div>
+                    <div class="card">
+                        boreal, avian, lrg, grey
+                    </div>
+                </div>
                 
                 
             </div>

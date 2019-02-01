@@ -20,6 +20,15 @@ $(document).ready( function() {
         $grid.isotope({ filter: filterValue });
     });
 
+    $('.button--reset').on( 'click', function() {
+        // reset filters
+        filters = {};
+        $grid.isotope({ filter: '*' });
+        // reset buttons
+        $buttons.removeClass('is-checked');
+        $anyButtons.addClass('is-checked');
+    });
+
     // change is-checked class on buttons
     $('.button-group').each( function( i, buttonGroup ) {
         var $buttonGroup = $( buttonGroup );
