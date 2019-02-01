@@ -2,10 +2,90 @@
 <html>
     <head>
         <title>The Observation Trail: Guidebook</title>
-        <script src="script.js"></script>
-        <link rel="stylesheet" href="styles.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+        <script src="scripts/isotope.js"></script>
+        <script src="scripts/guidebook.js"></script>
+        <link rel="stylesheet" href="styles/guidebook.css"/>
     </head>
     <body>
-        Content
+        
+        <div class="filters">     
+            <div class="nav biome">
+                <div class="button-group" data-filter-group="biome">
+                    <button class="button is-checked" data-filter="">reset</button>
+                    <button class="button" data-filter=".deciduous">deciduous forest</button>
+                    <button class="button" data-filter=".boreal">boreal forest</button>
+                    <button class="button" data-filter=".wetland">wetlands</button>
+                    <button class="button" data-filter=".grassland">grasslands</button>
+                    <button class="button" data-filter=".mountain">mountains</button>
+                    <button class="button" data-filter=".coastal">coastal forest</button>
+                    <button class="button" data-filter=".tundra">tundra</button>
+                </div>
+            </div>
+            <div class="nav species">
+                <div class="button-group" data-filter-group="species">
+                    <button class="button is-checked" data-filter="">reset</button>
+                    <button class="button" data-filter=".bird">avian</button>
+                    <button class="button" data-filter=".dog">canine</button>
+                    <button class="button" data-filter=".cat">feline</button>
+                    <button class="button" data-filter=".hoof">hooved</button>
+                    <button class="button" data-filter=".rodent">rodent</button>
+                    <button class="button" data-filter=".bear">ursine</button>
+                    <button class="button" data-filter=".oth">other mammal</button>
+                </div>
+            </div>
+            <div class="nav size">
+                <div class="button-group" data-filter-group="size">
+                    <button class="button is-checked" data-filter="">reset</button>
+                    <button class="button" data-filter=".sml">small</button>
+                    <button class="button" data-filter=".med">medium</button>
+                    <button class="button" data-filter=".lrg">large</button>
+                </div>
+            </div>
+            <div class="nav color">
+                <div class="button-group" data-filter-group="color">
+                    <button class="button is-checked" data-filter=""><img src="http://placehold.it/50"></button>
+                    <button class="button" data-filter=".red"><img src="http://placehold.it/50"></button>
+                    <button class="button" data-filter=".brown"><img src="http://placehold.it/50"></button>
+                    <button class="button" data-filter=".black"><img src="http://placehold.it/50"></button>
+                    <button class="button" data-filter=".grey"><img src="http://placehold.it/50"></button>
+                    <button class="button" data-filter=".orange"><img src="http://placehold.it/50"></button>
+                </div>
+            </div>
+        </div>
+            
+        <div class="left">
+            <div class="links" style="display: table;">
+                <div style="display: table-cell; vertical-align: bottom;">
+                    <a id="biome">biome</a><br>
+                    <a id="species">species</a><br>
+                    <a id="size">size</a><br>
+                    <a id="color">color</a><br>
+                    <a id="clear">clear</a><br>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right">
+            <div class="grid">
+
+
+                <div class="grid-item ina m ya">
+                    <div class="cardbg"></div>
+                    <div class="card">
+                        <a href="/alastair">
+                            <img src="https://files.jcink.net/uploads/bitteraftershock/thisantigravity/alastair_sml.jpg">
+                            <div class="charname">
+                                alastair.
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+
     </body>
 </html>
