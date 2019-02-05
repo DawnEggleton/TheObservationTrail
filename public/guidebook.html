@@ -1,16 +1,88 @@
+<!--///////////////////////////////////
+ANIMAL CARD INSTALLATION NOTES
+
+1. Make sure to only place animal cards in the designated area marked below.
+2. Make sure to use the following HTML template, filled out properly.
+   A list of the grid-item filters will be kept up to date below, following the structure:
+
+   filtername:
+        Filter - indicator
+
+   In which filterName is which filter you're looking at (e.g., biome),
+   Filter is the common name of the filter (e.g., Deciduous Forest),
+   and indicator is what you should type where it says filterIndicator in the code.
+
+   If you are uncertain, reference completed cards or speak to Dawn for help!
+
+THE CODE:
+
+<div class="grid-item biomeIndicator speciesIndicator sizeIndicator colorIndicator">
+    <div class="cardbg"></div>
+    <div class="card">
+        <img src="images/fileName.png" />
+    </div>
+</div>
+
+THE FILTER LIST:
+
+biomeName:
+    Deciduous Forest - deciduous
+    Boreal Forest - boreal
+    Wetlands - wetlands
+    Grasslands - grasslands
+    Mountains - mountains
+    Coastal Forest/Temperate Rainforest - coastal
+    Tundra - tundra
+
+speciesIndicator:
+    Birds - avian
+    Dog-like - canine
+    Cat-like - feline
+    Hooved Animals - hooved
+    Rodents - rodent
+    Bear-like - ursine
+    All Other Mammals - mammal
+
+sizeIndicator:
+    Small - sml
+    Medium - med
+    Large - lrg
+
+colorIndicator:
+    Red - red
+    Brown - brown
+    Black - black
+    Grey - grey
+    Orange - orange
+
+///////////////////////////////////-->
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>The Observation Trail: Guidebook</title>
+
+        <!-- javascript libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+
+        <!-- imlpemented + customized javascript -->
         <script src="scripts/isotope.js"></script>
         <script src="scripts/guidebook.js"></script>
+
+        <!-- styles -->
         <link rel="stylesheet" href="styles/guidebook.css"/>
+
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Raleway" rel="stylesheet"> 
     </head>
     <body>
         
+        <!-- these are the filter lists displayed at the top of the page (in desktop) or in the secondary menu (in mobile) -->
         <div class="filters">     
+            <!-- biome filters -->
             <div class="nav biome">
                 <div class="button-group" data-filter-group="biome">
                     <button class="button is-checked" data-filter="">reset</button>
@@ -23,6 +95,8 @@
                     <button class="button" data-filter=".tundra">tundra</button>
                 </div>
             </div>
+
+            <!-- species filters -->
             <div class="nav species">
                 <div class="button-group" data-filter-group="species">
                     <button class="button is-checked" data-filter="">reset</button>
@@ -35,6 +109,8 @@
                     <button class="button" data-filter=".mammal">other mammal</button>
                 </div>
             </div>
+
+            <!-- size filters -->
             <div class="nav size">
                 <div class="button-group" data-filter-group="size">
                     <button class="button is-checked" data-filter="">reset</button>
@@ -43,6 +119,8 @@
                     <button class="button" data-filter=".lrg">large</button>
                 </div>
             </div>
+
+            <!-- color filters - use swatches for these! -->
             <div class="nav color">
                 <div class="button-group" data-filter-group="color">
                     <button class="button is-checked" data-filter=""><div class="swatch reset"></div></button>
@@ -55,9 +133,17 @@
             </div>
         </div>
             
+        <!-- left pane on desktop & primary menu on mobile -->
         <div class="left">
-            <div class="links" style="display: table;">
-                <div style="display: table-cell; vertical-align: bottom;">
+
+            <!-- logo -->
+            <div class="logo">
+                <img src="images/logo_blk.png">
+            </div>
+
+            <!-- filter categories -->
+            <div class="links">
+                <div class="links-inner">
                     <img src="http://placehold.it/50" id="biome">
                     <img src="http://placehold.it/50" id="species">
                     <img src="http://placehold.it/50" id="size">
@@ -65,46 +151,68 @@
                     <img src="http://placehold.it/50" id="clear" class="button--reset">
                 </div>
             </div>
+
         </div>
         
+
+        <!-- right pane on desktop & content area on mobile -->
         <div class="right">
             <div class="grid">
 
+                <!--///////////////////////////////////
+                    ANIMAL CARDS
+                    See installation notes at top of file before adding more cards
+                ///////////////////////////////////-->
 
                 <div class="grid-item grasslands canine med grey">
                     <div class="cardbg"></div>
-                    <div class="card">
-                        Grass, canine, med, grey
-                    </div>
+                    <a href="">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
                 </div>
 
                 <div class="grid-item deciduous avian sml black">
                     <div class="cardbg"></div>
-                    <div class="card">
-                        deci, avian, sml, black
-                    </div>
+                    <a href="">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
                 </div>
 
                 <div class="grid-item deciduous avian sml red">
                     <div class="cardbg"></div>
-                    <div class="card">
-                        deci, avian, sml, red
-                    </div>
+                    <a href="">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
                 </div>
 
                 <div class="grid-item deciduous avian lrg grey">
                     <div class="cardbg"></div>
-                    <div class="card">
-                        deci, avian, lrg, grey
-                    </div>
+                    <a href="">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
                 </div>
 
                 <div class="grid-item boreal avian lrg grey">
                     <div class="cardbg"></div>
-                    <div class="card">
-                        boreal, avian, lrg, grey
-                    </div>
+                    <a href="">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
                 </div>
+
+
+                <!--///////////////////////////////////
+                    ANIMAL CARDS END HERE
+                ///////////////////////////////////-->
                 
                 
             </div>

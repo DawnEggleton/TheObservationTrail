@@ -66,11 +66,13 @@ button {
 ***********************************/
 .left {
     position: fixed;
-    top: 61px;
+    top: 60px;
     left: 0;
     width: 30%;
-    height: calc(100% - 61px);
-    background: #35bea3;
+    height: calc(100% - 60px);
+    background-image: url('../images/vectorBG.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .links {
     position: absolute;
@@ -79,6 +81,13 @@ button {
     height: calc(100% - 80px);
     width: 50px;
     text-align: right;
+    display: table;
+}
+.links-inner {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: bottom;
 }
 .links img {
     display: block;
@@ -91,6 +100,15 @@ button {
 #clear {
     margin-top: 50px;
 }
+.logo {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+}
+.logo img {
+    width: 100%;
+}
 
 
 /***********************************
@@ -98,10 +116,10 @@ button {
 ***********************************/
 .right {
     position: fixed;
-    top: 61px;
+    top: 60px;
     right: 0;
     width: 70%;
-    height: calc(100% - 61px);
+    height: calc(100% - 60px);
     background: #81e5d2;
     overflow-y: auto;
     overflow-x: hidden;
@@ -153,4 +171,68 @@ button {
     background: #ffd690;
     border: 1px solid #ffae24;
     padding: 5px;
+}
+
+.card img {
+    width: 130px;
+    height: 130px;
+}
+
+/*************************************
+    MOBILE STYLES
+*************************************/
+
+@media only screen and (max-width: 1000px) {
+    /** Primary Menu **/
+    .left {
+        background: #000000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+    }
+    .links {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        display: block;
+    }
+    .links-inner {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .links img {
+        margin: 0;
+    }
+    #clear {
+        margin: 0;
+    }
+
+    /** Secondary Menu **/
+	.nav {
+        top: 70px;
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 70px;
+    }
+    .button-group {
+        min-width: 1200px;
+    }
+
+    /** Content Area **/
+    .right {
+        width: 100%;
+        top: 140px;
+        left: 0;
+        height: calc(100% - 140px);
+        background-image: url('../images/vectorBG.png') !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 }
