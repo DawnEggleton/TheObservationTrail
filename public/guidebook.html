@@ -14,11 +14,19 @@ ANIMAL CARD INSTALLATION NOTES
 
    If you are uncertain, reference completed cards or speak to Dawn for help!
 
-THE CODE:
+3. After adding the animal card, make sure you have replaced 'animalName' with the animal's name.
+   This should be in camelcase.
+
+4. Then, scroll further down and create a pop-up box for the animal.
+   The code for this is also below. 'animalName' should match the name you used in the card.
+   All other content is in common-language, as it will display on screen to the user.
+   Do not miss the file name instance for the image! It is in a background-image style tag.
+
+CARD CODE:
 
 <div class="grid-item biomeIndicator speciesIndicator sizeIndicator colorIndicator">
     <div class="cardbg"></div>
-    <a href="">
+    <a href="#" class="modal-link" data-modal-target="animalName">
         <div class="card">
             <img src="images/fileName.png" />
         </div>
@@ -56,6 +64,34 @@ colorIndicator:
     Black - black
     Grey - grey
     Orange - orange
+
+
+POP UP CODE:
+
+<div id="animalName" class="modal-content">
+    <div class="popupContain">
+        <div class="modal-close">x</div>
+        <div class="animalPhoto" style="background-image: url(images/fileName.png)"></div>
+        <div class="animalAttr">
+            <div class="column">
+                <h2>Biome</h2>
+                <span>text</span>
+                <h2>Species</h2>
+                <span>actual animal name (general species group)</span>
+            </div>
+            <div class="column last">
+                <h2>Size</h2>
+                <span>Small/Medium/Large</span>
+                <h2>Color</h2>
+                <div class="swatch colorName"></div>
+            </div>
+        </div>
+        <div class="animalInstruct">
+            <p>When encountering this animal,<br>you should...</p>
+            <span>Encounter Instruction</span>
+        </div>
+    </div>
+</div>
 
 ///////////////////////////////////-->
 
@@ -227,34 +263,129 @@ colorIndicator:
         ///////////////////////////////////-->
 
         <div id="animal1" class="modal-content">
-            <div class="modal-close">close [x]</div>
-            <div class="animalPhoto" style="background-image: url(http://placehold.it/200x100)"></div>
-            <div class="animalAttr">
-                <div class="column">
-                    <b>Biome:</b><br>
-                    Text<br><br>
-
-                    <b>Species:</b><br>
-                    Text<br>
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
                 </div>
-                <div class="column last">
-                    <b>Size:</b><br>
-                    Text<br><br>
-
-                    <b>Color:</b>
-                    <div class="swatch orange"></div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
                 </div>
-            </div>
-            <div class="animalInstruct">
-                When encountering this animal, you should...<br><br>
-
-                <span>Encounter Instruction</span>
             </div>
         </div>
-        <div id="animal2" class="modal-content">This is an example popup.</div>
-        <div id="animal3" class="modal-content">This is an example popup.</div>
-        <div id="animal4" class="modal-content">This is an example popup.</div>
-        <div id="animal5" class="modal-content">This is an example popup.</div>
+
+        <div id="animal2" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="animal3" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="animal4" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="animal5" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
 
         <!--///////////////////////////////////
             ANIMAL POP UPS END HERE

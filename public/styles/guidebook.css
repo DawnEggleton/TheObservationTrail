@@ -8,15 +8,16 @@
     width: 100%;
     height: 60px;
     background: #17a68a;
-    border-bottom: 1px solid #16957c;
+    border-bottom: 1px solid #438474;
     z-index: 2;
     display: none;
+    box-sizing: border-box;
 }
 .nav a {
     color: #ffffff;
     text-transform: uppercase;
-    font-family: calibri, sans-serif;
-    font-size: 9px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
     letter-spacing: 1px;
 }
 .button-group {
@@ -30,15 +31,15 @@ button {
     border: none;
     color: #ffffff;
     text-transform: uppercase;
-    font-family: calibri, sans-serif;
-    font-size: 9px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
     letter-spacing: 1px;
 }
 /*color swatches*/
 .swatch {
-    width: 30px;
-    height: 30px;
-    border: 3px solid #0c7b65;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #0c7b65;
     border-radius: 100%;
 }
 .swatch.reset {
@@ -73,6 +74,8 @@ button {
     background-image: url('../images/vectorBG.png');
     background-size: cover;
     background-repeat: no-repeat;
+    border-right: 1px solid #55A792;
+    box-sizing: border-box;
 }
 .links {
     position: absolute;
@@ -120,7 +123,7 @@ button {
     right: 0;
     width: 70%;
     height: calc(100% - 60px);
-    background: #81e5d2;
+    background: #9cd7ca;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 25px;
@@ -140,8 +143,7 @@ button {
     box-sizing: border-box;
     width: 140px;
     height: 140px;
-    background: #ffbb48;
-    border: 1px solid #ffae24;
+    background: #EBEBEB;
     padding: 5px;
     transform: rotate(5deg);
 }
@@ -168,8 +170,7 @@ button {
     box-sizing: border-box;
     width: 140px;
     height: 140px;
-    background: #ffd690;
-    border: 1px solid #ffae24;
+    background: #F9F9F9;
     padding: 5px;
 }
 
@@ -192,42 +193,67 @@ button {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(255,255,255,0.5);
+	background: rgba(235,235,235,0.5);
 	z-index: 2;
 }
 #modal-window {
 	position: fixed;
-	top: calc(50% - 150px);
-	left: calc(50% - 250px);
-    width: 500px;
-    height: 300px;
-	background-color: #F9F9F9;
-	z-index: 3;
+	top: calc(50% - 250px);
+	left: calc(50% - 400px);
+    width: 800px;
+    height: 500px;
+	background-color: #EBEBEB;
+    z-index: 3;
+    transform: rotate(3deg);
 }
 
 .modal-content {
     position: relative;
+}
+.modal-close {
+    position: absolute;
+    right: -25px;
+    top: -25px;
+    width: 50px;
+    height: 50px;
+    background: #f3223f;
+    border-radius: 50px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.popupContain {    
+    width: 800px;
+    height: 500px;
+    transform: rotate(-3deg);
+    background: #F9F9F9;
 }
 
 .animalPhoto {
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 200px;
-    height: 100px;
-    background-size: contain;
+    width: calc(50% - 30px);
+    height: calc(50% - 30px);
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .animalAttr {
     position: absolute;
-    top: 140px;
+    top: calc(50% + 10px);
     left: 20px;
-    width: 200px;
-    height: 140px;
-    background: #000000;
-    color: #ffffff;
+    width: calc(50% - 30px);
+    height: calc(50% - 30px);
+    background: #F2F2F2;
+    border: 1px solid #E6E6E6;
+    color: #55A792;
     box-sizing: border-box;
     padding: 20px;
 }
@@ -236,13 +262,25 @@ button {
     width: calc(50% - 5px);
     margin-right: 10px;
     text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #929292;
+}
+.column h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    color: #55A792;
+}
+.column span {
+    margin: -8px 0 30px 0;
+    display: block;
 }
 .last {
     margin-right: 0;
 }
 .animalAttr .swatch {
     border-radius: 0;
-    margin: 3px auto 0;
+    margin: -10px auto 0;
     width: 20px;
     height: 20px;
     border: 0;
@@ -252,18 +290,27 @@ button {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    width: 240px;
-    height: 260px;
-    background: #000000;
-    color: #ffffff;
+    width: calc(50% - 30px);
+    height: calc(100% - 40px);
+    background: #F2F2F2;
+    border: 1px solid #E6E6E6;
+    color: #929292;
     box-sizing: border-box;
     padding: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .animalInstruct span {
-    font-size: 2rem;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 44px;
     text-align: center;
     width: 100%;
     display: block;
+    margin-top: 20px;
+    color: #55A792;
 }
 
 /*************************************
@@ -343,6 +390,18 @@ button {
         left: 0;
         width: 100%;
         height: 100%;
+        transform: rotate(0deg);
+    }
+    .popupContain {
+        transform: rotate(0deg);
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        z-index:5;
     }
     
     .animalPhoto {
@@ -353,12 +412,15 @@ button {
     .animalAttr {
         top: 240px;
         width: calc(100% - 40px);
-        height: 140px;
+        height: 200px;
     }
     
     .animalInstruct {
         bottom: 20px;
         width: calc(100% - 40px);
-        height: calc(100% - 420px);
+        height: calc(100% - 480px);
+    }
+    .animalInstruct br {
+        display: none;
     }
 }
