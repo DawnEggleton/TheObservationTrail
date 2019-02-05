@@ -178,12 +178,102 @@ button {
     height: 130px;
 }
 
+/***********************************
+    pop ups
+***********************************/
+.modal-content {
+	display: none;
+}
+
+#fade-background {
+	position: fixed;
+	_position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.5);
+	z-index: 2;
+}
+#modal-window {
+	position: fixed;
+	top: calc(50% - 150px);
+	left: calc(50% - 250px);
+    width: 500px;
+    height: 300px;
+	background-color: #F9F9F9;
+	z-index: 3;
+}
+
+.modal-content {
+    position: relative;
+}
+
+.animalPhoto {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 100px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.animalAttr {
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    width: 200px;
+    height: 140px;
+    background: #000000;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.column {
+    float: left;
+    width: calc(50% - 5px);
+    margin-right: 10px;
+    text-align: center;
+}
+.last {
+    margin-right: 0;
+}
+.animalAttr .swatch {
+    border-radius: 0;
+    margin: 3px auto 0;
+    width: 20px;
+    height: 20px;
+    border: 0;
+}
+
+.animalInstruct {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 240px;
+    height: 260px;
+    background: #000000;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.animalInstruct span {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
 /*************************************
     MOBILE STYLES
 *************************************/
 
 @media only screen and (max-width: 1000px) {
-    /** Primary Menu **/
+    /***********************************
+        mobile main menu
+    ***********************************/
     .left {
         background: #000000;
         top: 0;
@@ -212,7 +302,9 @@ button {
         margin: 0;
     }
 
-    /** Secondary Menu **/
+    /***********************************
+        mobile secondary menu
+    ***********************************/
 	.nav {
         top: 70px;
         white-space: nowrap;
@@ -225,7 +317,9 @@ button {
         min-width: 1200px;
     }
 
-    /** Content Area **/
+    /***********************************
+        mobile content area
+    ***********************************/
     .right {
         width: 100%;
         top: 140px;
@@ -234,5 +328,37 @@ button {
         background-image: url('../images/vectorBG.png') !important;
         background-size: cover;
         background-repeat: no-repeat;
+    }
+    .grid {
+        width: 100%;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    /***********************************
+        pop ups
+    ***********************************/
+    #modal-window {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .animalPhoto {
+        width: calc(100% - 40px);
+        height: 200px;
+    }
+    
+    .animalAttr {
+        top: 240px;
+        width: calc(100% - 40px);
+        height: 140px;
+    }
+    
+    .animalInstruct {
+        bottom: 20px;
+        width: calc(100% - 40px);
+        height: calc(100% - 420px);
     }
 }

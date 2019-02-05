@@ -18,9 +18,11 @@ THE CODE:
 
 <div class="grid-item biomeIndicator speciesIndicator sizeIndicator colorIndicator">
     <div class="cardbg"></div>
-    <div class="card">
-        <img src="images/fileName.png" />
-    </div>
+    <a href="">
+        <div class="card">
+            <img src="images/fileName.png" />
+        </div>
+    </a>
 </div>
 
 THE FILTER LIST:
@@ -166,7 +168,7 @@ colorIndicator:
 
                 <div class="grid-item grasslands canine med grey">
                     <div class="cardbg"></div>
-                    <a href="">
+                    <a href="#" class="modal-link" data-modal-target="animal1">
                         <div class="card">
                             <img src="http://placehold.it/200" />
                         </div>
@@ -175,7 +177,7 @@ colorIndicator:
 
                 <div class="grid-item deciduous avian sml black">
                     <div class="cardbg"></div>
-                    <a href="">
+                    <a href="#" class="modal-link" data-modal-target="animal2">
                         <div class="card">
                             <img src="http://placehold.it/200" />
                         </div>
@@ -184,7 +186,7 @@ colorIndicator:
 
                 <div class="grid-item deciduous avian sml red">
                     <div class="cardbg"></div>
-                    <a href="">
+                    <a href="#" class="modal-link" data-modal-target="animal3">
                         <div class="card">
                             <img src="http://placehold.it/200" />
                         </div>
@@ -193,7 +195,7 @@ colorIndicator:
 
                 <div class="grid-item deciduous avian lrg grey">
                     <div class="cardbg"></div>
-                    <a href="">
+                    <a href="#" class="modal-link" data-modal-target="animal4">
                         <div class="card">
                             <img src="http://placehold.it/200" />
                         </div>
@@ -202,7 +204,7 @@ colorIndicator:
 
                 <div class="grid-item boreal avian lrg grey">
                     <div class="cardbg"></div>
-                    <a href="">
+                    <a href="#" class="modal-link" data-modal-target="animal5">
                         <div class="card">
                             <img src="http://placehold.it/200" />
                         </div>
@@ -217,6 +219,46 @@ colorIndicator:
                 
             </div>
         </div>
+
+        
+
+        <!--///////////////////////////////////
+            ANIMAL POP UPS BEGIN HERE
+        ///////////////////////////////////-->
+
+        <div id="animal1" class="modal-content">
+            <div class="modal-close">close [x]</div>
+            <div class="animalPhoto" style="background-image: url(http://placehold.it/200x100)"></div>
+            <div class="animalAttr">
+                <div class="column">
+                    <b>Biome:</b><br>
+                    Text<br><br>
+
+                    <b>Species:</b><br>
+                    Text<br>
+                </div>
+                <div class="column last">
+                    <b>Size:</b><br>
+                    Text<br><br>
+
+                    <b>Color:</b>
+                    <div class="swatch orange"></div>
+                </div>
+            </div>
+            <div class="animalInstruct">
+                When encountering this animal, you should...<br><br>
+
+                <span>Encounter Instruction</span>
+            </div>
+        </div>
+        <div id="animal2" class="modal-content">This is an example popup.</div>
+        <div id="animal3" class="modal-content">This is an example popup.</div>
+        <div id="animal4" class="modal-content">This is an example popup.</div>
+        <div id="animal5" class="modal-content">This is an example popup.</div>
+
+        <!--///////////////////////////////////
+            ANIMAL POP UPS END HERE
+        ///////////////////////////////////-->
 
     </body>
 </html>
