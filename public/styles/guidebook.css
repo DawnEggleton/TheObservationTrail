@@ -1,0 +1,426 @@
+/***********************************
+    filter selection
+***********************************/
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #17a68a;
+    border-bottom: 1px solid #438474;
+    z-index: 2;
+    display: none;
+    box-sizing: border-box;
+}
+.nav a {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.button-group {
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+/*color swatches*/
+.swatch {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #0c7b65;
+    border-radius: 100%;
+}
+.swatch.reset {
+    background: #ffffff;
+}
+.swatch.red {
+    background: #ce6950;
+}
+.swatch.brown {
+    background: #5b4a2d;
+}
+.swatch.black {
+    background: #000000;
+}
+.swatch.grey {
+    background: #919191;
+}
+.swatch.orange {
+    background: #c67c03;
+}
+
+
+/***********************************
+    tab selection
+***********************************/
+.left {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 30%;
+    height: calc(100% - 60px);
+    background-image: url('../images/vectorBG.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-right: 1px solid #55A792;
+    box-sizing: border-box;
+}
+.links {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    height: calc(100% - 80px);
+    width: 50px;
+    text-align: right;
+    display: table;
+}
+.links-inner {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: bottom;
+}
+.links img {
+    display: block;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    text-align: right;
+    cursor: pointer;
+}
+#clear {
+    margin-top: 50px;
+}
+.logo {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+}
+.logo img {
+    width: 100%;
+}
+
+
+/***********************************
+    grid display
+***********************************/
+.right {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 70%;
+    height: calc(100% - 60px);
+    background: #9cd7ca;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.grid {
+    max-width: calc(100% - 20px);
+    margin: 0 auto;
+}
+.grid-item {
+    width:140px;
+    height:140px;
+    margin:30px;
+    position: relative;
+}
+.cardbg {
+    box-sizing: border-box;
+    width: 140px;
+    height: 140px;
+    background: #EBEBEB;
+    padding: 5px;
+    transform: rotate(5deg);
+}
+@keyframes wiggle {
+    0% {transform: rotate(5deg);}
+    25% {transform: rotate(6deg);}
+    50% {transform: rotate(5deg);}
+    75% {transform: rotate(4deg);}
+    100% {transform: rotate(5deg);}
+}
+.grid-item:hover .cardbg {
+    animation-name: wiggle;
+    animation-duration: 0.5s;
+    animation-iteration-count: 3;
+}
+.card img {
+    width: 130px;
+    height: 130px;
+}
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 140px;
+    height: 140px;
+    background: #F9F9F9;
+    padding: 5px;
+}
+
+.card img {
+    width: 130px;
+    height: 130px;
+}
+
+/***********************************
+    pop ups
+***********************************/
+.modal-content {
+	display: none;
+}
+
+#fade-background {
+	position: fixed;
+	_position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(235,235,235,0.5);
+	z-index: 2;
+}
+#modal-window {
+	position: fixed;
+	top: calc(50% - 250px);
+	left: calc(50% - 400px);
+    width: 800px;
+    height: 500px;
+	background-color: #EBEBEB;
+    z-index: 3;
+    transform: rotate(3deg);
+}
+
+.modal-content {
+    position: relative;
+}
+.modal-close {
+    position: absolute;
+    right: -25px;
+    top: -25px;
+    width: 50px;
+    height: 50px;
+    background: #f3223f;
+    border-radius: 50px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.popupContain {    
+    width: 800px;
+    height: 500px;
+    transform: rotate(-3deg);
+    background: #F9F9F9;
+}
+
+.animalPhoto {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: calc(50% - 30px);
+    height: calc(50% - 30px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.animalAttr {
+    position: absolute;
+    top: calc(50% + 10px);
+    left: 20px;
+    width: calc(50% - 30px);
+    height: calc(50% - 30px);
+    background: #F2F2F2;
+    border: 1px solid #E6E6E6;
+    color: #55A792;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.column {
+    float: left;
+    width: calc(50% - 5px);
+    margin-right: 10px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #929292;
+}
+.column h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    color: #55A792;
+}
+.column span {
+    margin: -8px 0 30px 0;
+    display: block;
+}
+.last {
+    margin-right: 0;
+}
+.animalAttr .swatch {
+    border-radius: 0;
+    margin: -10px auto 0;
+    width: 20px;
+    height: 20px;
+    border: 0;
+}
+
+.animalInstruct {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: calc(50% - 30px);
+    height: calc(100% - 40px);
+    background: #F2F2F2;
+    border: 1px solid #E6E6E6;
+    color: #929292;
+    box-sizing: border-box;
+    padding: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.animalInstruct span {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 44px;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    color: #55A792;
+}
+
+/*************************************
+    MOBILE STYLES
+*************************************/
+
+@media only screen and (max-width: 1000px) {
+    /***********************************
+        mobile main menu
+    ***********************************/
+    .left {
+        background: #000000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+    }
+    .links {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        display: block;
+    }
+    .links-inner {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .links img {
+        margin: 0;
+    }
+    #clear {
+        margin: 0;
+    }
+
+    /***********************************
+        mobile secondary menu
+    ***********************************/
+	.nav {
+        top: 70px;
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 70px;
+    }
+    .button-group {
+        min-width: 1200px;
+    }
+
+    /***********************************
+        mobile content area
+    ***********************************/
+    .right {
+        width: 100%;
+        top: 140px;
+        left: 0;
+        height: calc(100% - 140px);
+        background-image: url('../images/vectorBG.png') !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .grid {
+        width: 100%;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    /***********************************
+        pop ups
+    ***********************************/
+    #modal-window {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotate(0deg);
+    }
+    .popupContain {
+        transform: rotate(0deg);
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        z-index:5;
+    }
+    
+    .animalPhoto {
+        width: calc(100% - 40px);
+        height: 200px;
+    }
+    
+    .animalAttr {
+        top: 240px;
+        width: calc(100% - 40px);
+        height: 200px;
+    }
+    
+    .animalInstruct {
+        bottom: 20px;
+        width: calc(100% - 40px);
+        height: calc(100% - 480px);
+    }
+    .animalInstruct br {
+        display: none;
+    }
+}

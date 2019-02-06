@@ -1,0 +1,395 @@
+<!--///////////////////////////////////
+ANIMAL CARD INSTALLATION NOTES
+
+1. Make sure to only place animal cards in the designated area marked below.
+2. Make sure to use the following HTML template, filled out properly.
+   A list of the grid-item filters will be kept up to date below, following the structure:
+
+   filtername:
+        Filter - indicator
+
+   In which filterName is which filter you're looking at (e.g., biome),
+   Filter is the common name of the filter (e.g., Deciduous Forest),
+   and indicator is what you should type where it says filterIndicator in the code.
+
+   If you are uncertain, reference completed cards or speak to Dawn for help!
+
+3. After adding the animal card, make sure you have replaced 'animalName' with the animal's name.
+   This should be in camelcase.
+
+4. Then, scroll further down and create a pop-up box for the animal.
+   The code for this is also below. 'animalName' should match the name you used in the card.
+   All other content is in common-language, as it will display on screen to the user.
+   Do not miss the file name instance for the image! It is in a background-image style tag.
+
+CARD CODE:
+
+<div class="grid-item biomeIndicator speciesIndicator sizeIndicator colorIndicator">
+    <div class="cardbg"></div>
+    <a href="#" class="modal-link" data-modal-target="animalName">
+        <div class="card">
+            <img src="images/fileName.png" />
+        </div>
+    </a>
+</div>
+
+THE FILTER LIST:
+
+biomeName:
+    Deciduous Forest - deciduous
+    Boreal Forest - boreal
+    Wetlands - wetlands
+    Grasslands - grasslands
+    Mountains - mountains
+    Coastal Forest/Temperate Rainforest - coastal
+    Tundra - tundra
+
+speciesIndicator:
+    Birds - avian
+    Dog-like - canine
+    Cat-like - feline
+    Hooved Animals - hooved
+    Rodents - rodent
+    Bear-like - ursine
+    All Other Mammals - mammal
+
+sizeIndicator:
+    Small - sml
+    Medium - med
+    Large - lrg
+
+colorIndicator:
+    Red - red
+    Brown - brown
+    Black - black
+    Grey - grey
+    Orange - orange
+
+
+POP UP CODE:
+
+<div id="animalName" class="modal-content">
+    <div class="popupContain">
+        <div class="modal-close">x</div>
+        <div class="animalPhoto" style="background-image: url(images/fileName.png)"></div>
+        <div class="animalAttr">
+            <div class="column">
+                <h2>Biome</h2>
+                <span>text</span>
+                <h2>Species</h2>
+                <span>actual animal name (general species group)</span>
+            </div>
+            <div class="column last">
+                <h2>Size</h2>
+                <span>Small/Medium/Large</span>
+                <h2>Color</h2>
+                <div class="swatch colorName"></div>
+            </div>
+        </div>
+        <div class="animalInstruct">
+            <p>When encountering this animal,<br>you should...</p>
+            <span>Encounter Instruction</span>
+        </div>
+    </div>
+</div>
+
+///////////////////////////////////-->
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Observation Trail: Guidebook</title>
+
+        <!-- javascript libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+
+        <!-- imlpemented + customized javascript -->
+        <script src="scripts/isotope.js"></script>
+        <script src="scripts/guidebook.js"></script>
+
+        <!-- styles -->
+        <link rel="stylesheet" href="styles/guidebook.css"/>
+
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Raleway" rel="stylesheet"> 
+    </head>
+    <body>
+        
+        <!-- these are the filter lists displayed at the top of the page (in desktop) or in the secondary menu (in mobile) -->
+        <div class="filters">     
+            <!-- biome filters -->
+            <div class="nav biome">
+                <div class="button-group" data-filter-group="biome">
+                    <button class="button is-checked" data-filter="">reset</button>
+                    <button class="button" data-filter=".deciduous">deciduous forest</button>
+                    <button class="button" data-filter=".boreal">boreal forest</button>
+                    <button class="button" data-filter=".wetlands">wetlands</button>
+                    <button class="button" data-filter=".grasslands">grasslands</button>
+                    <button class="button" data-filter=".mountains">mountains</button>
+                    <button class="button" data-filter=".coastal">coastal forest</button>
+                    <button class="button" data-filter=".tundra">tundra</button>
+                </div>
+            </div>
+
+            <!-- species filters -->
+            <div class="nav species">
+                <div class="button-group" data-filter-group="species">
+                    <button class="button is-checked" data-filter="">reset</button>
+                    <button class="button" data-filter=".avian">avian</button>
+                    <button class="button" data-filter=".canine">canine</button>
+                    <button class="button" data-filter=".feline">feline</button>
+                    <button class="button" data-filter=".hooved">hooved</button>
+                    <button class="button" data-filter=".rodent">rodent</button>
+                    <button class="button" data-filter=".ursine">ursine</button>
+                    <button class="button" data-filter=".mammal">other mammal</button>
+                </div>
+            </div>
+
+            <!-- size filters -->
+            <div class="nav size">
+                <div class="button-group" data-filter-group="size">
+                    <button class="button is-checked" data-filter="">reset</button>
+                    <button class="button" data-filter=".sml">small</button>
+                    <button class="button" data-filter=".med">medium</button>
+                    <button class="button" data-filter=".lrg">large</button>
+                </div>
+            </div>
+
+            <!-- color filters - use swatches for these! -->
+            <div class="nav color">
+                <div class="button-group" data-filter-group="color">
+                    <button class="button is-checked" data-filter=""><div class="swatch reset"></div></button>
+                    <button class="button" data-filter=".red"><div class="swatch red"></div></button>
+                    <button class="button" data-filter=".brown"><div class="swatch brown"></div></button>
+                    <button class="button" data-filter=".black"><div class="swatch black"></div></button>
+                    <button class="button" data-filter=".grey"><div class="swatch grey"></div></button>
+                    <button class="button" data-filter=".orange"><div class="swatch orange"></div></button>
+                </div>
+            </div>
+        </div>
+            
+        <!-- left pane on desktop & primary menu on mobile -->
+        <div class="left">
+
+            <!-- logo -->
+            <div class="logo">
+                <img src="images/logo_blk.png">
+            </div>
+
+            <!-- filter categories -->
+            <div class="links">
+                <div class="links-inner">
+                    <img src="http://placehold.it/50" id="biome">
+                    <img src="http://placehold.it/50" id="species">
+                    <img src="http://placehold.it/50" id="size">
+                    <img src="http://placehold.it/50" id="color">
+                    <img src="http://placehold.it/50" id="clear" class="button--reset">
+                </div>
+            </div>
+
+        </div>
+        
+
+        <!-- right pane on desktop & content area on mobile -->
+        <div class="right">
+            <div class="grid">
+
+                <!--///////////////////////////////////
+                    ANIMAL CARDS
+                    See installation notes at top of file before adding more cards
+                ///////////////////////////////////-->
+
+                <div class="grid-item grasslands canine med grey">
+                    <div class="cardbg"></div>
+                    <a href="#" class="modal-link" data-modal-target="animal1">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="grid-item deciduous avian sml black">
+                    <div class="cardbg"></div>
+                    <a href="#" class="modal-link" data-modal-target="animal2">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="grid-item deciduous avian sml red">
+                    <div class="cardbg"></div>
+                    <a href="#" class="modal-link" data-modal-target="animal3">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="grid-item deciduous avian lrg grey">
+                    <div class="cardbg"></div>
+                    <a href="#" class="modal-link" data-modal-target="animal4">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="grid-item boreal avian lrg grey">
+                    <div class="cardbg"></div>
+                    <a href="#" class="modal-link" data-modal-target="animal5">
+                        <div class="card">
+                            <img src="http://placehold.it/200" />
+                        </div>
+                    </a>
+                </div>
+
+
+                <!--///////////////////////////////////
+                    ANIMAL CARDS END HERE
+                ///////////////////////////////////-->
+                
+                
+            </div>
+        </div>
+
+        
+
+        <!--///////////////////////////////////
+            ANIMAL POP UPS BEGIN HERE
+        ///////////////////////////////////-->
+
+        <div id="animal1" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="animal2" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="animal3" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="animal4" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="animal5" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(http://placehold.it/300x200)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Deciduous Forest</span>
+                        <h2>Species</h2>
+                        <span>Racoon (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div class="swatch grey"></div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Encounter Instruction</span>
+                </div>
+            </div>
+        </div>
+
+        <!--///////////////////////////////////
+            ANIMAL POP UPS END HERE
+        ///////////////////////////////////-->
+
+    </body>
+</html>
