@@ -1,5 +1,4 @@
 $(document).ready( function() {
-    $('.nav.biome').show();
     $('#biome').on('click', function(){	
         $('.nav.biome').show();
         $('.nav.species').hide();

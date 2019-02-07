@@ -322,11 +322,16 @@ button {
         mobile main menu
     ***********************************/
     .left {
-        background: #000000;
-        top: 0;
+        position: fixed;
+        background: transparent;
+        top: calc(100% - 70px);
         left: 0;
         width: 100%;
         height: 70px;
+        z-index:1;
+    }
+    .logo {
+        display: none;
     }
     .links {
         top: 0;
@@ -346,19 +351,27 @@ button {
         margin: 0;
     }
     #clear {
-        margin: 0;
+        margin: 0 0 0 50px;
     }
 
     /***********************************
         mobile secondary menu
     ***********************************/
 	.nav {
-        top: 70px;
+        display: none;
+        top: calc(100% - 140px);
         white-space: nowrap;
         overflow-y: hidden;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         height: 70px;
+        background: rgba(255,255,255, 0.8);
+        width: calc(100% - 20px);
+        left: 10px;
+        border: 0;
+    }
+    .button {
+        color: #0c7b65;
     }
     .button-group {
         min-width: 1200px;
@@ -369,9 +382,9 @@ button {
     ***********************************/
     .right {
         width: 100%;
-        top: 140px;
+        top: 0;
         left: 0;
-        height: calc(100% - 140px);
+        height: 100%;
         background-image: url('../images/vectorBG.png') !important;
         background-size: cover;
         background-repeat: no-repeat;
@@ -422,5 +435,8 @@ button {
     }
     .animalInstruct br {
         display: none;
+    }
+    .animalInstruct span {
+        margin-top: 0;
     }
 }
