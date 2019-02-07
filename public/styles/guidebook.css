@@ -20,6 +20,9 @@
     font-size: 12px;
     letter-spacing: 1px;
 }
+.biome {
+    display: block;
+}
 .button-group {
     height: 60px;
     display: flex;
