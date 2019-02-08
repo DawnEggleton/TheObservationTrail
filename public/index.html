@@ -3,12 +3,29 @@
     <head>
         <title>The Observation Trail</title>
         <!-- javascript libraries -->
+        <script src="/scripts/aframe-v0.8.2.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+
+        <!-- components -->
+        <script src="/scripts/setGround.js"></script>
+        <script src="/scripts/setEnvironment.js"></script>
+        <script src="/scripts/selectHiker.js"></script>
+        <script src="/scripts/selectGuide.js"></script>
+        <script src="/scripts/showInstructions.js"></script>
+        <script src="/scripts/hideInstructions.js"></script>
+        <script src="/scripts/hikerStart.js"></script>
+        <script src="/scripts/timer.js"></script>
 
         <!-- imlpemented + customized javascript -->
         <script src="scripts/isotope.js"></script>
         <script src="scripts/guidebook.js"></script>
+
+        <!-- required global variables -->
+        <script>
+            const numTiles = 5;    
+            let timeStart = 0;
+        </script>
 
         <!-- styles -->
         <link rel="stylesheet" href="styles/guidebook.css"/>
@@ -17,6 +34,49 @@
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Raleway" rel="stylesheet"> 
     </head>
     <body>
-        Main load-in will go here.
+        <a-scene>
+
+            <!-- load assets -->
+            <a-assets>
+                <a-asset-item id="straightPath_obj" src="/models/path_straight.obj"></a-asset-item>
+                <a-asset-item id="straightPath_mat" src="/models/path_straight.mtl"></a-asset-item>
+            </a-assets>
+
+            <!-- camera -->
+            <a-entity id="cam" position="0 1.4 2" camera look-controls wasd-controls>
+                <a-entity cursor="fuse:true; fuseTimeout:500; rayOrigin:mouse;" position="0 0 -1"></a-entity>
+            </a-entity>
+
+            <!-- selection screen -->
+            <a-entity   select-hiker-comp
+                        id="selectHiker" 
+                        geometry="primitive: plane; width: 0.75; height: 0.25;" 
+                        material="color: #ffffff;" 
+                        position="0 1.6 1">
+                <a-text 
+                        value="Hiker" 
+                        color="#000000" 
+                        anchor="center" 
+                        align="center" 
+                        baseline="center"></a-text>
+            </a-entity>
+            <a-entity   select-guide-comp
+                    id="selectGuide" 
+                    geometry="primitive: plane; width: 0.75; height: 0.25;" 
+                    material="color: #ffffff;" 
+                    position="0 1.2 1">
+                <a-text 
+                    value="Guide" 
+                    color="#000000" 
+                    anchor="center" 
+                    align="center" 
+                    baseline="center"></a-text>
+            </a-entity>
+
+
+            <!-- path tiles, with generation of left and right sides -->
+            <a-entity set-ground-comp set-enviro-comp id="straightPath-1" obj-model="obj: #straightPath_obj; mtl: #straightPath_mat"></a-entity>
+
+        </a-scene>
     </body>
 </html>
