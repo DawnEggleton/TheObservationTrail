@@ -26,13 +26,13 @@ AFRAME.registerComponent('set-enviro-comp', {
         sound.setAttribute("autoplay", true);
         sound.setAttribute("loop", true);
         Context_AF.el.addEventListener('loaded',function(){
-            Context_AF.objectPlace("bigRock1", tileZ, numBigRock1, scene, "/models/bigRock1.obj", "/textures/bigRock_tex.png");
-            Context_AF.objectPlace("bigRock2", tileZ, numBigRock2, scene, "/models/bigRock2.obj", "/textures/bigRock_tex.png");
-            Context_AF.objectPlace("bigRock3", tileZ, numBigRock3, scene, "/models/bigRock3.obj", "/textures/bigRock_tex.png");
+            Context_AF.objectPlace("bigRock1", tileZ, numBigRock1, scene, "/models/bigRock1.obj", "/textures/bigRock_tex.png", sound);
+            Context_AF.objectPlace("bigRock2", tileZ, numBigRock2, scene, "/models/bigRock2.obj", "/textures/bigRock_tex.png", sound);
+            Context_AF.objectPlace("bigRock3", tileZ, numBigRock3, scene, "/models/bigRock3.obj", "/textures/bigRock_tex.png", sound);
         });
         
     },
-    objectPlace : function (type, depth, maxNum, place, objFile, matFile) {    
+    objectPlace : function (type, depth, maxNum, place, objFile, matFile, soundItem) {    
         for (i = 0; i < maxNum; i++) {
             let item = document.createElement("a-entity");
             let x = (Math.random() * (6 * numTiles)) + 2;
@@ -43,6 +43,10 @@ AFRAME.registerComponent('set-enviro-comp', {
             item.setAttribute("position", {x: x, y: 0.1, z: z});
             item.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
             place.appendChild(item);
+
+            if (type == "maple" && i == 0) {
+                item.appendChild(sound);
+            }
         }
         for (i = 0; i < maxNum; i++) {
             let item = document.createElement("a-entity");
