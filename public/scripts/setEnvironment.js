@@ -20,244 +20,41 @@ AFRAME.registerComponent('set-enviro-comp', {
         */
 
         let scene = document.querySelector("a-scene");
+
         let sound = document.createElement("a-sound");
         sound.setAttribute("src", "../audio/testSound.mp3");
         sound.setAttribute("autoplay", true);
         sound.setAttribute("loop", true);
+        Context_AF.el.addEventListener('loaded',function(){
+            console.log("listener called");     
+            Context_AF.objectPlace("bigRock1", tileZ, numBigRock1, scene, "/models/bigRock1.obj", "/textures/bigRock_tex.png");
+            Context_AF.objectPlace("bigRock2", tileZ, numBigRock2, scene, "/models/bigRock2.obj", "/textures/bigRock_tex.png");
+            Context_AF.objectPlace("bigRock3", tileZ, numBigRock3, scene, "/models/bigRock3.obj", "/textures/bigRock_tex.png");
+        });
         
-
-        //big rock 1
-        for (i = 0; i < numBigRock1; i++) {
-            let tree = document.createElement("a-entity");
+    },
+    objectPlace : function (type, depth, maxNum, place, objFile, matFile) {    
+        for (i = 0; i < maxNum; i++) {
+            let item = document.createElement("a-entity");
             let x = (Math.random() * (6 * numTiles)) + 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "bigRockRight-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/bigRock1.obj", mtl: "/models/bigRock1.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            tree.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
-            //set sound to a few trees; will be different sounds, so currently separated
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
+            let z = ((Math.random() * 6) * -1) + depth + 3;
+            item.id = type + "-right-" + i;
+            item.setAttribute("obj-model", {obj: objFile});
+            item.setAttribute("material", {src: matFile});
+            item.setAttribute("position", {x: x, y: 0.1, z: z});
+            item.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
+            place.appendChild(item);
         }
-        for (i = 0; i < numBigRock1; i++) {
-            let tree = document.createElement("a-entity");
+        for (i = 0; i < maxNum; i++) {
+            let item = document.createElement("a-entity");
             let x = (Math.random() * (-6 * numTiles)) - 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "bigRockLeft-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/bigRock1.obj", mtl: "/models/bigRock1.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            tree.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
+            let z = ((Math.random() * 6) * -1) + depth + 3;
+            item.id = type + "-left-" + i;
+            item.setAttribute("obj-model", {obj: objFile});
+            item.setAttribute("material", {src: matFile});
+            item.setAttribute("position", {x: x, y: 0.1, z: z});
+            item.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
+            place.appendChild(item);
         }
-        //big rock 2
-        for (i = 0; i < numBigRock2; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (6 * numTiles)) + 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "bigRockRight-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/bigRock2.obj", mtl: "/models/bigRock2.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            tree.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
-            //set sound to a few trees; will be different sounds, so currently separated
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        for (i = 0; i < numBigRock2; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (-6 * numTiles)) - 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "bigRockLeft-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/bigRock2.obj", mtl: "/models/bigRock2.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            tree.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        //big rock 3
-        for (i = 0; i < numBigRock2; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (6 * numTiles)) + 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "bigRockRight-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/bigRock3.obj", mtl: "/models/bigRock3.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            tree.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
-            //set sound to a few trees; will be different sounds, so currently separated
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        for (i = 0; i < numBigRock2; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (-6 * numTiles)) - 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "bigRockLeft-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/bigRock3.obj", mtl: "/models/bigRock3.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            tree.setAttribute("scale", {x: 0.09, y: 0.09, z: 0.09});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        
-
-        //maple trees
-        for (i = 0; i < numMaple; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (6 * numTiles)) + 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "mapleRight-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            //set sound to a few trees; will be different sounds, so currently separated
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        for (i = 0; i < numMaple; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (-6 * numTiles)) - 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "mapleLeft-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-
-        //birch trees
-        for (i = 0; i < numBirch; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (6 * numTiles)) + 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "birchRight-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        for (i = 0; i < numBirch; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (-6 * numTiles)) - 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "birchLeft-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-
-        //pine trees
-        for (i = 0; i < numPine; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (6 * numTiles)) + 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "pineRight-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        for (i = 0; i < numPine; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (-6 * numTiles)) - 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "pineLeft-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-
-        //spruce trees
-        for (i = 0; i < numSpruce; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (6 * numTiles)) + 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "spruceRight-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        for (i = 0; i < numSpruce; i++) {
-            let tree = document.createElement("a-entity");
-            let x = (Math.random() * (-6 * numTiles)) - 2;
-            let z = ((Math.random() * 6) * -1) + tileZ + 3;
-            tree.id = "spruceLeft-" + i;
-            tree.setAttribute("obj-model", {obj: "/models/flr_TreeObj.obj", mtl: "/models/flr_TreeObj.mtl"});
-            tree.setAttribute("position", {x: x, y: 0.1, z: z});
-            if(i == 0) {
-                tree.appendChild(sound);
-            }
-            if(i == 1) {
-                tree.appendChild(sound);
-            }
-            scene.appendChild(tree);
-        }
-        
     }
 });
