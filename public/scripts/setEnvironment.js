@@ -26,7 +26,6 @@ AFRAME.registerComponent('set-enviro-comp', {
         sound.setAttribute("autoplay", true);
         sound.setAttribute("loop", true);
         Context_AF.el.addEventListener('loaded',function(){
-            console.log("listener called");     
             Context_AF.objectPlace("bigRock1", tileZ, numBigRock1, scene, "/models/bigRock1.obj", "/textures/bigRock_tex.png");
             Context_AF.objectPlace("bigRock2", tileZ, numBigRock2, scene, "/models/bigRock2.obj", "/textures/bigRock_tex.png");
             Context_AF.objectPlace("bigRock3", tileZ, numBigRock3, scene, "/models/bigRock3.obj", "/textures/bigRock_tex.png");
