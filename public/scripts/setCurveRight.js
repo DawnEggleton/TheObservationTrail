@@ -1,4 +1,4 @@
-AFRAME.registerComponent('set-ground-comp', {
+AFRAME.registerComponent('set-curve-r-comp', {
     schema: {},
     init : function() {
         const Context_AF = this;
@@ -6,13 +6,20 @@ AFRAME.registerComponent('set-ground-comp', {
         let scene = document.querySelector("a-scene");
         
         Context_AF.el.addEventListener('loaded',function(){
-            Context_AF.straightTiling(scene, z);
+            Context_AF.curveRight(scene, z);
         });
     },
-    straightTiling : function (place, zVal) {
-        for (i = 0; i < numTiles; i++) {
+    curveRight : function (place, zVal) {
+        let curve = document.createElement("a-entity");
+        curve.id = "curve-row" + (zVal/6) + "-col" + i;
+        curve.setAttribute("obj-model", {obj: "/models/path_curve.obj", mtl: "/models/path_curve.mtl"});
+        curve.setAttribute("position", {x: 6, y: 0, z: zVal});
+        curve.setAttribute("rotation", {x: 0, y: 90, z: 0});
+        place.appendChild(curve);
+
+        for (i = 1; i < numTiles; i++) {
             let plane = document.createElement("a-entity");
-            let num = 6 * (i + 1) + x;
+            let num = 6 * (i + 1);
             plane.id = "planeRight-row" + (zVal/6) + "-col" + i;
             plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj", mtl: "/models/ground_plane.mtl"});
             plane.setAttribute("position", {x: num, y: 0, z: zVal});
@@ -20,7 +27,7 @@ AFRAME.registerComponent('set-ground-comp', {
         }
         for (i = 0; i < numTiles; i++) {
             let plane = document.createElement("a-entity");
-            let num = -6 * (i + 1) + x;
+            let num = -6 * (i + 1);
             plane.id = "planeLeft-row" + (zVal/6) + "-col" + i;
             plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj", mtl: "/models/ground_plane.mtl"});
             plane.setAttribute("position", {x: num, y: 0, z: zVal});
