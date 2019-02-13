@@ -19,7 +19,7 @@ AFRAME.registerComponent('hiker-start-comp', {
         timer.id = "timer";
         timer.setAttribute("value", "test");
         timer.setAttribute("position", {x: 0, y: -0.8, z: -1.25});
-        timer.setAttribute("color", "#000000");
+        timer.setAttribute("color", "#ffffff");
         timer.setAttribute("align", "center");
         timer.setAttribute("anchor", "center");
         timer.setAttribute("baseline", "center");

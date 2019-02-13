@@ -24,7 +24,9 @@ AFRAME.registerComponent('show-instructions-comp', {
         instructBox.id = "instructionsBox";
         instructBox.setAttribute('geometry', {primitive: "plane", width: 3, height:1.25});
         instructBox.setAttribute('position', {x: 0, y: 1.5, z:1});
-        instructBox.setAttribute('material', {color: "#000000"});
+        instructBox.setAttribute('material', {color: "#F2F2F2"});
+
+        //instructions - font color #929292
 
         //create exit button
         let exitBox = document.createElement('a-entity');

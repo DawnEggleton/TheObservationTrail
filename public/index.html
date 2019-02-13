@@ -61,11 +61,11 @@
             <a-entity   select-hiker-comp
                         id="selectHiker" 
                         geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                        material="color: #ffffff;" 
+                        material="color: #ff9048;" 
                         position="0 1.6 1">
                 <a-text 
                         value="Hiker" 
-                        color="#000000" 
+                        color="#ffffff" 
                         anchor="center" 
                         align="center" 
                         baseline="center"></a-text>
@@ -73,16 +73,18 @@
             <a-entity   select-guide-comp
                     id="selectGuide" 
                     geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                    material="color: #ffffff;" 
+                    material="color: #ff9048;" 
                     position="0 1.2 1">
                 <a-text 
                     value="Guide" 
-                    color="#000000" 
+                    color="#ffffff" 
                     anchor="center" 
                     align="center" 
                     baseline="center"></a-text>
             </a-entity>
 
+            <!-- sky -->
+            <a-entity id="sky" geometry="primitive: plane; width: 200; height: 200;" material="color: #7EC0EE;" position="0 0 -30"></a-entity>
 
             <!-- path tiles, with generation of left and right sides -->
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat"></a-entity>
