@@ -12,7 +12,8 @@ AFRAME.registerComponent('set-curve-r-comp', {
     curveRight : function (place, zVal) {
         let curve = document.createElement("a-entity");
         curve.id = "curve-row" + (zVal/6) + "-col" + i;
-        curve.setAttribute("obj-model", {obj: "/models/path_curve.obj", mtl: "/models/path_curve.mtl"});
+        curve.setAttribute("obj-model", {obj: "/models/path_curve.obj"});
+        curve.setAttribute("material", {src: "/textures/arrow_tex.png"});
         curve.setAttribute("position", {x: 6, y: 0, z: zVal});
         curve.setAttribute("rotation", {x: 0, y: 90, z: 0});
         place.appendChild(curve);
@@ -21,7 +22,8 @@ AFRAME.registerComponent('set-curve-r-comp', {
             let plane = document.createElement("a-entity");
             let num = 6 * (i + 1);
             plane.id = "planeRight-row" + (zVal/6) + "-col" + i;
-            plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj", mtl: "/models/ground_plane.mtl"});
+            plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj"});
+            plane.setAttribute("material", {src: "/textures/arrow_tex.png"});
             plane.setAttribute("position", {x: num, y: 0, z: zVal});
             place.appendChild(plane);
         }
@@ -29,7 +31,8 @@ AFRAME.registerComponent('set-curve-r-comp', {
             let plane = document.createElement("a-entity");
             let num = -6 * (i + 1);
             plane.id = "planeLeft-row" + (zVal/6) + "-col" + i;
-            plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj", mtl: "/models/ground_plane.mtl"});
+            plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj"});
+            plane.setAttribute("material", {src: "/textures/arrow_tex.png"});
             plane.setAttribute("position", {x: num, y: 0, z: zVal});
             place.appendChild(plane);
         }
