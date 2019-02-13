@@ -10,7 +10,6 @@ AFRAME.registerComponent('set-curve-l-comp', {
         });
     },
     curveLeft : function (place, zVal) {
-        console.log("left curve init");
         let curve = document.createElement("a-entity");
         curve.id = "curve-row" + (zVal/6) + "-col" + i;
         curve.setAttribute("obj-model", {obj: "/models/path_curve.obj"});
