@@ -14,6 +14,7 @@ AFRAME.registerComponent('set-enviro-comp', {
         //let numSpruce = 0;
         
         let scene = document.querySelector("a-scene");
+        let tileX = Context_AF.el.getAttribute('position').x + 3;
         let tileZ = Context_AF.el.getAttribute('position').z;
 
         /*
@@ -28,20 +29,20 @@ AFRAME.registerComponent('set-enviro-comp', {
         sound.setAttribute("autoplay", true);
         sound.setAttribute("loop", true);
         Context_AF.el.addEventListener('loaded',function(){
-            Context_AF.objectPlace("bigRock", tileZ, numBigRock1, scene, "/models/bigRock1.obj", "/textures/bigRock_tex.png", sound);
-            Context_AF.objectPlace("bigRock", tileZ, numBigRock2, scene, "/models/bigRock2.obj", "/textures/bigRock_tex.png", sound);
-            Context_AF.objectPlace("bigRock", tileZ, numBigRock3, scene, "/models/bigRock3.obj", "/textures/bigRock_tex.png", sound);
-            Context_AF.objectPlace("birch", tileZ, numBirch1, scene, "/models/tree_birch_01.obj", "/textures/birchTree_tex.png", sound);
-            Context_AF.objectPlace("birch", tileZ, numBirch2, scene, "/models/tree_birch_02.obj", "/textures/birchTree_tex.png", sound);
-            Context_AF.objectPlace("birch", tileZ, numBirch3, scene, "/models/tree_birch_03.obj", "/textures/birchTree_tex.png", sound);
-            Context_AF.objectPlace("birch", tileZ, numBirch4, scene, "/models/tree_birch_04.obj", "/textures/birchTree_tex.png", sound);
+            Context_AF.objectPlace("bigRock", tileZ, numBigRock1, scene, "/models/bigRock1.obj", "/textures/bigRock_tex.png", sound, tileX);
+            Context_AF.objectPlace("bigRock", tileZ, numBigRock2, scene, "/models/bigRock2.obj", "/textures/bigRock_tex.png", sound, tileX);
+            Context_AF.objectPlace("bigRock", tileZ, numBigRock3, scene, "/models/bigRock3.obj", "/textures/bigRock_tex.png", sound, tileX);
+            Context_AF.objectPlace("birch", tileZ, numBirch1, scene, "/models/tree_birch_01.obj", "/textures/birchTree_tex.png", sound, tileX);
+            Context_AF.objectPlace("birch", tileZ, numBirch2, scene, "/models/tree_birch_02.obj", "/textures/birchTree_tex.png", sound, tileX);
+            Context_AF.objectPlace("birch", tileZ, numBirch3, scene, "/models/tree_birch_03.obj", "/textures/birchTree_tex.png", sound, tileX);
+            Context_AF.objectPlace("birch", tileZ, numBirch4, scene, "/models/tree_birch_04.obj", "/textures/birchTree_tex.png", sound, tileX);
         });
         
     },
-    objectPlace : function (type, depth, maxNum, place, objFile, matFile, soundItem) {    
+    objectPlace : function (type, depth, maxNum, place, objFile, matFile, soundItem, pos) {    
         for (i = 0; i < maxNum; i++) {
             let item = document.createElement("a-entity");
-            let x = (Math.random() * (6 * numTiles)) + 2;
+            let x = (Math.random() * (6 * numTiles)) + (pos/2);
             let z = ((Math.random() * 6) * -1) + depth + 3;
             item.id = type + "-right-" + i;
             item.setAttribute("obj-model", {obj: objFile});
@@ -50,12 +51,12 @@ AFRAME.registerComponent('set-enviro-comp', {
             place.appendChild(item);
 
             if (type == "maple" && i == 0) {
-                item.appendChild(sound);
+                item.appendChild(soundItem);
             }
         }
         for (i = 0; i < maxNum; i++) {
             let item = document.createElement("a-entity");
-            let x = (Math.random() * (-6 * numTiles)) - 2;
+            let x = (Math.random() * (-6 * numTiles)) - (pos/2);
             let z = ((Math.random() * 6) * -1) + depth + 3;
             item.id = type + "-left-" + i;
             item.setAttribute("obj-model", {obj: objFile});
