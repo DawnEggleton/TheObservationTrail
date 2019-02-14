@@ -13,7 +13,7 @@ AFRAME.registerComponent('set-ground-comp', {
             plane.id = "planeRight-row" + (z/6) + "-col" + i;
             plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj"});
             //include ground plane texture in src below
-            plane.setAttribute("material", {src: "/textures/arrow_tex.png"});
+            plane.setAttribute("material", {src: "/textures/groundPlane_tex.png"});
             plane.setAttribute("position", {x: num, y: 0, z: z});
             scene.appendChild(plane);
         }
@@ -23,7 +23,7 @@ AFRAME.registerComponent('set-ground-comp', {
             plane.id = "planeLeft-row" + (z/6) + "-col" + i;
             plane.setAttribute("obj-model", {obj: "/models/ground_plane.obj"});
             //include ground plane texture in src below
-            plane.setAttribute("material", {src: "/textures/arrow_tex.png"});
+            plane.setAttribute("material", {src: "/textures/groundPlane_tex.png"});
             plane.setAttribute("position", {x: num, y: 0, z: z});
             scene.appendChild(plane);
         }        
