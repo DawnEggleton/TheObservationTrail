@@ -50,8 +50,8 @@
                 <img id="curvePath_mat" src="/textures/curvePath_tex.png">
                 <a-asset-item id="arrow_obj" src="/models/arrow.obj"></a-asset-item>
                 <img id="arrow_mat" src="/textures/arrow_tex.png">
-                <a-asset-item id="ref_obj" src="/models/bigRock1.obj"></a-asset-item>
-                <img id="ref_mat" src="/textures/bigRock_tex.png">
+                <a-asset-item id="skunk_obj" src="/models/skunk.obj"></a-asset-item>
+                <img id="skunk_mat" src="/textures/skunk_tex.png">
             </a-assets>
 
             <!-- camera -->
@@ -97,8 +97,8 @@
 
 
             <!-- objects -->
-            <a-entity action-obj-comp="objectType: rock; correctAction: stick;" id="ref-obj" obj-model="obj: #ref_obj;" material="src: #ref_mat"></a-entity>
-            <a-entity id="ref-obj-arrow" obj-model="obj: #arrow_obj;" material="src: #arrow_mat" rotation="0 90 0" scale="0.2 0.2 0.2" position="0.25 1.05 0"></a-entity>
+            <a-entity action-obj-comp="objectType: approach; correctAction: clap;" id="skunk" obj-model="obj: #skunk_obj;" material="src: #skunk_mat"></a-entity>
+            <a-entity id="ref-obj-arrow" obj-model="obj: #arrow_obj;" material="src: #arrow_mat" rotation="0 90 0" scale="0.2 0.2 0.2" position="0 0.55 0"></a-entity>
 
         </a-scene>
     </body>
