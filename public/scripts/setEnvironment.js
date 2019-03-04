@@ -11,6 +11,10 @@ AFRAME.registerComponent('set-enviro-comp', {
         let numBirch2 = 3;
         let numBirch3 = 3;
         let numBirch4 = 3;
+        let numMaple1 = 6;
+        let numMaple2 = 6;
+        let numFallen1 = 2;
+        let numFallen2 = 2;
         
         let scene = document.querySelector("a-scene");
         let tileX = Context_AF.el.getAttribute('position').x;

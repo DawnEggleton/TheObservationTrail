@@ -2,8 +2,7 @@ AFRAME.registerComponent('action-obj-comp', {
     schema: {
         objectType: {type: 'string', default: ''},
         correctAction: {type: 'string', default: ''},
-        animalType: {type: 'string', default: ''},
-        completion: {type: 'string', default: ''}
+        animalType: {type: 'string', default: ''}
     },
     init : function() {
         const Context_AF = this;
