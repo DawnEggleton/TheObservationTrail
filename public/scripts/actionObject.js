@@ -41,6 +41,13 @@ AFRAME.registerComponent('action-obj-comp', {
                 Context_AF.throwRock(animal);
             });
         }
+        else if (type == "clap" && action == "clap" ) {
+            document.addEventListener('keydown', function(event) {
+                if (event.keyCode == 32) {
+                    Context_AF.clapHands(animal);
+                }
+            });
+        }
         else if (type != action) {
             //check for click for rock or stick
             Context_AF.el.addEventListener('click', function(event) {
@@ -108,6 +115,20 @@ AFRAME.registerComponent('action-obj-comp', {
         
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
+            console.log("approach triggered");
+            animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
+        }
+    },
+    clapHands : function (ani) {
+        //determine distance between animal and camera to ensure correct animal
+        let animal = document.getElementById(ani);
+        let camera = document.querySelector('#cam');
+        let camZ = camera.getAttribute('position').z;
+        let zVal = animal.getAttribute('position').z;
+
+        //if close to correct animal, do action
+        if(camZ - zVal < 5 && camZ - zVal > 0) {
+            console.log("hands clapped");
             animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
         }
     },
