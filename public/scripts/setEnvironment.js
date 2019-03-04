@@ -11,8 +11,8 @@ AFRAME.registerComponent('set-enviro-comp', {
         let numBirch2 = 3;
         let numBirch3 = 3;
         let numBirch4 = 3;
-        let numMaple1 = 6;
-        let numMaple2 = 6;
+        let numMaple1 = 3;
+        let numMaple2 = 3;
         let numFallen1 = 2;
         let numFallen2 = 2;
         
@@ -21,12 +21,19 @@ AFRAME.registerComponent('set-enviro-comp', {
         let tileZ = Context_AF.el.getAttribute('position').z;
         let curve = Context_AF.el.getAttribute('set-enviro-comp').curve;
 
-        /*
-        if (tileZ < -6) { //if tileZ is less than the far edge of the last tile in an area, change tree values to shift to new environment seamlessly
-            numMaple = 0;
-            numBirch = 0;
+        if (tileZ < -90) {
+            numBigRock1 = 1;
+            numBigRock2 = 1;
+            numBigRock3 = 1;
+            numBirch1 = 1;
+            numBirch2 = 1;
+            numBirch3 = 1;
+            numBirch4 = 1;
+            numMaple1 = 1;
+            numMaple2 = 1;
+            numFallen1 = 0;
+            numFallen2 = 0;
         }
-        */
 
         let sound = document.createElement("a-sound");
         sound.setAttribute("src", "../audio/testSound.mp3");
@@ -40,6 +47,10 @@ AFRAME.registerComponent('set-enviro-comp', {
             Context_AF.objectPlace("birch", tileZ, numBirch2, scene, "/models/tree_birch_02.obj", "/textures/birchTree_tex.png", sound, tileX, curve);
             Context_AF.objectPlace("birch", tileZ, numBirch3, scene, "/models/tree_birch_03.obj", "/textures/birchTree_tex.png", sound, tileX, curve);
             Context_AF.objectPlace("birch", tileZ, numBirch4, scene, "/models/tree_birch_04.obj", "/textures/birchTree_tex.png", sound, tileX, curve);
+            Context_AF.objectPlace("maple", tileZ, numMaple1, scene, "/models/tree_maple_01.obj", "/textures/mapleTree_tex.png", sound, tileX, curve);
+            Context_AF.objectPlace("maple", tileZ, numMaple2, scene, "/models/tree_maple_02.obj", "/textures/mapleTree_tex.png", sound, tileX, curve);
+            Context_AF.objectPlace("fallenTree", tileZ, numFallen1, scene, "/models/tree_fallen_01.obj", "/textures/fallenTree_tex.png", sound, tileX, curve);
+            Context_AF.objectPlace("fallenTree", tileZ, numFallen2, scene, "/models/tree_fallen_02.obj", "/textures/fallenTree_tex.png", sound, tileX, curve);
         });
         
     },
@@ -60,9 +71,9 @@ AFRAME.registerComponent('set-enviro-comp', {
                 item.setAttribute("position", {x: x, y: 0.1, z: z});
                 place.appendChild(item);
             }
-            if (type == "maple" && i == 0) {
+            /*if (type == "maple" && i == 0) {
                 item.appendChild(soundItem);
-            }
+            }*/
         }
         for (i = 0; i < maxNum; i++) {
             let item = document.createElement("a-entity");
