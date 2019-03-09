@@ -93,9 +93,10 @@
             </a-assets>  
 
             <!-- camera -->
-            <a-entity duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls>
+            <a-entity duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20">
                 <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
                 <a-entity id="clap_snd" sound="src:/audio/testSound.mp3"></a-entity> 
+                <a-entity id="step_snd" sound="src:/audio/FootStep2.wav"></a-entity> 
             </a-entity>
 
             <!-- selection screen -->
@@ -157,6 +158,7 @@
 
         </a-scene>
         <script src="scripts/clap.js"></script>
+        <script src="/scripts/step.js"></script>
     </body>
 </html>
 
