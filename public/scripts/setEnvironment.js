@@ -40,17 +40,17 @@ AFRAME.registerComponent('set-enviro-comp', {
         sound.setAttribute("autoplay", true);
         sound.setAttribute("loop", true);
         Context_AF.el.addEventListener('loaded',function(){
-            Context_AF.objectPlace("bigRock", tileZ, numBigRock1, scene, "/models/bigRock1.obj", "/textures/bigRock_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("bigRock", tileZ, numBigRock2, scene, "/models/bigRock2.obj", "/textures/bigRock_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("bigRock", tileZ, numBigRock3, scene, "/models/bigRock3.obj", "/textures/bigRock_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("birch", tileZ, numBirch1, scene, "/models/tree_birch_01.obj", "/textures/birchTree_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("birch", tileZ, numBirch2, scene, "/models/tree_birch_02.obj", "/textures/birchTree_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("birch", tileZ, numBirch3, scene, "/models/tree_birch_03.obj", "/textures/birchTree_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("birch", tileZ, numBirch4, scene, "/models/tree_birch_04.obj", "/textures/birchTree_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("maple", tileZ, numMaple1, scene, "/models/tree_maple_01.obj", "/textures/mapleTree_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("maple", tileZ, numMaple2, scene, "/models/tree_maple_02.obj", "/textures/mapleTree_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("fallenTree", tileZ, numFallen1, scene, "/models/tree_fallen_01.obj", "/textures/fallenTree_tex.png", sound, tileX, curve);
-            Context_AF.objectPlace("fallenTree", tileZ, numFallen2, scene, "/models/tree_fallen_02.obj", "/textures/fallenTree_tex.png", sound, tileX, curve);
+            Context_AF.objectPlace("bigRock", tileZ, numBigRock1, scene, "#rock1_obj", "#rock_mat", sound, tileX, curve);
+            Context_AF.objectPlace("bigRock", tileZ, numBigRock2, scene, "#rock2_obj", "#rock_mat", sound, tileX, curve);
+            Context_AF.objectPlace("bigRock", tileZ, numBigRock3, scene, "#rock3_obj", "#rock_mat", sound, tileX, curve);
+            Context_AF.objectPlace("birch", tileZ, numBirch1, scene, "#birch1_obj", "#birch_mat", sound, tileX, curve);
+            Context_AF.objectPlace("birch", tileZ, numBirch2, scene, "#birch2_obj", "#birch_mat", sound, tileX, curve);
+            Context_AF.objectPlace("birch", tileZ, numBirch3, scene, "#birch3_obj", "#birch_mat", sound, tileX, curve);
+            Context_AF.objectPlace("birch", tileZ, numBirch4, scene, "#birch4_obj", "#birch_mat", sound, tileX, curve);
+            Context_AF.objectPlace("maple", tileZ, numMaple1, scene, "#maple1_obj", "#maple_mat", sound, tileX, curve);
+            Context_AF.objectPlace("maple", tileZ, numMaple2, scene, "#maple2_obj", "#maple_mat", sound, tileX, curve);
+            Context_AF.objectPlace("fallenTree", tileZ, numFallen1, scene, "#fallen1_obj", "#fallen_mat", sound, tileX, curve);
+            Context_AF.objectPlace("fallenTree", tileZ, numFallen2, scene, "#fallen2_obj", "#fallen_mat", sound, tileX, curve);
         });
         
     },

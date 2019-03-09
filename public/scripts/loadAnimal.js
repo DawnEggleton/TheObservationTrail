@@ -103,8 +103,8 @@ AFRAME.registerComponent('load-animal-comp', {
         let animalModel = document.createElement("a-entity");
         animalModel.id = "racoon";
         animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: "rock", animalType: "racoon"});
-        animalModel.setAttribute("obj-model", {obj: "#skunk_obj"});
-        animalModel.setAttribute("material", {src: "#skunk_mat"});
+        animalModel.setAttribute("obj-model", {obj: "#racoon_obj"});
+        animalModel.setAttribute("material", {src: "#racoon_mat"});
         animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes
@@ -127,8 +127,8 @@ AFRAME.registerComponent('load-animal-comp', {
         let animalModel = document.createElement("a-entity");
         animalModel.id = "fox";
         animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: "clap", animalType: "fox"});
-        animalModel.setAttribute("obj-model", {obj: "#skunk_obj"});
-        animalModel.setAttribute("material", {src: "#skunk_mat"});
+        animalModel.setAttribute("obj-model", {obj: "#fox_obj"});
+        animalModel.setAttribute("material", {src: "#fox_mat"});
         animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes
@@ -145,6 +145,7 @@ AFRAME.registerComponent('load-animal-comp', {
         scene.appendChild(arrow);
     },
     loadPorcupine : function (x, y, z, dir) {
+        console.log("porcupine");
         let scene = document.querySelector("a-scene");
 
         //create animal
@@ -169,6 +170,7 @@ AFRAME.registerComponent('load-animal-comp', {
         scene.appendChild(arrow);
     },
     loadSnowOwl : function (x, y, z) {
+        console.log("owl");
         let scene = document.querySelector("a-scene");
 
         //create animal
