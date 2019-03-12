@@ -137,7 +137,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "clap", animalType: "fox"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("position", {x: x, y: 1.0, z: z - 0.5});
         arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
@@ -145,15 +145,14 @@ AFRAME.registerComponent('load-animal-comp', {
         scene.appendChild(arrow);
     },
     loadPorcupine : function (x, y, z, dir) {
-        console.log("porcupine");
         let scene = document.querySelector("a-scene");
 
         //create animal
         let animalModel = document.createElement("a-entity");
         animalModel.id = "porcupine";
         animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "porcupine"});
-        animalModel.setAttribute("obj-model", {obj: "#skunk_obj"});
-        animalModel.setAttribute("material", {src: "#skunk_mat"});
+        animalModel.setAttribute("obj-model", {obj: "#porcupine_obj"});
+        animalModel.setAttribute("material", {src: "#porcupine_mat"});
         animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes
@@ -170,16 +169,22 @@ AFRAME.registerComponent('load-animal-comp', {
         scene.appendChild(arrow);
     },
     loadSnowOwl : function (x, y, z) {
-        console.log("owl");
         let scene = document.querySelector("a-scene");
 
         //create animal
         let animalModel = document.createElement("a-entity");
         animalModel.id = "snowOwl";
         animalModel.setAttribute("action-obj-comp", {objectType: "duck", correctAction: "duck", animalType: "snowOwl"});
-        animalModel.setAttribute("obj-model", {obj: "#skunk_obj"});
-        animalModel.setAttribute("material", {src: "#skunk_mat"});
-        animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
+        animalModel.setAttribute("obj-model", {obj: "#snowyOwl_static_obj"});
+        animalModel.setAttribute("material", {src: "#snowyOwl_mat"});
+        animalModel.setAttribute("position", {x: x, y: y + 1.1, z: z - 1});
+
+        //create perch
+        let perchModel = document.createElement("a-entity");
+        perchModel.id = "perch";
+        perchModel.setAttribute("obj-model", {obj: "#fallen2_obj"});
+        perchModel.setAttribute("material", {src: "#fallen_mat"});
+        perchModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes
         let arrow = document.createElement("a-entity");
@@ -187,10 +192,11 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "duck", animalType: "snowOwl"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("position", {x: x, y: 2, z: z - 0.5});
         arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
+        scene.appendChild(perchModel);
         scene.appendChild(animalModel);
         scene.appendChild(arrow);
     },

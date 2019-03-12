@@ -191,11 +191,17 @@ AFRAME.registerComponent('action-obj-comp', {
             //if throwing object, wait for animation to play first 
             if (act == "rock" || act =="stick"){         
                 setTimeout(function() {
+                    if (animal.id == "snowOwl") {
+                        animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
+                    }
                     animal.setAttribute("position", {x: xVal, y: yVal, z: zVal + 2});
                     setTimeout(function() {
                         camera.setAttribute("position", {x: camX, y: camY, z: camZ + 12});
                         setTimeout(function() {
                             animal.setAttribute("position", {x: xVal, y: yVal, z: zVal});
+                            if (animal.id == "snowOwl") {
+                                animal.setAttribute("obj-model", {obj: "#snowyOwl_static_obj"});
+                            }
                         }, 500);            
                     }, 500);            
                 }, 1200);            
@@ -203,11 +209,17 @@ AFRAME.registerComponent('action-obj-comp', {
             //else, do action right away
             else if (act != "rock" && act != "stick") {       
                 setTimeout(function() {
+                    if (animal.id == "snowOwl") {
+                        animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
+                    }
                     animal.setAttribute("position", {x: xVal, y: yVal, z: zVal + 2});
                     setTimeout(function() {
                         camera.setAttribute("position", {x: camX, y: camY, z: camZ + 12});
                         setTimeout(function() {
                             animal.setAttribute("position", {x: xVal, y: yVal, z: zVal});
+                            if (animal.id == "snowOwl") {
+                                animal.setAttribute("obj-model", {obj: "#snowyOwl_static_obj"});
+                            }
                         }, 500);            
                     }, 500);            
                 }, 500);          

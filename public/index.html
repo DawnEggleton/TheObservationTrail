@@ -58,9 +58,14 @@
                 <a-asset-item id="skunk_obj" src="/models/skunk.obj"></a-asset-item>
                 <img id="skunk_mat" src="/textures/skunk_tex.png">
                 <a-asset-item id="fox_obj" src="/models/fox.obj"></a-asset-item>
-                <img id="fox_mat" src="/textures/Fox_tex.png">
+                <img id="fox_mat" src="/textures/fox_tex.png">
                 <a-asset-item id="racoon_obj" src="/models/raccoon.obj"></a-asset-item>
                 <img id="racoon_mat" src="/textures/raccoon_tex.png">
+                <a-asset-item id="snowyOwl_static_obj" src="/models/snowyOwl_static.obj"></a-asset-item>
+                <a-asset-item id="snowyOwl_flying_obj" src="/models/snowyOwl_flying.obj"></a-asset-item>
+                <img id="snowyOwl_mat" src="/textures/snowyOwl_tex.png">
+                <a-asset-item id="porcupine_obj" src="/models/porcupine.obj"></a-asset-item>
+                <img id="porcupine_mat" src="/textures/porcupine_tex.png">
 
                 <!-- environment -->
                 <a-asset-item id="rock1_obj" src="/models/bigRock1.obj"></a-asset-item>
@@ -80,11 +85,6 @@
                 <img id="maple_mat" src="/textures/mapleTree_tex.png">
                 <!-- Assets to be added
                     ****MAKE SURE TO FIX OBJ AND MAT IN LOADANIMALS.JS FILE****
-
-                    <a-asset-item id="snowyOwl_obj" src="/models/snowyOwl.obj"></a-asset-item>
-                    <img id="snowyOwl_mat" src="/textures/snowyOwl_tex.png">
-                    <a-asset-item id="porcupine_obj" src="/models/porcupine.obj"></a-asset-item>
-                    <img id="porcupine_mat" src="/textures/porcupine_tex.png">
                     <a-asset-item id="rock_obj" src="/models/rock.obj"></a-asset-item>
                     <img id="rock_mat" src="/textures/rock_tex.png">
                     <a-asset-item id="stick_obj" src="/models/stick.obj"></a-asset-item>
@@ -93,7 +93,7 @@
             </a-assets>  
 
             <!-- camera -->
-            <a-entity duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20">
+            <a-entity duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 65">
                 <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
                 <a-entity id="clap_snd" sound="src:/audio/testSound.mp3"></a-entity> 
                 <a-entity id="step_snd" sound="src:/audio/FootStep2.wav"></a-entity> 
@@ -136,25 +136,25 @@
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -18"></a-entity>
             <!-- animal #1 -->
             <a-entity load-animal-comp="biomeType: deci; pathDir: path-left" set-curve-l-comp set-enviro-comp="curve: left" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -24" rotation="0 180 0"></a-entity> 
-            <!-- straight path -->
+            <!-- straight path 
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -30"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -36"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -42"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -48"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -54"></a-entity>
-            <!-- animal #2 -->
+            <!-- animal #2 
             <a-entity load-animal-comp="biomeType: deci; pathDir: path-right" set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="-6 0 -60" rotation="0 -90 0"></a-entity>
-            <!-- straight path -->
+            <!-- straight path 
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -66"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -72"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -78"></a-entity>
-            <!-- animal #3 -->
+            <!-- animal #3 
             <a-entity load-animal-comp="biomeType: deci; pathDir: path-right" set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -84" rotation="0 -90 0"></a-entity>
-            <!-- straight path -->
+            <!-- straight path 
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -90"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -96"></a-entity>
             <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -102"></a-entity>
-
+            -->
 
         </a-scene>
         <script src="scripts/clap.js"></script>
