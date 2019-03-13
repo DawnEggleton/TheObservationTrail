@@ -4,17 +4,8 @@ AFRAME.registerComponent('set-enviro-comp', {
     },
     init : function() {
         const Context_AF = this;
-        let numBigRock1 = 2;
-        let numBigRock2 = 2;
-        let numBigRock3 = 2;
-        let numBirch1 = 3;
-        let numBirch2 = 3;
-        let numBirch3 = 3;
-        let numBirch4 = 3;
-        let numMaple1 = 3;
-        let numMaple2 = 3;
-        let numFallen1 = 2;
-        let numFallen2 = 2;
+        let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 1;
+        let numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 2;
         
         let scene = document.querySelector("a-scene");
         let tileX = Context_AF.el.getAttribute('position').x;
@@ -22,17 +13,8 @@ AFRAME.registerComponent('set-enviro-comp', {
         let curve = Context_AF.el.getAttribute('set-enviro-comp').curve;
 
         if (tileZ < -90) {
-            numBigRock1 = 1;
-            numBigRock2 = 1;
-            numBigRock3 = 1;
-            numBirch1 = 1;
-            numBirch2 = 1;
-            numBirch3 = 1;
-            numBirch4 = 1;
-            numMaple1 = 1;
-            numMaple2 = 1;
-            numFallen1 = 0;
-            numFallen2 = 0;
+            let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 0;
+            let numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 1;
         }
 
         let sound = document.createElement("a-sound");
@@ -60,6 +42,7 @@ AFRAME.registerComponent('set-enviro-comp', {
             let z = ((Math.random() * 6) * -1) + depth + 2;
             let lx = pos - 3;
             let rx = pos + 3;
+            let randRot = Math.floor(Math.random() * 91);
             if (curving == "right") {
                 rx += 6;
             }
@@ -69,6 +52,7 @@ AFRAME.registerComponent('set-enviro-comp', {
                 item.setAttribute("obj-model", {obj: objFile});
                 item.setAttribute("material", {src: matFile});
                 item.setAttribute("position", {x: x, y: 0.1, z: z});
+                item.setAttribute("rotation", {x: 0, y: randRot, z: 0});
                 place.appendChild(item);
             }
             /*if (type == "maple" && i == 0) {
@@ -80,6 +64,7 @@ AFRAME.registerComponent('set-enviro-comp', {
             let x = (Math.random() * (-6 * numTiles)) - 2;
             let z = ((Math.random() * 6) * -1) + depth + 3;
             let lx = pos - 3;
+            let randRot = Math.floor(Math.random() * 91);
             if (curving == "left") {
                 lx -= 6;
             }
@@ -90,6 +75,7 @@ AFRAME.registerComponent('set-enviro-comp', {
                 item.setAttribute("obj-model", {obj: objFile});
                 item.setAttribute("material", {src: matFile});
                 item.setAttribute("position", {x: x, y: 0.1, z: z});
+                item.setAttribute("rotation", {x: 0, y: randRot, z: 0});
                 place.appendChild(item);
             }
         }
