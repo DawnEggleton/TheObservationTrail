@@ -12,6 +12,7 @@ AFRAME.registerComponent('action-obj-comp', {
         
         if (type == "rock" && action == "rock") {
             Context_AF.el.addEventListener('click', function(event) {
+                Context_AF.throwRockAnimation(animal);
                 Context_AF.throwRock(animal);
                 Context_AF.el.setAttribute('action-obj-comp', {objectType: "complete"});
             });
@@ -39,7 +40,8 @@ AFRAME.registerComponent('action-obj-comp', {
         }
         else if (type == "stick" && action == "stick") {
             Context_AF.el.addEventListener('click', function(event) {
-                Context_AF.throwRock(animal);
+                Context_AF.throwStickAnimation(animal);
+                Context_AF.throwStick(animal);
             });
         }
         else if (type == "clap" && action == "clap" ) {
@@ -52,7 +54,7 @@ AFRAME.registerComponent('action-obj-comp', {
         else if (type == "duck" && action == "duck" ) {
             document.addEventListener('keydown', function(event) {
                 if (event.keyCode == 17) {
-                    Context_AF.clapHands(animal);
+                    Context_AF.duckHead(animal);
                 }
             });
         }
@@ -76,143 +78,293 @@ AFRAME.registerComponent('action-obj-comp', {
             });
         }
     },
-    throwRock : function (ani) {
-        let animal = document.getElementById(ani);
-        let xVal = animal.getAttribute('position').x;
-        let yVal = animal.getAttribute('position').y;
-        let zVal = animal.getAttribute('position').z;
-        setTimeout(function() {
-            animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
-            animal.parentNode.removeChild(animal);
-            let selector = "." + ani + "-action";
-            let actions = document.querySelectorAll(selector);
-            console.log(actions);
-            actions.forEach(function(item) {
-                item.parentNode.removeChild(item);
-            });
+    throwRock : function (ani) {         
+        setTimeout(function() {   
+            let animal = document.getElementById(ani);
+            let xVal = animal.getAttribute('position').x;
+            let yVal = animal.getAttribute('position').y;
+            let zVal = animal.getAttribute('position').z;
+            let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+            let xEnd = xVal + 8;
+            let xyzEnd = xEnd.toString() + " "+ yVal.toString() + " " + zVal.toString();
+
+            let animation = document.createElement('a-animation');
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("from",xyzStart);
+            animation.setAttribute("to",xyzEnd);
+            animation.setAttribute("dur",1000);
+            animal.appendChild(animation);
+
+            setTimeout(function() {
+                animal.parentNode.removeChild(animal);
+                let selector = "." + ani + "-action";
+                let actions = document.querySelectorAll(selector);
+                actions.forEach(function(item) {
+                    item.parentNode.removeChild(item);
+                });
+            }, 1000);
         }, 1000);
     },
-    changePathLeft : function (ani) {
-        //determine distance between animal and camera to ensure correct animal
+    throwRockAnimation : function (ani) {
+        let rockID = ani + "-throw-rock";
+        let rock = document.getElementById(rockID);
+
+        let xVal = rock.getAttribute('position').x;
+        let yVal = rock.getAttribute('position').y;
+        let zVal = rock.getAttribute('position').z;        
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+
+        let animMidX = xVal + 0.5;
+        let animMidY = yVal + 1;
+        let animMidZ = zVal - 1;
+        let xyzMid = animMidX.toString() + " "+ animMidY.toString() + " " + animMidZ.toString();
+
+        let animFinalX = animMidX + 0.5;
+        let animFinalY = animMidY - 1;
+        let animFinalZ = animMidZ - 1;
+        let xyzFinal = animFinalX.toString() + " "+ animFinalY.toString() + " " + animFinalZ.toString();
+
+        let animationStart = document.createElement('a-animation');
+        animationStart.setAttribute("attribute","position");
+        animationStart.setAttribute("easing", "linear");
+        animationStart.setAttribute("from",xyzStart);
+        animationStart.setAttribute("to",xyzMid);
+        animationStart.setAttribute("dur",500);
+        rock.appendChild(animationStart);
+
+        let animationEnd = document.createElement('a-animation');
+        animationEnd.setAttribute("attribute","position");
+        animationEnd.setAttribute("easing", "linear");
+        animationEnd.setAttribute("begin", 500);
+        animationEnd.setAttribute("from",xyzMid);
+        animationEnd.setAttribute("to",xyzFinal);
+        animationEnd.setAttribute("dur",500);
+        rock.appendChild(animationEnd);
+    },
+    changePathLeft : function (ani) {        
         let animal = document.getElementById(ani);
-        let camera = document.querySelector('#cam');
-        let camZ = camera.getAttribute('position').z;
-        let zVal = animal.getAttribute('position').z;
         let xVal = animal.getAttribute('position').x;
         let yVal = animal.getAttribute('position').y;
+        let zVal = animal.getAttribute('position').z;
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        let xEnd = xVal + 8;
+        let xyzEnd = xEnd.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        
+        //determine distance between animal and camera to ensure correct animal
+        let camera = document.querySelector('#cam');
+        let camZ = camera.getAttribute('position').z;
 
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
-            animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
-            animal.parentNode.removeChild(animal);
-            let selector = "." + ani + "-action";
-            let actions = document.querySelectorAll(selector);
-            console.log(actions);
-            actions.forEach(function(item) {
-                item.parentNode.removeChild(item);
-            });
+            let animation = document.createElement('a-animation');
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("from",xyzStart);
+            animation.setAttribute("to",xyzEnd);
+            animation.setAttribute("dur",1000);
+            animal.appendChild(animation);
+    
+            setTimeout(function() {
+                animal.parentNode.removeChild(animal);
+                let selector = "." + ani + "-action";
+                let actions = document.querySelectorAll(selector);
+                actions.forEach(function(item) {
+                    item.parentNode.removeChild(item);
+                });
+            }, 1000);
         }
     },
-    changePathRight : function (ani) {
-        //determine distance between animal and camera to ensure correct animal
+    changePathRight : function (ani) {        
         let animal = document.getElementById(ani);
-        let camera = document.querySelector('#cam');
-        let camZ = camera.getAttribute('position').z;
-        let zVal = animal.getAttribute('position').z;
         let xVal = animal.getAttribute('position').x;
         let yVal = animal.getAttribute('position').y;
+        let zVal = animal.getAttribute('position').z;
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        let xEnd = xVal - 8;
+        let xyzEnd = xEnd.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        
+        //determine distance between animal and camera to ensure correct animal
+        let camera = document.querySelector('#cam');
+        let camZ = camera.getAttribute('position').z;
 
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
-            animal.setAttribute("position", {x: xVal - 3, y: yVal, z: zVal});
-            animal.parentNode.removeChild(animal);
-            let selector = "." + ani + "-action";
-            let actions = document.querySelectorAll(selector);
-            console.log(actions);
-            actions.forEach(function(item) {
-                item.parentNode.removeChild(item);
-            });
+            let animation = document.createElement('a-animation');
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("from",xyzStart);
+            animation.setAttribute("to",xyzEnd);
+            animation.setAttribute("dur",1000);
+            animal.appendChild(animation);
+    
+            setTimeout(function() {
+                animal.parentNode.removeChild(animal);
+                let selector = "." + ani + "-action";
+                let actions = document.querySelectorAll(selector);
+                actions.forEach(function(item) {
+                    item.parentNode.removeChild(item);
+                });
+            }, 1000);
         }
     },
     approachAnimal : function (ani) {
         //determine distance between animal and camera to ensure correct animal
         let animal = document.getElementById(ani);
-        let camera = document.querySelector('#cam');
-        let camZ = camera.getAttribute('position').z;
         let xVal = animal.getAttribute('position').x;
         let yVal = animal.getAttribute('position').y;
         let zVal = animal.getAttribute('position').z;
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        let xEnd = xVal - 8;
+        let xyzEnd = xEnd.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        
+        //determine distance between animal and camera to ensure correct animal
+        let camera = document.querySelector('#cam');
+        let camZ = camera.getAttribute('position').z;
         
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
-            console.log("approach triggered");
-            animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
-            animal.parentNode.removeChild(animal);
-            let selector = "." + ani + "-action";
-            let actions = document.querySelectorAll(selector);
-            console.log(actions);
-            actions.forEach(function(item) {
-                item.parentNode.removeChild(item);
-            });
+            let animation = document.createElement('a-animation');
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("from",xyzStart);
+            animation.setAttribute("to",xyzEnd);
+            animation.setAttribute("dur",1000);
+            animal.appendChild(animation);
+    
+            setTimeout(function() {
+                animal.parentNode.removeChild(animal);
+                let selector = "." + ani + "-action";
+                let actions = document.querySelectorAll(selector);
+                actions.forEach(function(item) {
+                    item.parentNode.removeChild(item);
+                });
+            }, 1000);
         }
     },
     clapHands : function (ani) {
-        //determine distance between animal and camera to ensure correct animal
         let animal = document.getElementById(ani);
-        let camera = document.querySelector('#cam');
-        let camZ = camera.getAttribute('position').z;
         let xVal = animal.getAttribute('position').x;
         let yVal = animal.getAttribute('position').y;
         let zVal = animal.getAttribute('position').z;
-
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        let xEnd = xVal - 8;
+        let xyzEnd = xEnd.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        
+        //determine distance between animal and camera to ensure correct animal
+        let camera = document.querySelector('#cam');
+        let camZ = camera.getAttribute('position').z;
+        
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
-            animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
-            animal.parentNode.removeChild(animal);
-            let selector = "." + ani + "-action";
-            let actions = document.querySelectorAll(selector);
-            console.log(actions);
-            actions.forEach(function(item) {
-                item.parentNode.removeChild(item);
-            });
+            let animation = document.createElement('a-animation');
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("from",xyzStart);
+            animation.setAttribute("to",xyzEnd);
+            animation.setAttribute("dur",1000);
+            animal.appendChild(animation);
+    
+            setTimeout(function() {
+                animal.parentNode.removeChild(animal);
+                let selector = "." + ani + "-action";
+                let actions = document.querySelectorAll(selector);
+                actions.forEach(function(item) {
+                    item.parentNode.removeChild(item);
+                });
+            }, 1000);
         }
     },
     duckHead : function (ani) {
-        //determine distance between animal and camera to ensure correct animal
         let animal = document.getElementById(ani);
+        let xVal = animal.getAttribute('position').x;
+        let yVal = animal.getAttribute('position').y;
+        let zVal = animal.getAttribute('position').z;
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        let zEnd = zVal + 8;
+        let xyzEnd = xVal.toString() + " "+ yVal.toString() + " " + zEnd.toString();
+        
+        //determine distance between animal and camera to ensure correct animal
         let camera = document.querySelector('#cam');
         let camZ = camera.getAttribute('position').z;
-        let xVal = animal.getAttribute('position').x;
-        let yVal = animal.getAttribute('position').y;
-        let zVal = animal.getAttribute('position').z;
-
+        
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
-            animal.setAttribute("position", {x: xVal, y: yVal, z: zVal + 5});
-            animal.parentNode.removeChild(animal);
-            let selector = "." + ani + "-action";
-            let actions = document.querySelectorAll(selector);
-            console.log(actions);
-            actions.forEach(function(item) {
-                item.parentNode.removeChild(item);
-            });
+            animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
+            let animation = document.createElement('a-animation');
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("from",xyzStart);
+            animation.setAttribute("to",xyzEnd);
+            animation.setAttribute("dur",1000);
+            animal.appendChild(animation);
+    
+            setTimeout(function() {
+                animal.parentNode.removeChild(animal);
+                let selector = "." + ani + "-action";
+                let actions = document.querySelectorAll(selector);
+                actions.forEach(function(item) {
+                    item.parentNode.removeChild(item);
+                });
+            }, 1000);
         }
     },
-    throwStick : function (ani) {
-        let animal = document.getElementById(ani);
-        let xVal = animal.getAttribute('position').x;
-        let yVal = animal.getAttribute('position').y;
-        let zVal = animal.getAttribute('position').z;
-        setTimeout(function() {
-            animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
-            animal.parentNode.removeChild(animal);
-            let selector = "." + ani + "-action";
-            let actions = document.querySelectorAll(selector);
-            console.log(actions);
-            actions.forEach(function(item) {
-                item.parentNode.removeChild(item);
-            });
+    throwStick : function (ani) {       
+        setTimeout(function() {   
+            let animal = document.getElementById(ani);
+            let xVal = animal.getAttribute('position').x;
+            let yVal = animal.getAttribute('position').y;
+            let zVal = animal.getAttribute('position').z;
+            let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+            let xEnd = xVal + 8;
+            let xyzEnd = xEnd.toString() + " "+ yVal.toString() + " " + zVal.toString();
+
+            let animation = document.createElement('a-animation');
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("from",xyzStart);
+            animation.setAttribute("to",xyzEnd);
+            animation.setAttribute("dur",1000);
+            animal.appendChild(animation);
+
+            setTimeout(function() {
+                animal.parentNode.removeChild(animal);
+                let selector = "." + ani + "-action";
+                let actions = document.querySelectorAll(selector);
+                actions.forEach(function(item) {
+                    item.parentNode.removeChild(item);
+                });
+            }, 1000);
         }, 1000);
+    },
+    throwStickAnimation : function (ani) {   
+        let stickID = ani + "-throw-stick";
+        let stick = document.getElementById(stickID);
+
+        let xVal = stick.getAttribute('position').x;
+        let yVal = stick.getAttribute('position').y;
+        let zVal = stick.getAttribute('position').z;        
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+
+        let animMidX = xVal + 0.5;
+        let animMidY = yVal + 1;
+        let animMidZ = zVal - 1;
+        let xyzMid = animMidX.toString() + " "+ animMidY.toString() + " " + animMidZ.toString();
+
+        let animFinalX = animMidX + 0.5;
+        let animFinalY = animMidY - 1;
+        let animFinalZ = animMidZ - 1;
+        let xyzFinal = animFinalX.toString() + " "+ animFinalY.toString() + " " + animFinalZ.toString();
+
+        let animationStart = document.createElement('a-animation');
+        animationStart.setAttribute("attribute","position");
+        animationStart.setAttribute("easing", "linear");
+        animationStart.setAttribute("from",xyzStart);
+        animationStart.setAttribute("to",xyzMid);
+        animationStart.setAttribute("dur",500);
+        stick.appendChild(animationStart);
+
+        let animationEnd = document.createElement('a-animation');
+        animationEnd.setAttribute("attribute","position");
+        animationEnd.setAttribute("easing", "linear");
+        animationEnd.setAttribute("begin", 500);
+        animationEnd.setAttribute("from",xyzMid);
+        animationEnd.setAttribute("to",xyzFinal);
+        animationEnd.setAttribute("dur",500);
+        stick.appendChild(animationEnd);
     },
     incorrectAction : function (ani, act) {
         //find camera and animal values
@@ -220,29 +372,127 @@ AFRAME.registerComponent('action-obj-comp', {
         let camX = camera.getAttribute('position').x;
         let camY = camera.getAttribute('position').y;
         let camZ = camera.getAttribute('position').z;
+        let camZEnd = camZ + 12;
+        let camStart = camX.toString() + " "+ camY.toString() + " " + camZ.toString();
+        let camEnd = camX.toString() + " "+ camY.toString() + " " + camZEnd.toString();
+
         let animal = document.getElementById(ani);
         let xVal = animal.getAttribute('position').x;
         let yVal = animal.getAttribute('position').y;
         let zVal = animal.getAttribute('position').z;
+        let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
+        let zEnd = zVal + 3;
+        let xyzEnd = xVal.toString() + " "+ yVal.toString() + " " + zEnd.toString();
+
+        let animationStart = document.createElement('a-animation');
+        animationStart.setAttribute("attribute","position");
+        animationStart.setAttribute("from",xyzStart);
+        animationStart.setAttribute("to",xyzEnd);
+        animationStart.setAttribute("dur",500);
+
+        let animationEnd = document.createElement('a-animation');
+        animationEnd.setAttribute("attribute","position");
+        animationEnd.setAttribute("begin", 500);
+        animationEnd.setAttribute("from",xyzEnd);
+        animationEnd.setAttribute("to",xyzStart);
+        animationEnd.setAttribute("dur",500);
+
+        let animationCam = document.createElement('a-animation');
+        animationCam.setAttribute("attribute","position");
+        animationCam.setAttribute("from",camStart);
+        animationCam.setAttribute("to",camEnd);
+        animationCam.setAttribute("dur",500);
         
         //
         if(camZ - zVal < 5 && camZ - zVal > 0) {  
             //if throwing object, wait for animation to play first 
-            if (act == "rock" || act =="stick"){         
+            if (act == "rock" || act =="stick"){   
+                if (act == "rock") {
+                    let rockID = ani + "-throw-rock";
+                    let rock = document.getElementById(rockID);
+            
+                    let xRock = rock.getAttribute('position').x;
+                    let yRock = rock.getAttribute('position').y;
+                    let zRock = rock.getAttribute('position').z;        
+                    let xyzStart = xRock.toString() + " "+ yRock.toString() + " " + zRock.toString();
+            
+                    let animMidX = xRock + 0.5;
+                    let animMidY = yRock + 1;
+                    let animMidZ = zRock - 1;
+                    let xyzMid = animMidX.toString() + " "+ animMidY.toString() + " " + animMidZ.toString();
+            
+                    let animFinalX = animMidX + 0.5;
+                    let animFinalY = animMidY - 1;
+                    let animFinalZ = animMidZ - 1;
+                    let xyzFinal = animFinalX.toString() + " "+ animFinalY.toString() + " " + animFinalZ.toString();
+            
+                    let animationStart = document.createElement('a-animation');
+                    animationStart.setAttribute("attribute","position");
+                    animationStart.setAttribute("easing", "linear");
+                    animationStart.setAttribute("from",xyzStart);
+                    animationStart.setAttribute("to",xyzMid);
+                    animationStart.setAttribute("dur",500);
+                    rock.appendChild(animationStart);
+            
+                    let animationEnd = document.createElement('a-animation');
+                    animationEnd.setAttribute("attribute","position");
+                    animationEnd.setAttribute("easing", "linear");
+                    animationEnd.setAttribute("begin", 500);
+                    animationEnd.setAttribute("from",xyzMid);
+                    animationEnd.setAttribute("to",xyzFinal);
+                    animationEnd.setAttribute("dur",500);
+                    rock.appendChild(animationEnd);
+                }        
+                if (act == "stick") {  
+                    let stickID = ani + "-throw-stick";
+                    let stick = document.getElementById(stickID);
+            
+                    let xStick = stick.getAttribute('position').x;
+                    let yStick = stick.getAttribute('position').y;
+                    let zStick = stick.getAttribute('position').z;        
+                    let xyzStart = xStick.toString() + " "+ yStick.toString() + " " + zStick.toString();
+            
+                    let animMidX = xStick + 0.5;
+                    let animMidY = yStick + 1;
+                    let animMidZ = zStick - 1;
+                    let xyzMid = animMidX.toString() + " "+ animMidY.toString() + " " + animMidZ.toString();
+            
+                    let animFinalX = animMidX + 0.5;
+                    let animFinalY = animMidY - 1;
+                    let animFinalZ = animMidZ - 1;
+                    let xyzFinal = animFinalX.toString() + " "+ animFinalY.toString() + " " + animFinalZ.toString();
+            
+                    let animationStart = document.createElement('a-animation');
+                    animationStart.setAttribute("attribute","position");
+                    animationStart.setAttribute("easing", "linear");
+                    animationStart.setAttribute("from",xyzStart);
+                    animationStart.setAttribute("to",xyzMid);
+                    animationStart.setAttribute("dur",500);
+                    stick.appendChild(animationStart);
+            
+                    let animationEnd = document.createElement('a-animation');
+                    animationEnd.setAttribute("attribute","position");
+                    animationEnd.setAttribute("easing", "linear");
+                    animationEnd.setAttribute("begin", 500);
+                    animationEnd.setAttribute("from",xyzMid);
+                    animationEnd.setAttribute("to",xyzFinal);
+                    animationEnd.setAttribute("dur",500);
+                    stick.appendChild(animationEnd);
+                }      
                 setTimeout(function() {
                     if (animal.id == "snowOwl") {
                         animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
                     }
-                    animal.setAttribute("position", {x: xVal, y: yVal, z: zVal + 2});
+                    animal.appendChild(animationStart);
                     setTimeout(function() {
-                        camera.setAttribute("position", {x: camX, y: camY, z: camZ + 12});
+                        camera.appendChild(animationCam);
                         setTimeout(function() {
-                            animal.setAttribute("position", {x: xVal, y: yVal, z: zVal});
+                            animal.appendChild(animationEnd);
                             if (animal.id == "snowOwl") {
                                 animal.setAttribute("obj-model", {obj: "#snowyOwl_static_obj"});
                             }
-                        }, 500);            
-                    }, 500);            
+                        }, 500);   
+                    }, 500); 
                 }, 1200);            
             }
             //else, do action right away
@@ -251,11 +501,11 @@ AFRAME.registerComponent('action-obj-comp', {
                     if (animal.id == "snowOwl") {
                         animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
                     }
-                    animal.setAttribute("position", {x: xVal, y: yVal, z: zVal + 2});
+                    animal.appendChild(animationStart);
                     setTimeout(function() {
-                        camera.setAttribute("position", {x: camX, y: camY, z: camZ + 12});
+                        camera.appendChild(animationCam);
                         setTimeout(function() {
-                            animal.setAttribute("position", {x: xVal, y: yVal, z: zVal});
+                            animal.appendChild(animationEnd);
                             if (animal.id == "snowOwl") {
                                 animal.setAttribute("obj-model", {obj: "#snowyOwl_static_obj"});
                             }

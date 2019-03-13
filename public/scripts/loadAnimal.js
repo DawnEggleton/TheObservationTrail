@@ -251,45 +251,12 @@ AFRAME.registerComponent('load-animal-comp', {
 
         //create rock
         let rock = document.createElement("a-entity");
-        rock.id = "throw-rock";
+        rock.id = animal + "-throw-rock";
         rock.className = animal + "-action";
         rock.setAttribute("action-obj-comp", {objectType: "rock", correctAction: corrAction, animalType: animal});
         rock.setAttribute("obj-model", {obj: "#arrow_obj"});
         rock.setAttribute("material", {src: "#arrow_mat"});
         rock.setAttribute("position", {x: x - 2, y: y, z: z + 2});
-
-        //create animations
-        let anim1 = document.createElement("a-animation");
-        anim1.setAttribute('begin', "animTrigger2");
-        anim1.setAttribute('attribute', 'position');
-        anim1.setAttribute('from', {x: x - 2, y: y, z: z + 2});
-        anim1.setAttribute('to', {x: x - 1, y: y + 2, z: z + 0.5});
-        anim1.setAttribute('easing', "linear");
-        anim1.setAttribute("dur", 500);
-        anim1.setAttribute("fill", "none");
-        anim1.setAttribute("repeat", 0);
-
-        let anim2 = document.createElement("a-animation");
-        anim2.setAttribute('begin', "click");
-        anim2.setAttribute('attribute', 'position');
-        anim2.setAttribute('from', {x: x - 1, y: y + 2, z: z + 0.5});
-        anim2.setAttribute('to', {x: x, y: y, z: z - 1});
-        anim2.setAttribute('easing', "linear");
-        anim2.setAttribute("dur", 500);
-        anim2.setAttribute("fill", "none");
-        anim2.setAttribute("repeat", 0);
-        anim2.setAttribute("delay", 500);
-
-        let anim3 = document.createElement("a-animation");
-        anim3.setAttribute('begin', "click");
-        anim3.setAttribute('attribute', 'position');
-        anim3.setAttribute('from', {x: x, y: y, z: z - 1});
-        anim3.setAttribute('to', {x: x, y: y, z: z - 1});
-        anim3.setAttribute('easing', "linear");
-        anim3.setAttribute("dur", 500);
-        anim3.setAttribute("fill", "none");
-        anim3.setAttribute("repeat", "indefinite");
-        anim3.setAttribute("delay", 1000);
 
         //indicator arrow
         let arrow = document.createElement("a-entity");
@@ -303,16 +270,13 @@ AFRAME.registerComponent('load-animal-comp', {
         //add to scene
         scene.appendChild(rock);
         scene.appendChild(arrow);
-        rock.appendChild(anim1);
-        rock.appendChild(anim2);
-        rock.appendChild(anim3);
     },
     loadStick : function (x, y, z, corrAction, animal) {
         let scene = document.querySelector("a-scene");
 
         //create stick
         let stick = document.createElement("a-entity");
-        stick.id = "throw-stick";
+        stick.id = animal + "-throw-stick";
         stick.className = animal + "-action";
         stick.setAttribute("action-obj-comp", {objectType: "stick", correctAction: corrAction, animalType: animal});
         stick.setAttribute("obj-model", {obj: "#arrow_obj"});
