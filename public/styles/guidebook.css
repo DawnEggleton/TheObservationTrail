@@ -39,11 +39,19 @@ button {
     letter-spacing: 1px;
 }
 /*color swatches*/
+.swatch-cont {
+    margin: 0 auto;
+}
 .swatch {
     width: 20px;
     height: 20px;
     border: 1px solid #0c7b65;
     border-radius: 100%;
+    float: left;
+    margin-right: 5px;
+}
+.swatch-cont .swatch:last-child{
+    margin-right: 0;
 }
 .swatch.reset {
     background: #ffffff;
@@ -62,6 +70,9 @@ button {
 }
 .swatch.orange {
     background: #c67c03;
+}
+.swatch.white {
+    background: #ffffff;
 }
 
 
@@ -283,7 +294,6 @@ button {
 }
 .animalAttr .swatch {
     border-radius: 0;
-    margin: -10px auto 0;
     width: 20px;
     height: 20px;
     border: 0;
