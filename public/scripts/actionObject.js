@@ -9,13 +9,11 @@ AFRAME.registerComponent('action-obj-comp', {
         let type = Context_AF.el.getAttribute('action-obj-comp').objectType;
         let action = Context_AF.el.getAttribute('action-obj-comp').correctAction;
         let animal = Context_AF.el.getAttribute('action-obj-comp').animalType;
-        console.log(animal);
         
         if (type == "rock" && action == "rock") {
             Context_AF.el.addEventListener('click', function(event) {
                 Context_AF.throwRock(animal);
                 Context_AF.el.setAttribute('action-obj-comp', {objectType: "complete"});
-                console.log(Context_AF.el.getAttribute('action-obj-comp').objectType);
             });
         }
         else if (type == "path-left" && action == "path-left") {
@@ -86,6 +84,12 @@ AFRAME.registerComponent('action-obj-comp', {
         setTimeout(function() {
             animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
             animal.parentNode.removeChild(animal);
+            let selector = "." + ani + "-action";
+            let actions = document.querySelectorAll(selector);
+            console.log(actions);
+            actions.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
         }, 1000);
     },
     changePathLeft : function (ani) {
@@ -101,6 +105,12 @@ AFRAME.registerComponent('action-obj-comp', {
         if(camZ - zVal < 5 && camZ - zVal > 0) {
             animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
             animal.parentNode.removeChild(animal);
+            let selector = "." + ani + "-action";
+            let actions = document.querySelectorAll(selector);
+            console.log(actions);
+            actions.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
         }
     },
     changePathRight : function (ani) {
@@ -116,10 +126,15 @@ AFRAME.registerComponent('action-obj-comp', {
         if(camZ - zVal < 5 && camZ - zVal > 0) {
             animal.setAttribute("position", {x: xVal - 3, y: yVal, z: zVal});
             animal.parentNode.removeChild(animal);
+            let selector = "." + ani + "-action";
+            let actions = document.querySelectorAll(selector);
+            console.log(actions);
+            actions.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
         }
     },
     approachAnimal : function (ani) {
-        console.log(ani);
         //determine distance between animal and camera to ensure correct animal
         let animal = document.getElementById(ani);
         let camera = document.querySelector('#cam');
@@ -133,6 +148,12 @@ AFRAME.registerComponent('action-obj-comp', {
             console.log("approach triggered");
             animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
             animal.parentNode.removeChild(animal);
+            let selector = "." + ani + "-action";
+            let actions = document.querySelectorAll(selector);
+            console.log(actions);
+            actions.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
         }
     },
     clapHands : function (ani) {
@@ -148,6 +169,12 @@ AFRAME.registerComponent('action-obj-comp', {
         if(camZ - zVal < 5 && camZ - zVal > 0) {
             animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
             animal.parentNode.removeChild(animal);
+            let selector = "." + ani + "-action";
+            let actions = document.querySelectorAll(selector);
+            console.log(actions);
+            actions.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
         }
     },
     duckHead : function (ani) {
@@ -163,6 +190,12 @@ AFRAME.registerComponent('action-obj-comp', {
         if(camZ - zVal < 5 && camZ - zVal > 0) {
             animal.setAttribute("position", {x: xVal, y: yVal, z: zVal + 5});
             animal.parentNode.removeChild(animal);
+            let selector = "." + ani + "-action";
+            let actions = document.querySelectorAll(selector);
+            console.log(actions);
+            actions.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
         }
     },
     throwStick : function (ani) {
@@ -173,6 +206,12 @@ AFRAME.registerComponent('action-obj-comp', {
         setTimeout(function() {
             animal.setAttribute("position", {x: xVal + 3, y: yVal, z: zVal});
             animal.parentNode.removeChild(animal);
+            let selector = "." + ani + "-action";
+            let actions = document.querySelectorAll(selector);
+            console.log(actions);
+            actions.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
         }, 1000);
     },
     incorrectAction : function (ani, act) {

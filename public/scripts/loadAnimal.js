@@ -86,6 +86,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //approach arrow, created with animal for positioning purposes
         let arrow = document.createElement("a-entity");
         arrow.id = "approach-arrow";
+        arrow.className = "skunk-action";
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "clap", animalType: "skunk"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
@@ -110,6 +111,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //approach arrow, created with animal for positioning purposes
         let arrow = document.createElement("a-entity");
         arrow.id = "approach-arrow";
+        arrow.className = "racoon-action";
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "rock", animalType: "racoon"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
@@ -134,6 +136,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //approach arrow, created with animal for positioning purposes
         let arrow = document.createElement("a-entity");
         arrow.id = "approach-arrow";
+        arrow.className = "fox-action";
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "clap", animalType: "fox"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
@@ -158,6 +161,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //approach arrow, created with animal for positioning purposes
         let arrow = document.createElement("a-entity");
         arrow.id = "approach-arrow";
+        arrow.className = "porcupine-action";
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "porcupine"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
@@ -189,6 +193,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //approach arrow, created with animal for positioning purposes
         let arrow = document.createElement("a-entity");
         arrow.id = "approach-arrow";
+        arrow.className = "snowOwl-action";
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "duck", animalType: "snowOwl"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
@@ -206,6 +211,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //create arrow
         let arrow = document.createElement("a-entity");
         arrow.id = "left-arrow";
+        arrow.className = animal + "-action";
         arrow.setAttribute("action-obj-comp", {objectType: "path-left", correctAction: corrAction, animalType: animal});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
@@ -221,6 +227,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //create arrow
         let arrow = document.createElement("a-entity");
         arrow.id = "right-arrow";
+        arrow.className = animal + "-action";
         arrow.setAttribute("action-obj-comp", {objectType: "path-right", correctAction: corrAction, animalType: animal});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
@@ -244,7 +251,8 @@ AFRAME.registerComponent('load-animal-comp', {
 
         //create rock
         let rock = document.createElement("a-entity");
-        rock.id = "throw-rock-" + animal;
+        rock.id = "throw-rock";
+        rock.className = animal + "-action";
         rock.setAttribute("action-obj-comp", {objectType: "rock", correctAction: corrAction, animalType: animal});
         rock.setAttribute("obj-model", {obj: "#arrow_obj"});
         rock.setAttribute("material", {src: "#arrow_mat"});
@@ -286,6 +294,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //indicator arrow
         let arrow = document.createElement("a-entity");
         arrow.id = "rock-arrow";
+        arrow.className = animal + "-action";
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
@@ -303,7 +312,8 @@ AFRAME.registerComponent('load-animal-comp', {
 
         //create stick
         let stick = document.createElement("a-entity");
-        stick.id = "throw-rock";
+        stick.id = "throw-stick";
+        stick.className = animal + "-action";
         stick.setAttribute("action-obj-comp", {objectType: "stick", correctAction: corrAction, animalType: animal});
         stick.setAttribute("obj-model", {obj: "#arrow_obj"});
         stick.setAttribute("material", {src: "#arrow_mat"});
@@ -345,6 +355,7 @@ AFRAME.registerComponent('load-animal-comp', {
         //indicator arrow
         let arrow = document.createElement("a-entity");
         arrow.id = "stick-arrow";
+        arrow.className = animal + "-action";
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
