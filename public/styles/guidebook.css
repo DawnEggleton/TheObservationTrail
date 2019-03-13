@@ -411,6 +411,7 @@ button {
         width: 100%;
         margin: 0;
         max-width: 100%;
+        margin-bottom: 200px;
     }
     
     .grid-item {
@@ -502,6 +503,69 @@ button {
     .swatch {
         width: 50px;
         height: 50px;
+        margin-right: 15px;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+    /***********************************
+        mobile main menu
+    ***********************************/
+    .links {
+        top: calc(100% - 100px);
+        height: 100px;
+    }
+    .links-inner {
+        height: 100px;
+    }
+    .links img {
+        height: 90px;
+        width: auto;
+    }
+
+    /***********************************
+        mobile secondary menu
+    ***********************************/
+	.nav {
+        top: calc(100% - 200px);
+        height: 100px;
+        padding-top: 30px;
+    }
+    .button {
+        font-size: 40px;
+    }
+
+    /***********************************
+        pop ups
+    ***********************************/
+    
+    .animalPhoto {
+        display: none;
+    }
+    
+    .animalAttr {
+        top: 20px;
+        height: calc((100% - 60px) / 2);
+        padding: 0;
+    }
+    .column h2 {
+        font-size: 30px;
+    }
+    .column span {
+        font-size: 20px;
+    }
+    
+    .animalInstruct {
+        height: calc((100% - 60px) / 2);
+        font-size: 20px;
+    }
+    .animalInstruct span {
+        margin-top: 0;
+        font-size: 30px;
+    }
+    .swatch {
+        width: 30px;
+        height: 30px;
         margin-right: 15px;
     }
 }
