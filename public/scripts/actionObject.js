@@ -110,7 +110,7 @@ AFRAME.registerComponent('action-obj-comp', {
         let rock = document.getElementById(rockID);
 
         let xVal = rock.getAttribute('position').x;
-        let yVal = rock.getAttribute('position').y;
+        let yVal = rock.getAttribute('position').y + 0.06;
         let zVal = rock.getAttribute('position').z;        
         let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
 

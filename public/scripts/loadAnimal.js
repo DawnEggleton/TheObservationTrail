@@ -16,7 +16,7 @@ AFRAME.registerComponent('load-animal-comp', {
             if (animalNum == 1) {
                 Context_AF.loadSkunk(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "clap", "skunk");
-                Context_AF.loadStick(tileX, tileY, tileZ, "clap", "skunk");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "clap", "skunk");
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, "clap", "skunk");
                 }
@@ -27,7 +27,7 @@ AFRAME.registerComponent('load-animal-comp', {
             if (animalNum == 2) {
                 Context_AF.loadFox(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "clap", "fox");
-                Context_AF.loadStick(tileX, tileY, tileZ, "clap", "fox");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "clap", "fox");
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, "clap", "fox");
                 }
@@ -38,7 +38,7 @@ AFRAME.registerComponent('load-animal-comp', {
             if (animalNum == 3) {
                 Context_AF.loadRacoon(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "rock", "racoon");
-                Context_AF.loadStick(tileX, tileY, tileZ, "rock", "racoon");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "rock", "racoon");
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, "rock", "racoon");
                 }
@@ -51,18 +51,18 @@ AFRAME.registerComponent('load-animal-comp', {
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, path, "porcupine");
                     Context_AF.loadRock(tileX, tileY, tileZ, path, "porcupine");
-                    Context_AF.loadStick(tileX, tileY, tileZ, path, "porcupine");
+                    //Context_AF.loadStick(tileX, tileY, tileZ, path, "porcupine");
                 }
                 else if (path == "path-right") {
                     Context_AF.loadRightArrow(tileX, tileY, tileZ, path, "porcupine");
                     Context_AF.loadRock(tileX, tileY, tileZ, path, "porcupine");
-                    Context_AF.loadStick(tileX, tileY, tileZ, path, "porcupine");
+                    //Context_AF.loadStick(tileX, tileY, tileZ, path, "porcupine");
                 }
             }
             if (animalNum == 5) {
                 Context_AF.loadSnowOwl(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "duck", "snowOwl");
-                Context_AF.loadStick(tileX, tileY, tileZ, "duck", "snowOwl");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "duck", "snowOwl");
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, "duck", "snowOwl");
                 }
@@ -239,24 +239,15 @@ AFRAME.registerComponent('load-animal-comp', {
     },
     loadRock : function (x, y, z, corrAction, animal) {
         let scene = document.querySelector("a-scene");
-        anim1X = x - 2;
-        anim1Y = y;
-        anim1Z = z + 2;
-        anim2X = x - 1;
-        anim2Y = 2;
-        anim2Z = z + 0.5;
-        anim3X = x;
-        anim3Y = y;
-        anim3Z = z - 1;
 
         //create rock
         let rock = document.createElement("a-entity");
         rock.id = animal + "-throw-rock";
         rock.className = animal + "-action";
         rock.setAttribute("action-obj-comp", {objectType: "rock", correctAction: corrAction, animalType: animal});
-        rock.setAttribute("obj-model", {obj: "#arrow_obj"});
-        rock.setAttribute("material", {src: "#arrow_mat"});
-        rock.setAttribute("position", {x: x - 2, y: y, z: z + 2});
+        rock.setAttribute("obj-model", {obj: "#throwRock_obj"});
+        rock.setAttribute("material", {src: "#throwRock_mat"});
+        rock.setAttribute("position", {x: x - 2, y: y + 0.06, z: z + 2});
 
         //indicator arrow
         let arrow = document.createElement("a-entity");
