@@ -379,7 +379,6 @@ button {
         white-space: nowrap;
         overflow-y: hidden;
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
         height: 200px;
         background: rgba(255,255,255, 0.8);
         width: calc(100% - 20px);
@@ -391,8 +390,23 @@ button {
         color: #0c7b65;
         font-size: 60px;
     }
-    .button-group {
-        min-width: 1200px;
+    .button-group.biome {
+        min-width: 1700px;
+    }
+    .button-group.species {
+        min-width: 3100px;
+    }
+    .button-group.size {
+        min-width: 1400px;
+    }
+    .button-group.color {
+        min-width: 1400px;
+    }
+
+    .swatch.reset {
+        font-size: 60px;
+        padding: 14px 0 0 5px;
+        box-sizing: border-box;
     }
 
     /***********************************

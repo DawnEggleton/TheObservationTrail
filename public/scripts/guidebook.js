@@ -1,30 +1,63 @@
 $(document).ready( function() {
+    let biomeOpen = false;
+    let speciesOpen = false;
+    let sizeOpen = false;
+    let colorOpen = false;
+
     $('#biome').on('click', function(){	
-        $('.nav.biome').show();
-        $('.nav.species').hide();
-        $('.nav.size').hide();
-        $('.nav.color').hide();
+        if (biomeOpen == false) {
+            $('.nav.biome').show();
+            $('.nav.species').hide();
+            $('.nav.size').hide();
+            $('.nav.color').hide();
+            biomeOpen = true;
+        }
+        else {
+            $('.nav.biome').hide();
+            biomeOpen = false;
+        }
     });
     
     $('#species').on('click', function(){	
-        $('.nav.biome').hide();
-        $('.nav.species').show();
-        $('.nav.size').hide();
-        $('.nav.color').hide();
+        if (speciesOpen == false) {
+            $('.nav.biome').hide();
+            $('.nav.species').show();
+            $('.nav.size').hide();
+            $('.nav.color').hide();
+            speciesOpen = true;
+        }
+        else {
+            $('.nav.species').hide();
+            speciesOpen = false;
+        }
     });
     
     $('#size').on('click', function(){	
-        $('.nav.biome').hide();
-        $('.nav.species').hide();
-        $('.nav.size').show();
-        $('.nav.color').hide();
+        if (sizeOpen == false) {
+            $('.nav.biome').hide();
+            $('.nav.species').hide();
+            $('.nav.size').show();
+            $('.nav.color').hide();
+            sizeOpen = true;
+        }
+        else {
+            $('.nav.size').hide();
+            sizeOpen = false;
+        }
     });
     
     $('#color').on('click', function(){	
-        $('.nav.biome').hide();
-        $('.nav.species').hide();
-        $('.nav.size').hide();
-        $('.nav.color').show();
+        if (colorOpen == false) {
+            $('.nav.biome').hide();
+            $('.nav.species').hide();
+            $('.nav.size').hide();
+            $('.nav.color').show();
+            colorOpen = true;
+        }
+        else {
+            $('.nav.color').hide();
+            colorOpen = false;
+        }
     });
 
     // jQuery Modal Popups Code by Black of Code
