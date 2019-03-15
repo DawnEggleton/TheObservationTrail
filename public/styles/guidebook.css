@@ -7,6 +7,7 @@
     left: 0;
     width: 100%;
     height: 60px;
+    line-height: 100%;
     background: #17a68a;
     border-bottom: 1px solid #438474;
     z-index: 2;
@@ -39,14 +40,28 @@ button {
     letter-spacing: 1px;
 }
 /*color swatches*/
+.swatch-cont {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
 .swatch {
     width: 20px;
     height: 20px;
     border: 1px solid #0c7b65;
     border-radius: 100%;
+    float: left;
+    margin-right: 5px;
+}
+.swatch-cont .swatch:last-child{
+    margin-right: 0;
 }
 .swatch.reset {
     background: #ffffff;
+    color: #ff0000;
+    border-color: #ff0000;
+    font-size: 24px;
+    line-height: 20px;
 }
 .swatch.red {
     background: #ce6950;
@@ -62,6 +77,9 @@ button {
 }
 .swatch.orange {
     background: #c67c03;
+}
+.swatch.white {
+    background: #ffffff;
 }
 
 
@@ -83,7 +101,7 @@ button {
 .links {
     position: absolute;
     top: 40px;
-    right: 10px;
+    right: 30px;
     height: calc(100% - 80px);
     width: 50px;
     text-align: right;
@@ -215,19 +233,20 @@ button {
 }
 .modal-close {
     position: absolute;
-    right: -25px;
-    top: -25px;
-    width: 50px;
-    height: 50px;
+    right: -50px;
+    top: -50px;
+    width: 100px;
+    height: 100px;
     background: #f3223f;
     border-radius: 50px;
     color: #ffffff;
     text-align: center;
-    line-height: 50px;
-    font-size: 30px;
+    line-height: 100px;
+    font-size: 60px;
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     cursor: pointer;
+    z-index: 99999999999;
 }
 
 .popupContain {    
@@ -281,13 +300,6 @@ button {
 .last {
     margin-right: 0;
 }
-.animalAttr .swatch {
-    border-radius: 0;
-    margin: -10px auto 0;
-    width: 20px;
-    height: 20px;
-    border: 0;
-}
 
 .animalInstruct {
     position: absolute;
@@ -337,21 +349,23 @@ button {
         display: none;
     }
     .links {
-        top: 0;
+        top: calc(100% - 200px);
         left: 0;
         width: 100%;
-        height: 70px;
+        height: 200px;
         display: block;
     }
     .links-inner {
         width: 100%;
-        height: 70px;
+        height: 200px;
         display: flex;
         justify-content: space-around;
         align-items: center;
     }
     .links img {
         margin: 0;
+        height: 150px;
+        width: auto;
     }
     #clear {
         margin: 0 0 0 50px;
@@ -362,22 +376,38 @@ button {
     ***********************************/
 	.nav {
         display: none;
-        top: calc(100% - 140px);
+        top: calc(100% - 400px);
         white-space: nowrap;
         overflow-y: hidden;
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        height: 70px;
+        height: 200px;
         background: rgba(255,255,255, 0.8);
         width: calc(100% - 20px);
         left: 10px;
         border: 0;
+        padding-top: 70px;
     }
     .button {
         color: #0c7b65;
+        font-size: 60px;
     }
-    .button-group {
-        min-width: 1200px;
+    .button-group.biome {
+        min-width: 1700px;
+    }
+    .button-group.species {
+        min-width: 3100px;
+    }
+    .button-group.size {
+        min-width: 1400px;
+    }
+    .button-group.color {
+        min-width: 1400px;
+    }
+
+    .swatch.reset {
+        font-size: 60px;
+        padding: 14px 0 0 5px;
+        box-sizing: border-box;
     }
 
     /***********************************
@@ -396,6 +426,41 @@ button {
         width: 100%;
         margin: 0;
         max-width: 100%;
+        margin-bottom: 200px;
+    }
+    
+    .grid-item {
+        width: 280px;
+        height:280px;
+        margin:30px;
+        position: relative;
+    }
+    .cardbg {
+        box-sizing: border-box;
+        width: 280px;
+        height:280px;
+        background: #EBEBEB;
+        padding: 5px;
+        transform: rotate(5deg);
+    }
+    .card img {
+        width: 270px;
+        height: 270px;
+    }
+    .card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        width: 280px;
+        height: 280px;
+        background: #F9F9F9;
+        padding: 5px;
+    }
+
+    .card img {
+        width: 270px;
+        height: 270px;
     }
 
     /***********************************
@@ -422,24 +487,100 @@ button {
     
     .animalPhoto {
         width: calc(100% - 40px);
-        height: 200px;
+        height: 400px;
     }
     
     .animalAttr {
-        top: 240px;
+        top: 440px;
         width: calc(100% - 40px);
-        height: 200px;
+        height: 450px;
+    }
+    .column h2 {
+        font-size: 48px;
+    }
+    .column span {
+        font-size: 30px;
     }
     
     .animalInstruct {
         bottom: 20px;
         width: calc(100% - 40px);
-        height: calc(100% - 480px);
+        height: calc(100% - 930px);
+        font-size: 30px;
     }
     .animalInstruct br {
         display: none;
     }
     .animalInstruct span {
         margin-top: 0;
+        font-size: 70px;
+    }
+    .swatch {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+    /***********************************
+        mobile main menu
+    ***********************************/
+    .links {
+        top: calc(100% - 100px);
+        height: 100px;
+    }
+    .links-inner {
+        height: 100px;
+    }
+    .links img {
+        height: 90px;
+        width: auto;
+    }
+
+    /***********************************
+        mobile secondary menu
+    ***********************************/
+	.nav {
+        top: calc(100% - 200px);
+        height: 100px;
+        padding-top: 30px;
+    }
+    .button {
+        font-size: 40px;
+    }
+
+    /***********************************
+        pop ups
+    ***********************************/
+    
+    .animalPhoto {
+        display: none;
+    }
+    
+    .animalAttr {
+        top: 20px;
+        height: calc((100% - 60px) / 2);
+        padding: 0;
+    }
+    .column h2 {
+        font-size: 30px;
+    }
+    .column span {
+        font-size: 20px;
+    }
+    
+    .animalInstruct {
+        height: calc((100% - 60px) / 2);
+        font-size: 20px;
+    }
+    .animalInstruct span {
+        margin-top: 0;
+        font-size: 30px;
+    }
+    .swatch {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
     }
 }
