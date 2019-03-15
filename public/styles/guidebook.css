@@ -246,6 +246,7 @@ button {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     cursor: pointer;
+    z-index: 99999999999;
 }
 
 .popupContain {    
