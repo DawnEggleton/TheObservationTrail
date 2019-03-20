@@ -110,7 +110,7 @@ AFRAME.registerComponent('buffer-comp', {
         let tile11 = document.createElement("a-entity");
         tile11.setAttribute("set-ground-comp", {});
         tile11.setAttribute("set-enviro-comp", {});
-        tile11.id = "path10";
+        tile11.id = "path11";
         tile11.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile11.setAttribute("material", {src: "#straightPath_mat"});
         tile11.setAttribute("position", {x: -6, y: 0, z: -36});
@@ -120,7 +120,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile12.setAttribute("load-animal-comp", {biomeType: "deci", pathDir: "path-right"});
         tile12.setAttribute("set-curve-r-comp", {});
         tile12.setAttribute("set-enviro-comp", {curve: "right"});
-        tile12.id = "path8";
+        tile12.id = "path12";
         tile12.setAttribute("obj-model", {obj: "#curvePath_obj"});
         tile12.setAttribute("material", {src: "#curvePath_mat"});
         tile12.setAttribute("position", {x: -6, y: 0, z: -42});
@@ -130,7 +130,7 @@ AFRAME.registerComponent('buffer-comp', {
         let tile13 = document.createElement("a-entity");
         tile13.setAttribute("set-ground-comp", {});
         tile13.setAttribute("set-enviro-comp", {});
-        tile13.id = "path10";
+        tile13.id = "path13";
         tile13.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile13.setAttribute("material", {src: "#straightPath_mat"});
         tile13.setAttribute("position", {x: 0, y: 0, z: -48});
@@ -139,7 +139,7 @@ AFRAME.registerComponent('buffer-comp', {
         let tile14 = document.createElement("a-entity");
         tile14.setAttribute("set-ground-comp", {});
         tile14.setAttribute("set-enviro-comp", {});
-        tile14.id = "path10";
+        tile14.id = "path14";
         tile14.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile14.setAttribute("material", {src: "#straightPath_mat"});
         tile14.setAttribute("position", {x: 0, y: 0, z: -54});
@@ -149,7 +149,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile15.setAttribute("load-animal-comp", {biomeType: "deci", pathDir: "path-right"});
         tile15.setAttribute("set-curve-r-comp", {});
         tile15.setAttribute("set-enviro-comp", {curve: "right"});
-        tile15.id = "path8";
+        tile15.id = "path15";
         tile15.setAttribute("obj-model", {obj: "#curvePath_obj"});
         tile15.setAttribute("material", {src: "#curvePath_mat"});
         tile15.setAttribute("position", {x: 0, y: 0, z: -60});
@@ -159,7 +159,7 @@ AFRAME.registerComponent('buffer-comp', {
         let tile16 = document.createElement("a-entity");
         tile16.setAttribute("set-ground-comp", {});
         tile16.setAttribute("set-enviro-comp", {});
-        tile16.id = "path10";
+        tile16.id = "path16";
         tile16.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile16.setAttribute("material", {src: "#straightPath_mat"});
         tile16.setAttribute("position", {x: 6, y: 0, z: -66});
@@ -168,7 +168,7 @@ AFRAME.registerComponent('buffer-comp', {
         let tile17 = document.createElement("a-entity");
         tile17.setAttribute("set-ground-comp", {});
         tile17.setAttribute("set-enviro-comp", {});
-        tile17.id = "path10";
+        tile17.id = "path17";
         tile17.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile17.setAttribute("material", {src: "#straightPath_mat"});
         tile17.setAttribute("position", {x: 6, y: 0, z: -72});
@@ -177,7 +177,7 @@ AFRAME.registerComponent('buffer-comp', {
         let tile18 = document.createElement("a-entity");
         tile18.setAttribute("set-ground-comp", {});
         tile18.setAttribute("set-enviro-comp", {});
-        tile18.id = "path10";
+        tile18.id = "path18";
         tile18.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile18.setAttribute("material", {src: "#straightPath_mat"});
         tile18.setAttribute("position", {x: 6, y: 0, z: -78});
@@ -193,31 +193,64 @@ AFRAME.registerComponent('buffer-comp', {
         }
         
 
+        let lastKeyPress = 0;
+
         document.addEventListener('keydown', function(event) {
+            console.log(lastKeyPress);
+
+            //forward movement
             if (event.keyCode == 38 || event.keyCode == 87) {
+                console.log(lastKeyPress);
                 let camZ = document.querySelector("#cam").getAttribute("position").z;
                 let count = Math.floor((camZ * -1)/6);
-                if (camZ > 0) {
-                    count = Math.floor(camZ / 6); 
+                if (lastKeyPress != 38 && lastKeyPress != 87) {
+                    startI--;
                 }
+                console.log("start " + startI);
+                console.log("count " + count);
                 if (startI < count) {
+                    console.log("start is less than count");
                     startI = count;
                     //remove back tile
-                    if ((count - 1) >= 0) {
-                        //remove tile
-                        let tileName = "#path" + (count - 1);
-                        let removeTile = document.querySelector(tileName);
-                        removeTile.parentNode.removeChild(removeTile);
-                        //remove planes and environment pieces
-                        let selector = ".path" + (count - 1);
-                        let items = document.querySelectorAll(selector);
-                        items.forEach(function(item) {
-                            item.parentNode.removeChild(item);
-                        });
-                        //add new tile, which will generate environment
-                        scene.appendChild(pathTiles[count + 11]);
-                    }
+                    //add new tile, which will generate environment
+                    console.log("add path " + (count + 12));
+                    scene.appendChild(pathTiles[count + 12]);
                 }
+                lastKeyPress = event.keyCode;
+            }
+            
+            //backward movement
+            if (event.keyCode == 40 || event.keyCode == 83) {
+                console.log(lastKeyPress);
+                console.log("backwards movement");
+                let camZ = document.querySelector("#cam").getAttribute("position").z;
+                let count = Math.floor(camZ/6) * -1;
+                if (lastKeyPress != 40 && lastKeyPress != 83) {
+                    startI++;
+                }
+                console.log("start " + startI);
+                console.log("count " + count);
+                if (startI > count) {
+                    startI = count;
+                    //remove back tile
+                    //if (((count * -1) - 1) >= 0) {
+                    //remove tile
+                    console.log("trigger tile change");
+                    let tileName = "#path" + (count + 12);
+                    console.log("remove path " + tileName);
+                    let removeTile = document.querySelector(tileName);
+                    removeTile.parentNode.removeChild(removeTile);
+                    //remove planes and environment pieces
+                    let selector = ".path" + (count + 12);
+                    let items = document.querySelectorAll(selector);
+                    items.forEach(function(item) {
+                        item.parentNode.removeChild(item);
+                    });
+                    //add new tile, which will generate environment
+                    scene.appendChild(pathTiles[count - 5]);
+                    //}
+                }
+                lastKeyPress = event.keyCode;
             }
         });
 

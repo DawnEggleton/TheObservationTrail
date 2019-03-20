@@ -51,6 +51,8 @@
                 <img id="straightPath_mat" src="/textures/straightPath_tex.png">
                 <a-asset-item id="curvePath_obj" src="/models/path_curve.obj"></a-asset-item>
                 <img id="curvePath_mat" src="/textures/curvePath_tex.png">
+                <a-asset-item id="groundPlane_obj" src="/models/ground_plane.obj"></a-asset-item>
+                <img id="groundPlane_mat" src="/textures/groundPlane_tex.png">
 
                 <!-- arrow -->
                 <a-asset-item id="arrow_obj" src="/models/arrow.obj"></a-asset-item>
@@ -100,7 +102,7 @@
             </a-assets>  
 
             <!-- camera -->
-            <a-entity buffer-comp duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20;">
+            <a-entity buffer-comp duck-comp id="cam" position="0 1.4 0" camera look-controls wasd-controls="acceleration: 20;">
                 <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
                 <a-entity id="clap_snd" sound="src:/audio/handClap.wav;"></a-entity> 
                 <a-entity id="step_snd" sound="src:/audio/footstep.wav; volume: 0.25;"></a-entity> 
