@@ -12,7 +12,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile0.id = "path0";
         tile0.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile0.setAttribute("material", {src: "#straightPath_mat"});
-        tile0.setAttribute("position", {x: 0, y: 0, z: 0});
+        tile0.setAttribute("position", {x: 0, y: 0, z: 6});
         pathTiles.push(tile0);
 
         let tile1 = document.createElement("a-entity");
@@ -21,7 +21,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile1.id = "path1";
         tile1.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile1.setAttribute("material", {src: "#straightPath_mat"});
-        tile1.setAttribute("position", {x: 0, y: 0, z: -6});
+        tile1.setAttribute("position", {x: 0, y: 0, z: 0});
         pathTiles.push(tile1);
 
         let tile2 = document.createElement("a-entity");
@@ -30,7 +30,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile2.id = "path2";
         tile2.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile2.setAttribute("material", {src: "#straightPath_mat"});
-        tile2.setAttribute("position", {x: 0, y: 0, z: -12});
+        tile2.setAttribute("position", {x: 0, y: 0, z: -6});
         pathTiles.push(tile2);
 
         let tile3 = document.createElement("a-entity");
@@ -39,7 +39,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile3.id = "path3";
         tile3.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile3.setAttribute("material", {src: "#straightPath_mat"});
-        tile3.setAttribute("position", {x: 0, y: 0, z: -18});
+        tile3.setAttribute("position", {x: 0, y: 0, z: -12});
         pathTiles.push(tile3);
 
         let tile4 = document.createElement("a-entity");
@@ -48,7 +48,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile4.id = "path4";
         tile4.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile4.setAttribute("material", {src: "#straightPath_mat"});
-        tile4.setAttribute("position", {x: 0, y: 0, z: -24});
+        tile4.setAttribute("position", {x: 0, y: 0, z: -18});
         pathTiles.push(tile4);
 
         let tile5 = document.createElement("a-entity");
@@ -57,7 +57,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile5.id = "path5";
         tile5.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile5.setAttribute("material", {src: "#straightPath_mat"});
-        tile5.setAttribute("position", {x: 0, y: 0, z: -30});
+        tile5.setAttribute("position", {x: 0, y: 0, z: -24});
         pathTiles.push(tile5);
 
         let tile6 = document.createElement("a-entity");
@@ -66,7 +66,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile6.id = "path6";
         tile6.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile6.setAttribute("material", {src: "#straightPath_mat"});
-        tile6.setAttribute("position", {x: 0, y: 0, z: -36});
+        tile6.setAttribute("position", {x: 0, y: 0, z: -30});
         pathTiles.push(tile6);
 
         let tile7 = document.createElement("a-entity");
@@ -75,7 +75,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile7.id = "path7";
         tile7.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile7.setAttribute("material", {src: "#straightPath_mat"});
-        tile7.setAttribute("position", {x: 0, y: 0, z: -42});
+        tile7.setAttribute("position", {x: 0, y: 0, z: -36});
         pathTiles.push(tile7);
 
         let tile8 = document.createElement("a-entity");
@@ -84,7 +84,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile8.id = "path8";
         tile8.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile8.setAttribute("material", {src: "#straightPath_mat"});
-        tile8.setAttribute("position", {x: 0, y: 0, z: -48});
+        tile8.setAttribute("position", {x: 0, y: 0, z: -42});
         pathTiles.push(tile8);
 
         let tile9 = document.createElement("a-entity");
@@ -93,7 +93,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile9.id = "path9";
         tile9.setAttribute("obj-model", {obj: "#straightPath_obj"});
         tile9.setAttribute("material", {src: "#straightPath_mat"});
-        tile9.setAttribute("position", {x: 0, y: 0, z: -54});
+        tile9.setAttribute("position", {x: 0, y: 0, z: -48});
         pathTiles.push(tile9);
 
         let scene = document.querySelector("a-scene");
@@ -128,32 +128,6 @@ AFRAME.registerComponent('buffer-comp', {
                             item.parentNode.removeChild(item);
                         });
                         scene.appendChild(pathTiles[count + 2]);
-                    }
-                }
-            }
-            if (event.keyCode == 40 || event.keyCode == 83) {
-                let camZ = document.querySelector("#cam").getAttribute("position").z;
-                let count = Math.floor((camZ * -1)/6);
-                if (camZ > 0) {
-                    count = Math.floor(camZ / 6); 
-                }
-                console.log(startI);
-                console.log(count);
-                if (startI = count) {
-                    startI = count - 1;
-                    //remove back tile
-                    if ((count - 1) >= 0) {
-                        //remove tile
-                        let tileName = "#path" + (count + 2);
-                        let removeTile = document.querySelector(tileName);
-                        removeTile.parentNode.removeChild(removeTile);
-                        let selector = ".path" + (count + 2);
-                        let items = document.querySelectorAll(selector);
-                        items.forEach(function(item) {
-                            item.parentNode.removeChild(item);
-                        });
-                        console.log("append path" + (count - 1));
-                        scene.appendChild(pathTiles[count - 1]);
                     }
                 }
             }
