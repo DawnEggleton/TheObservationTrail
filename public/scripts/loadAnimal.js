@@ -13,6 +13,13 @@ AFRAME.registerComponent('load-animal-comp', {
         let animalNum = Math.floor(Math.random() * 5) + 1;
 
         if (biome == "deci") {
+            //if animal is already present, "re-roll"
+            while (deciAnimals.includes(animalNum) == true) {
+                animalNum = Math.floor(Math.random() * 5) + 1;
+            }
+            //otherwise, add animal marker to array and allow animal
+            deciAnimals.push(animalNum);
+            
             if (animalNum == 1) {
                 Context_AF.loadSkunk(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "clap", "skunk");

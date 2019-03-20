@@ -1,4 +1,3 @@
-
 AFRAME.registerComponent('set-enviro-comp', {
     schema: {
         curve: {type: 'string', default: 'straight'}
