@@ -48,6 +48,7 @@ AFRAME.registerComponent('set-enviro-comp', {
             if (x < lx || x > rx) {
                 let item = document.createElement("a-entity");
                 item.id = type + "-right-" + i;
+                item.className = "path" + ((depth/6) * -1);
                 item.setAttribute("obj-model", {obj: objFile});
                 item.setAttribute("material", {src: matFile});
                 item.setAttribute("position", {x: x, y: 0.1, z: z});
@@ -90,6 +91,7 @@ AFRAME.registerComponent('set-enviro-comp', {
             if (x < lx || x > rx) {
                 let item = document.createElement("a-entity");
                 item.id = type + "-left-" + i;
+                item.className = "path" + ((depth/6) * -1);
                 item.setAttribute("obj-model", {obj: objFile});
                 item.setAttribute("material", {src: matFile});
                 item.setAttribute("position", {x: x, y: 0.1, z: z});

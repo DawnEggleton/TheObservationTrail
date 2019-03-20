@@ -14,6 +14,7 @@
         
         <!-- components -->
         <script src="/scripts/actionObject.js"></script>
+        <script src="/scripts/buffer.js"></script>
         <script src="/scripts/duck.js"></script>
         <script src="/scripts/hideInstructions.js"></script>
         <script src="/scripts/hikerStart.js"></script>
@@ -99,7 +100,7 @@
             </a-assets>  
 
             <!-- camera -->
-            <a-entity duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20;">
+            <a-entity buffer-comp duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20;">
                 <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
                 <a-entity id="clap_snd" sound="src:/audio/handClap.wav;"></a-entity> 
                 <a-entity id="step_snd" sound="src:/audio/footstep.wav; volume: 0.25;"></a-entity> 
@@ -134,32 +135,10 @@
             <!-- sky -->
             <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 -300"></a-entity>
 
-            <!-- path tiles, with generation of left and right sides -->
-            <!-- straight path-->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -6"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -12"></a-entity>
-            <!-- animal #1 -->
-            <a-entity load-animal-comp="biomeType: deci; pathDir: path-left" set-curve-l-comp set-enviro-comp="curve: left" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -18" rotation="0 180 0"></a-entity> 
-            <!-- straight path -->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -24"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -30"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -36"></a-entity>
-            <!-- animal #2 -->
-            <a-entity load-animal-comp="biomeType: deci; pathDir: path-right" set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="-6 0 -42" rotation="0 -90 0"></a-entity>
-            <!-- straight path -->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -48"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -54"></a-entity>
-            <!-- animal #3 -->
-            <a-entity load-animal-comp="biomeType: deci; pathDir: path-right" set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -60" rotation="0 -90 0"></a-entity>
-            <!-- straight path -->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -66"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -72"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -78"></a-entity>
             
 
         </a-scene>
-        <script src="/scripts/buttonPresses.js"></script>
+        <!--<script src="/scripts/buttonPresses.js"></script>-->
     </body>
 </html>
 
