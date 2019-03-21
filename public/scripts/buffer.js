@@ -209,12 +209,23 @@ AFRAME.registerComponent('buffer-comp', {
                 console.log("start " + startI);
                 console.log("count " + count);
                 if (startI < count) {
-                    console.log("start is less than count");
                     startI = count;
                     //remove back tile
+                    //remove tile
+                    let tileName = "#path" + (count - 1);
+                    let removeTile = document.querySelector(tileName);
+                    removeTile.parentNode.removeChild(removeTile);
+                    //remove planes and environment pieces
+                    let selector = ".path" + (count - 1);
+                    let items = document.querySelectorAll(selector);
+                    items.forEach(function(item) {
+                        item.parentNode.removeChild(item);
+                    });
                     //add new tile, which will generate environment
-                    console.log("add path " + (count + 12));
-                    scene.appendChild(pathTiles[count + 12]);
+                    //maybe re-assign obj and mat?
+                    console.log("add path " + (count + 11));
+                    console.log(pathTiles[count + 11]);
+                    scene.appendChild(pathTiles[count + 11]);
                 }
                 lastKeyPress = event.keyCode;
             }
@@ -233,22 +244,23 @@ AFRAME.registerComponent('buffer-comp', {
                 if (startI > count) {
                     startI = count;
                     //remove back tile
-                    //if (((count * -1) - 1) >= 0) {
                     //remove tile
                     console.log("trigger tile change");
-                    let tileName = "#path" + (count + 12);
+                    let tileName = "#path" + (count + 11);
                     console.log("remove path " + tileName);
                     let removeTile = document.querySelector(tileName);
                     removeTile.parentNode.removeChild(removeTile);
                     //remove planes and environment pieces
-                    let selector = ".path" + (count + 12);
+                    let selector = ".path" + (count + 11);
                     let items = document.querySelectorAll(selector);
                     items.forEach(function(item) {
                         item.parentNode.removeChild(item);
                     });
                     //add new tile, which will generate environment
-                    scene.appendChild(pathTiles[count - 5]);
-                    //}
+                    //maybe re-assign obj and mat?
+                    console.log("add path " + (count - 1));
+                    console.log(pathTiles[count - 1]);
+                    scene.appendChild(pathTiles[count - 1]);
                 }
                 lastKeyPress = event.keyCode;
             }
