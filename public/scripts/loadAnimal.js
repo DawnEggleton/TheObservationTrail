@@ -250,7 +250,6 @@ AFRAME.registerComponent('load-animal-comp', {
         //create rock
         let rock = document.createElement("a-entity");
         rock.id = animal + "-throw-rock";
-        rock.className = animal + "-action";
         rock.setAttribute("action-obj-comp", {objectType: "rock", correctAction: corrAction, animalType: animal});
         rock.setAttribute("obj-model", {obj: "#throwRock_obj"});
         rock.setAttribute("material", {src: "#throwRock_mat"});
@@ -275,7 +274,6 @@ AFRAME.registerComponent('load-animal-comp', {
         //create stick
         let stick = document.createElement("a-entity");
         stick.id = animal + "-throw-stick";
-        stick.className = animal + "-action";
         stick.setAttribute("action-obj-comp", {objectType: "stick", correctAction: corrAction, animalType: animal});
         stick.setAttribute("obj-model", {obj: "#arrow_obj"});
         stick.setAttribute("material", {src: "#arrow_mat"});

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>The Observation Trail</title>
+        <title>The Observation Trail: Hike</title>
         <!-- javascript libraries -->
         <script src="/scripts/aframe-v0.8.2.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -47,8 +47,29 @@
             <!-- load assets -->
             <a-assets>
                 <!-- paths -->
+                <a-asset-item id="straightPath_obj" src="/models/path_straight.obj"></a-asset-item>
+                <img id="straightPath_mat" src="/textures/straightPath_tex.png">
+                <a-asset-item id="curvePath_obj" src="/models/path_curve.obj"></a-asset-item>
+                <img id="curvePath_mat" src="/textures/curvePath_tex.png">
                 <a-asset-item id="groundPlane_obj" src="/models/ground_plane.obj"></a-asset-item>
                 <img id="groundPlane_mat" src="/textures/groundPlane_tex.png">
+
+                <!-- arrow -->
+                <a-asset-item id="arrow_obj" src="/models/arrow.obj"></a-asset-item>
+                <img id="arrow_mat" src="/textures/arrow_tex.png">
+
+                <!-- animals -->
+                <a-asset-item id="skunk_obj" src="/models/skunk.obj"></a-asset-item>
+                <img id="skunk_mat" src="/textures/skunk_tex.png">
+                <a-asset-item id="fox_obj" src="/models/fox.obj"></a-asset-item>
+                <img id="fox_mat" src="/textures/fox_tex.png">
+                <a-asset-item id="racoon_obj" src="/models/raccoon.obj"></a-asset-item>
+                <img id="racoon_mat" src="/textures/raccoon_tex.png">
+                <a-asset-item id="snowyOwl_static_obj" src="/models/snowyOwl_static.obj"></a-asset-item>
+                <a-asset-item id="snowyOwl_flying_obj" src="/models/snowyOwl_flying.obj"></a-asset-item>
+                <img id="snowyOwl_mat" src="/textures/snowyOwl_tex.png">
+                <a-asset-item id="porcupine_obj" src="/models/porcupine.obj"></a-asset-item>
+                <img id="porcupine_mat" src="/textures/porcupine_tex.png">
 
                 <!-- environment -->
                 <a-asset-item id="rock1_obj" src="/models/bigRock1.obj"></a-asset-item>
@@ -67,6 +88,10 @@
                 <a-asset-item id="maple2_obj" src="/models/tree_maple_02.obj"></a-asset-item>
                 <img id="maple_mat" src="/textures/mapleTree_tex.png">
 
+                <!-- action objects -->
+                <a-asset-item id="throwRock_obj" src="/models/throw_rock.obj"></a-asset-item>
+                <img id="throwRock_mat" src="/textures/bigRock_tex.png">
+
                 <!-- Assets to be added
                     ****MAKE SURE TO FIX OBJ AND MAT IN LOADANIMALS.JS FILE****
                     <a-asset-item id="rock_obj" src="/models/rock.obj"></a-asset-item>
@@ -76,54 +101,32 @@
                 -->
             </a-assets>  
 
-            <!-- camera -->
-            <a-entity id="cam" position="0 1.4 2" camera look-controls>
-                <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
-            </a-entity>
 
-            <!-- selection screen -->
-            <a-entity   select-hiker-comp
-                        id="selectHiker" 
-                        geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                        material="color: #ff9048;" 
-                        position="0 1.6 1">
-                <a-text 
-                        value="Hiker" 
-                        color="#ffffff" 
-                        anchor="center" 
-                        align="center" 
-                        baseline="center"></a-text>
-            </a-entity>
-            <a-entity   select-guide-comp
-                    id="selectGuide" 
-                    geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                    material="color: #ff9048;" 
-                    position="0 1.2 1">
-                <a-text 
-                    value="Guide" 
-                    color="#ffffff" 
-                    anchor="center" 
-                    align="center" 
-                    baseline="center"></a-text>
+            <!-- camera -->
+            <a-entity buffer-comp duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20;">
+                <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
+                <a-entity id="clap_snd" sound="src:/audio/handClap.wav; volume: 5;"></a-entity> 
+                <a-entity id="step_snd" sound="src:/audio/footstep.wav; volume: 0.25;"></a-entity> 
+                
+                <!-- timer -->
+                <a-text     timer-comp 
+                            id="timer" 
+                            value="00:00" 
+                            position="0 -0.8 -1.25" 
+                            color="#ffffff"
+                            align="center"
+                            anchor="center"
+                            baseline="center"
+                            scale="0.5 0.5 0.5"
+                ></a-text>
             </a-entity>
 
             <!-- sky -->
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 100;" material="color: #7EC0EE;" position="0 0 -9"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane;  width: 18; height: 100;" material="color: #7EC0EE;" position="0 0 9" rotation="0 180 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 100;" material="color: #7EC0EE;" position="-9 0 0" rotation="0 90 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 100;" material="color: #7EC0EE;" position="9 0 0" rotation="0 -90 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 18;" material="color: #7EC0EE;" position="0 50 0" rotation="90 0 0"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 -300"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 36" rotation="0 180 0"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="-1000 0 0" rotation="0 90 0"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="1000 0 0" rotation="0 -90 0"></a-entity>
 
-            <!-- ground -->
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 0 0"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 0 0"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 0 0"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 0 -6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 0 6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 0 -6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 0 6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 0 -6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 0 6"></a-entity>
             
 
         </a-scene>

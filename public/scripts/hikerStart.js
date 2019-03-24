@@ -7,6 +7,7 @@ AFRAME.registerComponent('hiker-start-comp', {
         });
     },
     startHike : function() {
+        window.location.href = "../hike.html";
         //clear elements
         const Context_AF = this;
         Context_AF.el.parentNode.removeChild(Context_AF.el);
