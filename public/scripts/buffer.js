@@ -6,6 +6,7 @@ AFRAME.registerComponent('buffer-comp', {
         let pathTiles = [];
         let startI = -1;
 
+        //back-load tiles
         let tile0 = document.createElement("a-entity");
         tile0.setAttribute("set-ground-comp", {});
         tile0.setAttribute("set-enviro-comp", {});
@@ -51,6 +52,7 @@ AFRAME.registerComponent('buffer-comp', {
         tile4.setAttribute("position", {x: 0, y: 0, z: 6});
         pathTiles.push(tile4);
 
+        //deciduous environment tiles
         let tile5 = document.createElement("a-entity");
         tile5.setAttribute("set-ground-comp", {});
         tile5.setAttribute("set-enviro-comp", {});
@@ -183,6 +185,12 @@ AFRAME.registerComponent('buffer-comp', {
         tile18.setAttribute("position", {x: 6, y: 0, z: -78});
         pathTiles.push(tile18);
 
+        //boreal tiles
+        //none yet
+
+        //wetlands tiles
+        //none yet
+
         let scene = document.querySelector("a-scene");
 
         
@@ -229,7 +237,7 @@ AFRAME.registerComponent('buffer-comp', {
                 }
                 lastKeyPress = event.keyCode;
             }
-            
+            /*
             //backward movement
             if (event.keyCode == 40 || event.keyCode == 83) {
                 console.log(lastKeyPress);
@@ -264,6 +272,7 @@ AFRAME.registerComponent('buffer-comp', {
                 }
                 lastKeyPress = event.keyCode;
             }
+            */
         });
 
     }

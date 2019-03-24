@@ -102,9 +102,9 @@
             </a-assets>  
 
             <!-- camera -->
-            <a-entity buffer-comp duck-comp id="cam" position="0 1.4 0" camera look-controls wasd-controls="acceleration: 20;">
+            <a-entity buffer-comp duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20;">
                 <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
-                <a-entity id="clap_snd" sound="src:/audio/handClap.wav;"></a-entity> 
+                <a-entity id="clap_snd" sound="src:/audio/handClap.wav; volume: 5;"></a-entity> 
                 <a-entity id="step_snd" sound="src:/audio/footstep.wav; volume: 0.25;"></a-entity> 
             </a-entity>
 
@@ -136,11 +136,14 @@
 
             <!-- sky -->
             <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 -300"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 36" rotation="0 180 0"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="-1000 0 0" rotation="0 90 0"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="1000 0 0" rotation="0 -90 0"></a-entity>
 
             
 
         </a-scene>
-        <!--<script src="/scripts/buttonPresses.js"></script>-->
+        <script src="/scripts/buttonPresses.js"></script>
     </body>
 </html>
 
