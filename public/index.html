@@ -46,6 +46,14 @@
 
             <!-- load assets -->
             <a-assets>
+                <!-- buttons -->
+                <img id="hikerButton_mat" src="/images/hikerButton.png">
+                <img id="guideButton_mat" src="/images/guideButton.png">
+                <img id="startButton_mat" src="/images/startButton.png">
+                <img id="instructButton_mat" src="/images/instructButton.png">
+                <img id="closeButton_mat" src="/images/closeButton.png">
+                <img id="instruct_mat" src="/images/instructPage.png">
+
                 <!-- paths -->
                 <a-asset-item id="groundPlane_obj" src="/models/ground_plane.obj"></a-asset-item>
                 <img id="groundPlane_mat" src="/textures/groundPlane_tex.png">
@@ -77,7 +85,7 @@
             </a-assets>  
 
             <!-- camera -->
-            <a-entity id="cam" position="0 1.4 2" camera look-controls>
+            <a-entity id="cam" position="0 1.4 2.5" camera look-controls>
                 <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
             </a-entity>
 
@@ -85,26 +93,14 @@
             <a-entity   select-hiker-comp
                         id="selectHiker" 
                         geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                        material="color: #ff9048;" 
+                        material="src: #hikerButton_mat;" 
                         position="0 1.6 1">
-                <a-text 
-                        value="Hiker" 
-                        color="#ffffff" 
-                        anchor="center" 
-                        align="center" 
-                        baseline="center"></a-text>
             </a-entity>
             <a-entity   select-guide-comp
                     id="selectGuide" 
                     geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                    material="color: #ff9048;" 
+                    material="src: #guideButton_mat;" 
                     position="0 1.2 1">
-                <a-text 
-                    value="Guide" 
-                    color="#ffffff" 
-                    anchor="center" 
-                    align="center" 
-                    baseline="center"></a-text>
             </a-entity>
 
             <!-- sky -->
@@ -130,15 +126,3 @@
         <script src="/scripts/buttonPresses.js"></script>
     </body>
 </html>
-
-
-
-<!-- Base Straight
-    <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -z"></a-entity>
--->
-<!-- Base Left Curve
-    <a-entity set-curve-l-comp set-enviro-comp="curve: left" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 180 0"></a-entity> 
--->
-<!-- Base Right Curve
-    <a-entity set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 -90 0"></a-entity>
--->
