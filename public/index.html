@@ -74,14 +74,6 @@
                 <a-asset-item id="maple1_obj" src="/models/tree_maple_01.obj"></a-asset-item>
                 <a-asset-item id="maple2_obj" src="/models/tree_maple_02.obj"></a-asset-item>
                 <img id="maple_mat" src="/textures/mapleTree_tex.png">
-
-                <!-- Assets to be added
-                    ****MAKE SURE TO FIX OBJ AND MAT IN LOADANIMALS.JS FILE****
-                    <a-asset-item id="rock_obj" src="/models/rock.obj"></a-asset-item>
-                    <img id="rock_mat" src="/textures/rock_tex.png">
-                    <a-asset-item id="stick_obj" src="/models/stick.obj"></a-asset-item>
-                    <img id="stick_mat" src="/textures/stick_tex.png">
-                -->
             </a-assets>  
 
             <!-- camera -->
@@ -104,22 +96,34 @@
             </a-entity>
 
             <!-- sky -->
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 100;" material="color: #7EC0EE;" position="0 0 -9"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane;  width: 18; height: 100;" material="color: #7EC0EE;" position="0 0 9" rotation="0 180 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 100;" material="color: #7EC0EE;" position="-9 0 0" rotation="0 90 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 100;" material="color: #7EC0EE;" position="9 0 0" rotation="0 -90 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 18; height: 18;" material="color: #7EC0EE;" position="0 50 0" rotation="90 0 0"></a-entity>
-
+            <a-entity id="sky"
+                    geometry="primitive:sphere; radius:9;"
+                    material="shader:flat; color: #7EC0EE; side:back; height:2048; width:2048"
+            ></a-entity>
+            
             <!-- ground -->
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 0 0"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 0 0"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 0 0"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 0 -6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 0 6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 0 -6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 0 6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 0 -6"></a-entity>
-            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 0 6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 -0.1 0"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 -0.1 0"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 -0.1 0"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 -0.1 -6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 -0.1 6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 -0.1 -6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 -0.1 6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 -0.1 -6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 -0.1 6"></a-entity>
+
+            <!-- environment -->
+            <a-entity id="birch1" obj-model="obj: #birch1_obj" material="src: #birch_mat" position="-6.1 0 -5.8"></a-entity>
+            <a-entity id="birch2" obj-model="obj: #birch2_obj" material="src: #birch_mat" position="5.1 0 -3"></a-entity>
+            <a-entity id="birch3" obj-model="obj: #birch3_obj" material="src: #birch_mat" position="-5.2 0 -0.9"></a-entity>
+            <a-entity id="birch4" obj-model="obj: #birch4_obj" material="src: #birch_mat" position="1.6 0 -5.8"></a-entity>
+            <a-entity id="maple1" obj-model="obj: #maple1_obj" material="src: #maple_mat" position="-2.1 0 -3"></a-entity>
+            <a-entity id="maple2" obj-model="obj: #maple2_obj" material="src: #maple_mat" position="4 0 -5.2"></a-entity>
+            <a-entity id="fallen1" obj-model="obj: #fallen1_obj" material="src: #fallen_mat" position="-5.3 0 -3" rotation="0 -35 0"></a-entity>
+            <a-entity id="fallen2" obj-model="obj: #fallen2_obj" material="src: #fallen_mat" position="4.5 0 -0.9" rotation="0 19 0"></a-entity>
+            <a-entity id="rock1" obj-model="obj: #rock1_obj" material="src: #rock_mat" position="-4.6 0 -5.4"></a-entity>
+            <a-entity id="rock2" obj-model="obj: #rock2_obj" material="src: #rock_mat" position="2 0 -3.6"></a-entity>
+            <a-entity id="rock3" obj-model="obj: #rock3_obj" material="src: #rock_mat" position="-0.1 0 -7.1"></a-entity>
             
 
         </a-scene>
