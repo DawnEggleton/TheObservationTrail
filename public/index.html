@@ -14,6 +14,7 @@
         
         <!-- components -->
         <script src="/scripts/actionObject.js"></script>
+        <script src="/scripts/buffer.js"></script>
         <script src="/scripts/duck.js"></script>
         <script src="/scripts/hideInstructions.js"></script>
         <script src="/scripts/hikerStart.js"></script>
@@ -31,6 +32,7 @@
         <script>
             const numTiles = 5;    
             let timeStart = 0;
+            let deciAnimals = [];
         </script>
 
         <!-- styles -->
@@ -44,28 +46,17 @@
 
             <!-- load assets -->
             <a-assets>
+                <!-- buttons -->
+                <img id="hikerButton_mat" src="/images/hikerButton.png">
+                <img id="guideButton_mat" src="/images/guideButton.png">
+                <img id="startButton_mat" src="/images/startButton.png">
+                <img id="instructButton_mat" src="/images/instructButton.png">
+                <img id="closeButton_mat" src="/images/closeButton.png">
+                <img id="instruct_mat" src="/images/instructPage.png">
+
                 <!-- paths -->
-                <a-asset-item id="straightPath_obj" src="/models/path_straight.obj"></a-asset-item>
-                <img id="straightPath_mat" src="/textures/straightPath_tex.png">
-                <a-asset-item id="curvePath_obj" src="/models/path_curve.obj"></a-asset-item>
-                <img id="curvePath_mat" src="/textures/curvePath_tex.png">
-
-                <!-- arrow -->
-                <a-asset-item id="arrow_obj" src="/models/arrow.obj"></a-asset-item>
-                <img id="arrow_mat" src="/textures/arrow_tex.png">
-
-                <!-- animals -->
-                <a-asset-item id="skunk_obj" src="/models/skunk.obj"></a-asset-item>
-                <img id="skunk_mat" src="/textures/skunk_tex.png">
-                <a-asset-item id="fox_obj" src="/models/fox.obj"></a-asset-item>
-                <img id="fox_mat" src="/textures/fox_tex.png">
-                <a-asset-item id="racoon_obj" src="/models/raccoon.obj"></a-asset-item>
-                <img id="racoon_mat" src="/textures/raccoon_tex.png">
-                <a-asset-item id="snowyOwl_static_obj" src="/models/snowyOwl_static.obj"></a-asset-item>
-                <a-asset-item id="snowyOwl_flying_obj" src="/models/snowyOwl_flying.obj"></a-asset-item>
-                <img id="snowyOwl_mat" src="/textures/snowyOwl_tex.png">
-                <a-asset-item id="porcupine_obj" src="/models/porcupine.obj"></a-asset-item>
-                <img id="porcupine_mat" src="/textures/porcupine_tex.png">
+                <a-asset-item id="groundPlane_obj" src="/models/ground_plane.obj"></a-asset-item>
+                <img id="groundPlane_mat" src="/textures/groundPlane_tex.png">
 
                 <!-- environment -->
                 <a-asset-item id="rock1_obj" src="/models/bigRock1.obj"></a-asset-item>
@@ -83,93 +74,59 @@
                 <a-asset-item id="maple1_obj" src="/models/tree_maple_01.obj"></a-asset-item>
                 <a-asset-item id="maple2_obj" src="/models/tree_maple_02.obj"></a-asset-item>
                 <img id="maple_mat" src="/textures/mapleTree_tex.png">
-
-                <!-- action objects -->
-                <a-asset-item id="throwRock_obj" src="/models/throw_rock.obj"></a-asset-item>
-                <img id="throwRock_mat" src="/textures/bigRock_tex.png">
-
-                <!-- Assets to be added
-                    ****MAKE SURE TO FIX OBJ AND MAT IN LOADANIMALS.JS FILE****
-                    <a-asset-item id="rock_obj" src="/models/rock.obj"></a-asset-item>
-                    <img id="rock_mat" src="/textures/rock_tex.png">
-                    <a-asset-item id="stick_obj" src="/models/stick.obj"></a-asset-item>
-                    <img id="stick_mat" src="/textures/stick_tex.png">
-                -->
             </a-assets>  
 
             <!-- camera -->
-            <a-entity duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20;">
+            <a-entity id="cam" position="0 1.4 2.5" camera look-controls>
                 <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
-                <a-entity id="clap_snd" sound="src:/audio/handClap.wav;"></a-entity> 
-                <a-entity id="step_snd" sound="src:/audio/footstep.wav; volume: 0.25;"></a-entity> 
             </a-entity>
 
             <!-- selection screen -->
             <a-entity   select-hiker-comp
                         id="selectHiker" 
                         geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                        material="color: #ff9048;" 
+                        material="src: #hikerButton_mat;" 
                         position="0 1.6 1">
-                <a-text 
-                        value="Hiker" 
-                        color="#ffffff" 
-                        anchor="center" 
-                        align="center" 
-                        baseline="center"></a-text>
             </a-entity>
             <a-entity   select-guide-comp
                     id="selectGuide" 
                     geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                    material="color: #ff9048;" 
+                    material="src: #guideButton_mat;" 
                     position="0 1.2 1">
-                <a-text 
-                    value="Guide" 
-                    color="#ffffff" 
-                    anchor="center" 
-                    align="center" 
-                    baseline="center"></a-text>
             </a-entity>
 
             <!-- sky -->
-            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 -300"></a-entity>
+            <a-entity id="sky"
+                    geometry="primitive:sphere; radius:9;"
+                    material="shader:flat; color: #7EC0EE; side:back; height:2048; width:2048"
+            ></a-entity>
+            
+            <!-- ground -->
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 -0.1 0"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 -0.1 0"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 -0.1 0"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 -0.1 -6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="0 -0.1 6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 -0.1 -6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="-6 -0.1 6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 -0.1 -6"></a-entity>
+            <a-entity id="ground" obj-model="obj: #groundPlane_obj" material="src: #groundPlane_mat" position="6 -0.1 6"></a-entity>
 
-            <!-- path tiles, with generation of left and right sides -->
-            <!-- straight path-->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -6"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -12"></a-entity>
-            <!-- animal #1 -->
-            <a-entity load-animal-comp="biomeType: deci; pathDir: path-left" set-curve-l-comp set-enviro-comp="curve: left" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -18" rotation="0 180 0"></a-entity> 
-            <!-- straight path -->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -24"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -30"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="-6 0 -36"></a-entity>
-            <!-- animal #2 -->
-            <a-entity load-animal-comp="biomeType: deci; pathDir: path-right" set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="-6 0 -42" rotation="0 -90 0"></a-entity>
-            <!-- straight path -->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -48"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -54"></a-entity>
-            <!-- animal #3 -->
-            <a-entity load-animal-comp="biomeType: deci; pathDir: path-right" set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -60" rotation="0 -90 0"></a-entity>
-            <!-- straight path -->
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -66"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -72"></a-entity>
-            <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="6 0 -78"></a-entity>
+            <!-- environment -->
+            <a-entity id="birch1" obj-model="obj: #birch1_obj" material="src: #birch_mat" position="-6.1 0 -5.8"></a-entity>
+            <a-entity id="birch2" obj-model="obj: #birch2_obj" material="src: #birch_mat" position="5.1 0 -3"></a-entity>
+            <a-entity id="birch3" obj-model="obj: #birch3_obj" material="src: #birch_mat" position="-5.2 0 -0.9"></a-entity>
+            <a-entity id="birch4" obj-model="obj: #birch4_obj" material="src: #birch_mat" position="1.6 0 -5.8"></a-entity>
+            <a-entity id="maple1" obj-model="obj: #maple1_obj" material="src: #maple_mat" position="-2.1 0 -3"></a-entity>
+            <a-entity id="maple2" obj-model="obj: #maple2_obj" material="src: #maple_mat" position="4 0 -5.2"></a-entity>
+            <a-entity id="fallen1" obj-model="obj: #fallen1_obj" material="src: #fallen_mat" position="-5.3 0 -3" rotation="0 -35 0"></a-entity>
+            <a-entity id="fallen2" obj-model="obj: #fallen2_obj" material="src: #fallen_mat" position="4.5 0 -0.9" rotation="0 19 0"></a-entity>
+            <a-entity id="rock1" obj-model="obj: #rock1_obj" material="src: #rock_mat" position="-4.6 0 -5.4"></a-entity>
+            <a-entity id="rock2" obj-model="obj: #rock2_obj" material="src: #rock_mat" position="2 0 -3.6"></a-entity>
+            <a-entity id="rock3" obj-model="obj: #rock3_obj" material="src: #rock_mat" position="-0.1 0 -7.1"></a-entity>
             
 
         </a-scene>
         <script src="/scripts/buttonPresses.js"></script>
     </body>
 </html>
-
-
-
-<!-- Base Straight
-    <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -z"></a-entity>
--->
-<!-- Base Left Curve
-    <a-entity set-curve-l-comp set-enviro-comp="curve: left" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 180 0"></a-entity> 
--->
-<!-- Base Right Curve
-    <a-entity set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 -90 0"></a-entity>
--->

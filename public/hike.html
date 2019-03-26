@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Observation Trail: Hike</title>
+        <!-- javascript libraries -->
+        <script src="/scripts/aframe-v0.8.2.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+
+
+        <!-- imlpemented + customized javascript -->
+        <script src="scripts/isotope.js"></script>
+        <script src="scripts/guidebook.js"></script>
+        
+        <!-- components -->
+        <script src="/scripts/actionObject.js"></script>
+        <script src="/scripts/buffer.js"></script>
+        <script src="/scripts/duck.js"></script>
+        <script src="/scripts/hideInstructions.js"></script>
+        <script src="/scripts/hikerStart.js"></script>
+        <script src="/scripts/loadAnimal.js"></script>
+        <script src="/scripts/selectGuide.js"></script>
+        <script src="/scripts/selectHiker.js"></script>
+        <script src="/scripts/setCurveLeft.js"></script>
+        <script src="/scripts/setCurveRight.js"></script>
+        <script src="/scripts/setEnvironment.js"></script>
+        <script src="/scripts/setGround.js"></script>
+        <script src="/scripts/showInstructions.js"></script>
+        <script src="/scripts/timer.js"></script>
+
+        <!-- required global variables -->
+        <script>
+            const numTiles = 5;    
+            let timeStart = 0;
+            let deciAnimals = [];
+        </script>
+
+        <!-- styles -->
+        <link rel="stylesheet" href="styles/guidebook.css"/>
+
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Raleway" rel="stylesheet"> 
+    </head>
+    <body>
+        <a-scene>
+
+            <!-- load assets -->
+            <a-assets>
+                <!-- paths -->
+                <a-asset-item id="straightPath_obj" src="/models/path_straight.obj"></a-asset-item>
+                <img id="straightPath_mat" src="/textures/straightPath_tex.png">
+                <a-asset-item id="curvePath_obj" src="/models/path_curve.obj"></a-asset-item>
+                <img id="curvePath_mat" src="/textures/curvePath_tex.png">
+                <a-asset-item id="groundPlane_obj" src="/models/ground_plane.obj"></a-asset-item>
+                <img id="groundPlane_mat" src="/textures/groundPlane_tex.png">
+
+                <!-- arrow -->
+                <a-asset-item id="arrow_obj" src="/models/arrow.obj"></a-asset-item>
+                <img id="arrow_mat" src="/textures/arrow_tex.png">
+
+                <!-- animals -->
+                <a-asset-item id="skunk_obj" src="/models/skunk.obj"></a-asset-item>
+                <img id="skunk_mat" src="/textures/skunk_tex.png">
+                <a-asset-item id="fox_obj" src="/models/fox.obj"></a-asset-item>
+                <img id="fox_mat" src="/textures/fox_tex.png">
+                <a-asset-item id="racoon_obj" src="/models/raccoon.obj"></a-asset-item>
+                <img id="racoon_mat" src="/textures/raccoon_tex.png">
+                <a-asset-item id="snowyOwl_static_obj" src="/models/snowyOwl_static.obj"></a-asset-item>
+                <a-asset-item id="snowyOwl_flying_obj" src="/models/snowyOwl_flying.obj"></a-asset-item>
+                <img id="snowyOwl_mat" src="/textures/snowyOwl_tex.png">
+                <a-asset-item id="porcupine_obj" src="/models/porcupine.obj"></a-asset-item>
+                <img id="porcupine_mat" src="/textures/porcupine_tex.png">
+
+                <!-- environment -->
+                <a-asset-item id="rock1_obj" src="/models/bigRock1.obj"></a-asset-item>
+                <a-asset-item id="rock2_obj" src="/models/bigRock2.obj"></a-asset-item>
+                <a-asset-item id="rock3_obj" src="/models/bigRock3.obj"></a-asset-item>
+                <img id="rock_mat" src="/textures/bigRock_tex.png">
+                <a-asset-item id="birch1_obj" src="/models/tree_birch_01.obj"></a-asset-item>
+                <a-asset-item id="birch2_obj" src="/models/tree_birch_02.obj"></a-asset-item>
+                <a-asset-item id="birch3_obj" src="/models/tree_birch_03.obj"></a-asset-item>
+                <a-asset-item id="birch4_obj" src="/models/tree_birch_04.obj"></a-asset-item>
+                <img id="birch_mat" src="/textures/birchTree_tex.png">
+                <a-asset-item id="fallen1_obj" src="/models/tree_fallen_01.obj"></a-asset-item>
+                <a-asset-item id="fallen2_obj" src="/models/tree_fallen_02.obj"></a-asset-item>
+                <img id="fallen_mat" src="/textures/fallenTree_tex.png">
+                <a-asset-item id="maple1_obj" src="/models/tree_maple_01.obj"></a-asset-item>
+                <a-asset-item id="maple2_obj" src="/models/tree_maple_02.obj"></a-asset-item>
+                <img id="maple_mat" src="/textures/mapleTree_tex.png">
+
+                <!-- action objects -->
+                <a-asset-item id="throwRock_obj" src="/models/throw_rock.obj"></a-asset-item>
+                <img id="throwRock_mat" src="/textures/bigRock_tex.png">
+
+                <!-- Assets to be added
+                    ****MAKE SURE TO FIX OBJ AND MAT IN LOADANIMALS.JS FILE****
+                    <a-asset-item id="rock_obj" src="/models/rock.obj"></a-asset-item>
+                    <img id="rock_mat" src="/textures/rock_tex.png">
+                    <a-asset-item id="stick_obj" src="/models/stick.obj"></a-asset-item>
+                    <img id="stick_mat" src="/textures/stick_tex.png">
+                -->
+            </a-assets>  
+
+
+            <!-- camera -->
+            <a-entity buffer-comp duck-comp id="cam" position="0 1.4 2" camera look-controls wasd-controls="acceleration: 20;">
+                <a-entity cursor="rayOrigin:mouse;" position="0 0 -1"></a-entity>
+                <a-entity id="clap_snd" sound="src:/audio/handClap.wav; volume: 5;"></a-entity> 
+                <a-entity id="step_snd" sound="src:/audio/footstep.wav; volume: 0.25;"></a-entity> 
+                
+                <!-- timer -->
+                <a-text     timer-comp 
+                            id="timer" 
+                            value="00:00" 
+                            position="0 -0.8 -1.25" 
+                            color="#ffffff"
+                            align="center"
+                            anchor="center"
+                            baseline="center"
+                            scale="0.5 0.5 0.5"
+                ></a-text>
+            </a-entity>
+
+            <!-- sky -->
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 -300"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 36" rotation="0 180 0"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="-1000 0 0" rotation="0 90 0"></a-entity>
+            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="1000 0 0" rotation="0 -90 0"></a-entity>
+
+            
+
+        </a-scene>
+        <script src="/scripts/buttonPresses.js"></script>
+    </body>
+</html>
+
+
+
+<!-- Base Straight
+    <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -z"></a-entity>
+-->
+<!-- Base Left Curve
+    <a-entity set-curve-l-comp set-enviro-comp="curve: left" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 180 0"></a-entity> 
+-->
+<!-- Base Right Curve
+    <a-entity set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 -90 0"></a-entity>
+-->

@@ -13,6 +13,13 @@ AFRAME.registerComponent('load-animal-comp', {
         let animalNum = Math.floor(Math.random() * 5) + 1;
 
         if (biome == "deci") {
+            //if animal is already present, "re-roll"
+            while (deciAnimals.includes(animalNum) == true) {
+                animalNum = Math.floor(Math.random() * 5) + 1;
+            }
+            //otherwise, add animal marker to array and allow animal
+            deciAnimals.push(animalNum);
+            
             if (animalNum == 1) {
                 Context_AF.loadSkunk(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "clap", "skunk");
@@ -243,7 +250,6 @@ AFRAME.registerComponent('load-animal-comp', {
         //create rock
         let rock = document.createElement("a-entity");
         rock.id = animal + "-throw-rock";
-        rock.className = animal + "-action";
         rock.setAttribute("action-obj-comp", {objectType: "rock", correctAction: corrAction, animalType: animal});
         rock.setAttribute("obj-model", {obj: "#throwRock_obj"});
         rock.setAttribute("material", {src: "#throwRock_mat"});
@@ -268,7 +274,6 @@ AFRAME.registerComponent('load-animal-comp', {
         //create stick
         let stick = document.createElement("a-entity");
         stick.id = animal + "-throw-stick";
-        stick.className = animal + "-action";
         stick.setAttribute("action-obj-comp", {objectType: "stick", correctAction: corrAction, animalType: animal});
         stick.setAttribute("obj-model", {obj: "#arrow_obj"});
         stick.setAttribute("material", {src: "#arrow_mat"});

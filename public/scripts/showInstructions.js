@@ -24,7 +24,7 @@ AFRAME.registerComponent('show-instructions-comp', {
         instructBox.id = "instructionsBox";
         instructBox.setAttribute('geometry', {primitive: "plane", width: 3, height:1.25});
         instructBox.setAttribute('position', {x: 0, y: 1.5, z:1});
-        instructBox.setAttribute('material', {color: "#F2F2F2"});
+        instructBox.setAttribute('material', {src: "#instruct_mat"});
 
         //instructions - font color #929292
 
@@ -33,17 +33,10 @@ AFRAME.registerComponent('show-instructions-comp', {
         exitBox.setAttribute('hide-instructions-comp', {});
         exitBox.setAttribute('geometry', {primitive: "plane", width: 0.25, height:0.25});
         exitBox.setAttribute('position', {x: 1.375, y: 2, z: 1.001});
-        exitBox.setAttribute('material', {color: "#f3223f"});
-        let exitText = document.createElement('a-text');
-        exitText.setAttribute("value", "X");
-        exitText.setAttribute("color", "#ffffff");
-        exitText.setAttribute("anchor", "center");
-        exitText.setAttribute("align", "center");
-        exitText.setAttribute("baseline", "center");
+        exitBox.setAttribute('material', {src: "#closeButton_mat"});
         
         let scene = document.querySelector('a-scene');
         scene.appendChild(instructBox);
         scene.appendChild(exitBox);
-        exitBox.appendChild(exitText);
     }
 });
