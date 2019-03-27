@@ -2,13 +2,11 @@ AFRAME.registerComponent('hide-instructions-comp', {
     schema: {},
     init : function() {
         const Context_AF = this;
-        console.log("hide instruct init");
         Context_AF.el.addEventListener('click', function(event) {
             Context_AF.hideInstruct();
         });
     },
     hideInstruct : function() {
-        console.log("hide instruct run");
         //remove instructions
         const Context_AF = this;
         Context_AF.el.parentNode.removeChild(Context_AF.el);

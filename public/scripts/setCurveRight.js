@@ -6,7 +6,6 @@ AFRAME.registerComponent('set-curve-r-comp', {
         let x = Context_AF.el.getAttribute('position').x;
         let scene = document.querySelector("a-scene");
         let tileName = Context_AF.el.id;
-        console.log("path name " + name);
         
         Context_AF.el.addEventListener('loaded',function(){
             Context_AF.curveRight(scene, z, x, tileName);

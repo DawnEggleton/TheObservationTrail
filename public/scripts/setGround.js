@@ -6,7 +6,6 @@ AFRAME.registerComponent('set-ground-comp', {
         let z = Context_AF.el.getAttribute('position').z;
         let x = Context_AF.el.getAttribute('position').x;
         let name = Context_AF.el.id;
-        console.log("path name " + name);
 
         let scene = document.querySelector("a-scene");
         for (i = 0; i < numTiles; i++) {

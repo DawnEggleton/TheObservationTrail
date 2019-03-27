@@ -31,6 +31,5 @@ AFRAME.registerComponent('hiker-start-comp', {
     },
     tock : function (time, timeDelta) {
         timeStart = time;
-        console.log(timeStart);
     }
 });

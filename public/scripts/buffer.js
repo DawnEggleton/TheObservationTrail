@@ -2,7 +2,6 @@ AFRAME.registerComponent('buffer-comp', {
     schema: {},
     init : function() {
         const Context_AF = this;     
-        console.log("intiated");
         let pathTiles = [];
         let startI = -1;
 
@@ -204,18 +203,13 @@ AFRAME.registerComponent('buffer-comp', {
         let lastKeyPress = 0;
 
         document.addEventListener('keydown', function(event) {
-            console.log(lastKeyPress);
-
             //forward movement
             if (event.keyCode == 38 || event.keyCode == 87) {
-                console.log(lastKeyPress);
                 let camZ = document.querySelector("#cam").getAttribute("position").z;
                 let count = Math.floor((camZ * -1)/6);
                 if (lastKeyPress != 38 && lastKeyPress != 87) {
                     startI--;
                 }
-                console.log("start " + startI);
-                console.log("count " + count);
                 if (startI < count) {
                     startI = count;
                     //remove back tile
@@ -230,9 +224,6 @@ AFRAME.registerComponent('buffer-comp', {
                         item.parentNode.removeChild(item);
                     });
                     //add new tile, which will generate environment
-                    //maybe re-assign obj and mat?
-                    console.log("add path " + (count + 11));
-                    console.log(pathTiles[count + 11]);
                     scene.appendChild(pathTiles[count + 11]);
                 }
                 lastKeyPress = event.keyCode;
