@@ -16,3 +16,16 @@ document.addEventListener('keydown', function(event) {
         clap.components['sound'].playSound();
     }
 });
+
+let cam = document.querySelector("#cam");
+let camX = cam.getAttribute("position").x;
+let camY = cam.getAttribute("position").y;
+let camZ = cam.getAttribute("position").z;
+
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 37) {
+        if (camX <= -1) {
+            cam.setAttribute("position", {x: -1, y: camY, z: camZ});
+        }
+    }
+});

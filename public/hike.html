@@ -36,14 +36,33 @@
         </script>
 
         <!-- styles -->
-        <link rel="stylesheet" href="styles/guidebook.css"/>
+        <style>            
+            #warning {
+                display: none;
+                padding: 20px;
+                width: 100%;
+                height: 100%;
+                font-size: 30px;
+                text-align: center;
+                background-image: url("../images/vectorBG.png");
+                box-sizing: border-box;
+            }
+            @media only screen and (max-width: 1000px) {
+                /***********************************
+                    mobile main menu
+                ***********************************/
+                a-scene {display: none;}
+                #warning {display: block;}
+            }
+        </style>
 
         <!-- google fonts -->
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Raleway" rel="stylesheet"> 
     </head>
     <body>
-        <a-scene>
-
+        <div id="warning">Hiker mode is not built for mobile devices at this time.<br><br>Please <a href="/index.html">return to the homescreen</a> and select Guide mode.</a></div>
+        
+        <a-scene id="scene">
             <!-- load assets -->
             <a-assets>
                 <!-- paths -->
@@ -91,14 +110,6 @@
                 <!-- action objects -->
                 <a-asset-item id="throwRock_obj" src="/models/throw_rock.obj"></a-asset-item>
                 <img id="throwRock_mat" src="/textures/bigRock_tex.png">
-
-                <!-- Assets to be added
-                    ****MAKE SURE TO FIX OBJ AND MAT IN LOADANIMALS.JS FILE****
-                    <a-asset-item id="rock_obj" src="/models/rock.obj"></a-asset-item>
-                    <img id="rock_mat" src="/textures/rock_tex.png">
-                    <a-asset-item id="stick_obj" src="/models/stick.obj"></a-asset-item>
-                    <img id="stick_mat" src="/textures/stick_tex.png">
-                -->
             </a-assets>  
 
 
@@ -122,26 +133,22 @@
             </a-entity>
 
             <!-- sky -->
-            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 -300"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="0 0 36" rotation="0 180 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="-1000 0 0" rotation="0 90 0"></a-entity>
-            <a-entity id="sky" geometry="primitive: plane; width: 2000; height: 2000;" material="color: #7EC0EE;" position="1000 0 0" rotation="0 -90 0"></a-entity>
+            <a-entity id="sky"
+                    geometry="primitive:sphere; radius:30;"
+                    material="shader:flat; color: #7EC0EE; side:back; height:2048; width:2048"
+            ></a-entity>
 
             
 
         </a-scene>
         <script src="/scripts/buttonPresses.js"></script>
+        <script>  
+        //delete a-scene if on mobile so it doesn't break
+        let scene = $("a-scene");
+        let state = scene.css('display');
+        if (state == "none") {
+            scene.remove();
+        }
+        </script>
     </body>
 </html>
-
-
-
-<!-- Base Straight
-    <a-entity set-ground-comp set-enviro-comp id="straightPath" obj-model="obj: #straightPath_obj;" material="src: #straightPath_mat" position="0 0 -z"></a-entity>
--->
-<!-- Base Left Curve
-    <a-entity set-curve-l-comp set-enviro-comp="curve: left" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 180 0"></a-entity> 
--->
-<!-- Base Right Curve
-    <a-entity set-curve-r-comp set-enviro-comp="curve: right" id="forkPath" obj-model="obj: #curvePath_obj;" material="src: #curvePath_mat" position="0 0 -z" rotation="0 -90 0"></a-entity>
--->
