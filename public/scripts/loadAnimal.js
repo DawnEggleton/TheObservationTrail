@@ -12,6 +12,7 @@ AFRAME.registerComponent('load-animal-comp', {
         let path = Context_AF.el.getAttribute('load-animal-comp').pathDir;
         let animalNum = Math.floor(Math.random() * 5) + 1;
 
+        //deciduous environment animals
         if (biome == "deci") {
             //if animal is already present, "re-roll"
             while (deciAnimals.includes(animalNum) == true) {
@@ -75,6 +76,111 @@ AFRAME.registerComponent('load-animal-comp', {
                 }
                 else if (path == "path-right") {
                     Context_AF.loadRightArrow(tileX, tileY, tileZ, "duck", "snowOwl");
+                }
+            }
+        }
+
+        //boreal environment animals
+        if (biome == "boreal") {
+            //if animal is already present, "re-roll"
+            while (borealAnimals.includes(animalNum) == true) {
+                animalNum = Math.floor(Math.random() * 5) + 1;
+            }
+            //otherwise, add animal marker to array and allow animal
+            borealAnimals.push(animalNum);
+            
+            if (animalNum == 1) {
+                Context_AF.loadDeer(tileX, tileY, tileZ);
+                Context_AF.loadRock(tileX, tileY, tileZ, "approach", "deer");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "approach", "deer");
+                if (path == "path-left") {
+                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "approach", "deer");
+                }
+                else if (path == "path-right") {
+                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "approach", "deer");
+                }
+            }
+            if (animalNum == 2) {
+                Context_AF.loadBlackBear(tileX, tileY, tileZ);
+                Context_AF.loadRock(tileX, tileY, tileZ, "clap", "blackbear");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "clap", "blackbear");
+                if (path == "path-left") {
+                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "clap", "blackbear");
+                }
+                else if (path == "path-right") {
+                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "clap", "blackbear");
+                }
+            }
+            if (animalNum == 3) {
+                Context_AF.loadMoose(tileX, tileY, tileZ, path);
+                if (path == "path-left") {
+                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, path, "moose");
+                    Context_AF.loadRock(tileX, tileY, tileZ, path, "moose");
+                    //Context_AF.loadStick(tileX, tileY, tileZ, path, "moose");
+                }
+                else if (path == "path-right") {
+                    Context_AF.loadRightArrow(tileX, tileY, tileZ, path, "moose");
+                    Context_AF.loadRock(tileX, tileY, tileZ, path, "moose");
+                    //Context_AF.loadStick(tileX, tileY, tileZ, path, "moose");
+                }
+            }
+            if (animalNum == 4) {
+                Context_AF.loadLynx(tileX, tileY, tileZ, path);
+                if (path == "path-left") {
+                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, path, "lynx");
+                    Context_AF.loadRock(tileX, tileY, tileZ, path, "lynx");
+                    //Context_AF.loadStick(tileX, tileY, tileZ, path, "lynx");
+                }
+                else if (path == "path-right") {
+                    Context_AF.loadRightArrow(tileX, tileY, tileZ, path, "lynx");
+                    Context_AF.loadRock(tileX, tileY, tileZ, path, "lynx");
+                    //Context_AF.loadStick(tileX, tileY, tileZ, path, "lynx");
+                }
+            }
+            if (animalNum == 5) {
+                Context_AF.loadHawk(tileX, tileY, tileZ);
+                Context_AF.loadRock(tileX, tileY, tileZ, "duck", "hawk");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "duck", "hawk");
+                if (path == "path-left") {
+                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "duck", "hawk");
+                }
+                else if (path == "path-right") {
+                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "duck", "hawk");
+                }
+            }
+        }
+
+        //boreal environment animals
+        if (biome == "wetland") {
+            //re-roll for range of 1 to 2
+            animalNum = Math.floor(Math.random() * 2) + 1;
+            //if animal is already present, "re-roll"
+            while (wetlandAnimals.includes(animalNum) == true) {
+                animalNum = Math.floor(Math.random() * 2) + 1;
+            }
+            //otherwise, add animal marker to array and allow animal
+            wetlandAnimals.push(animalNum);
+            
+            if (animalNum == 1) {
+                Context_AF.loadBeaver(tileX, tileY, tileZ);
+                //Context_AF.loadRock(tileX, tileY, tileZ, "stick", "beaver");
+                Context_AF.loadStick(tileX, tileY, tileZ, "stick", "beaver");
+                if (path == "path-left") {
+                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "stick", "beaver");
+                }
+                else if (path == "path-right") {
+                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "stick", "beaver");
+                }
+            }
+            if (animalNum == 2) {
+                Context_AF.loadGoose(tileX, tileY, tileZ);
+                Context_AF.loadRock(tileX, tileY, tileZ, "clap", "goose");
+                //Context_AF.loadStick(tileX, tileY, tileZ, "clap", "goose");
+                if (path == "path-left") {
+                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "clap", "goose");
+                }
+                else if (path == "path-right") {
+                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "clap", "goose");
                 }
             }
         }
@@ -209,6 +315,189 @@ AFRAME.registerComponent('load-animal-comp', {
 
         //add to scene
         scene.appendChild(perchModel);
+        scene.appendChild(animalModel);
+        scene.appendChild(arrow);
+    },
+    loadLynx : function (x, y, z, dir) {
+        let scene = document.querySelector("a-scene");
+
+        //create animal
+        let animalModel = document.createElement("a-entity");
+        animalModel.id = "lynx";
+        animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "lynx"});
+        animalModel.setAttribute("obj-model", {obj: "#lynx_obj"});
+        animalModel.setAttribute("material", {src: "#lynx_mat"});
+        animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
+
+        //approach arrow, created with animal for positioning purposes
+        let arrow = document.createElement("a-entity");
+        arrow.id = "approach-arrow";
+        arrow.className = "lynx-action";
+        arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "lynx"});
+        arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
+        arrow.setAttribute("material", {src: "#arrow_mat"});
+        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+
+        //add to scene
+        scene.appendChild(animalModel);
+        scene.appendChild(arrow);
+    },
+    loadBlackBear : function (x, y, z, dir) {
+        let scene = document.querySelector("a-scene");
+
+        //create animal
+        let animalModel = document.createElement("a-entity");
+        animalModel.id = "blackBear";
+        animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "blackBear"});
+        animalModel.setAttribute("obj-model", {obj: "#blackBear_obj"});
+        animalModel.setAttribute("material", {src: "#blackbear_mat"});
+        animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
+
+        //approach arrow, created with animal for positioning purposes
+        let arrow = document.createElement("a-entity");
+        arrow.id = "approach-arrow";
+        arrow.className = "blackBear-action";
+        arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "blackBear"});
+        arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
+        arrow.setAttribute("material", {src: "#arrow_mat"});
+        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+
+        //add to scene
+        scene.appendChild(animalModel);
+        scene.appendChild(arrow);
+    },
+    loadDeer : function (x, y, z, dir) {
+        let scene = document.querySelector("a-scene");
+
+        //create animal
+        let animalModel = document.createElement("a-entity");
+        animalModel.id = "deer";
+        animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "deer"});
+        animalModel.setAttribute("obj-model", {obj: "#deer_obj"});
+        animalModel.setAttribute("material", {src: "#deer_mat"});
+        animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
+
+        //approach arrow, created with animal for positioning purposes
+        let arrow = document.createElement("a-entity");
+        arrow.id = "approach-arrow";
+        arrow.className = "deer-action";
+        arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "deer"});
+        arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
+        arrow.setAttribute("material", {src: "#arrow_mat"});
+        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+
+        //add to scene
+        scene.appendChild(animalModel);
+        scene.appendChild(arrow);
+    },
+    loadMoose : function (x, y, z, dir) {
+        let scene = document.querySelector("a-scene");
+
+        //create animal
+        let animalModel = document.createElement("a-entity");
+        animalModel.id = "moose";
+        animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "moose"});
+        animalModel.setAttribute("obj-model", {obj: "#moose_obj"});
+        animalModel.setAttribute("material", {src: "#moose_mat"});
+        animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
+
+        //approach arrow, created with animal for positioning purposes
+        let arrow = document.createElement("a-entity");
+        arrow.id = "approach-arrow";
+        arrow.className = "moose-action";
+        arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "moose"});
+        arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
+        arrow.setAttribute("material", {src: "#arrow_mat"});
+        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+
+        //add to scene
+        scene.appendChild(animalModel);
+        scene.appendChild(arrow);
+    },
+    loadHawk : function (x, y, z) {
+        let scene = document.querySelector("a-scene");
+
+        //create animal
+        let animalModel = document.createElement("a-entity");
+        animalModel.id = "hawk";
+        animalModel.setAttribute("action-obj-comp", {objectType: "duck", correctAction: "duck", animalType: "hawk"});
+        animalModel.setAttribute("obj-model", {obj: "#hawk_static_obj"});
+        animalModel.setAttribute("material", {src: "#hawk_mat"});
+        animalModel.setAttribute("position", {x: x, y: y + 1.1, z: z - 1});
+
+        //create perch
+        let perchModel = document.createElement("a-entity");
+        perchModel.id = "perch";
+        perchModel.setAttribute("obj-model", {obj: "#fallen2_obj"});
+        perchModel.setAttribute("material", {src: "#fallen_mat"});
+        perchModel.setAttribute("position", {x: x, y: y, z: z - 1});
+
+        //approach arrow, created with animal for positioning purposes
+        let arrow = document.createElement("a-entity");
+        arrow.id = "approach-arrow";
+        arrow.className = "hawk-action";
+        arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "duck", animalType: "hawk"});
+        arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
+        arrow.setAttribute("material", {src: "#arrow_mat"});
+        arrow.setAttribute("position", {x: x, y: 2, z: z - 0.5});
+        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+
+        //add to scene
+        scene.appendChild(perchModel);
+        scene.appendChild(animalModel);
+        scene.appendChild(arrow);
+    },
+    loadBeaver : function (x, y, z, dir) {
+        let scene = document.querySelector("a-scene");
+
+        //create animal
+        let animalModel = document.createElement("a-entity");
+        animalModel.id = "beaver";
+        animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "beaver"});
+        animalModel.setAttribute("obj-model", {obj: "#beaver_obj"});
+        animalModel.setAttribute("material", {src: "#beaver_mat"});
+        animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
+
+        //approach arrow, created with animal for positioning purposes
+        let arrow = document.createElement("a-entity");
+        arrow.id = "approach-arrow";
+        arrow.className = "beaver-action";
+        arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "beaver"});
+        arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
+        arrow.setAttribute("material", {src: "#arrow_mat"});
+        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+
+        //add to scene
+        scene.appendChild(animalModel);
+        scene.appendChild(arrow);
+    },
+    loadGoose : function (x, y, z, dir) {
+        let scene = document.querySelector("a-scene");
+
+        //create animal
+        let animalModel = document.createElement("a-entity");
+        animalModel.id = "goose";
+        animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "goose"});
+        animalModel.setAttribute("obj-model", {obj: "#goose_obj"});
+        animalModel.setAttribute("material", {src: "#goose_mat"});
+        animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
+
+        //approach arrow, created with animal for positioning purposes
+        let arrow = document.createElement("a-entity");
+        arrow.id = "approach-arrow";
+        arrow.className = "goose-action";
+        arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "goose"});
+        arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
+        arrow.setAttribute("material", {src: "#arrow_mat"});
+        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+
+        //add to scene
         scene.appendChild(animalModel);
         scene.appendChild(arrow);
     },
