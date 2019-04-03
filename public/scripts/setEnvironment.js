@@ -4,8 +4,8 @@ AFRAME.registerComponent('set-enviro-comp', {
     },
     init : function() {
         const Context_AF = this;
-        let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 1;
-        let numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 2;
+        let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 1;
+        let numPine1 = numPine2 = numPine3 = numPine4 = numStump = numSedRock = numCattail = 0;
         
         let scene = document.querySelector("a-scene");
         let tileX = Context_AF.el.getAttribute('position').x;
@@ -14,8 +14,23 @@ AFRAME.registerComponent('set-enviro-comp', {
         let tileClass = Context_AF.el.id;
 
         if (tileZ < -60) {
-            let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 0;
-            let numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 1;
+            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 0;
+            numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 1;
+            numPine1 = numPine2 = numStump = numSedRock = 1;
+        }
+
+        if (tileZ < -72) {
+            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 0;
+            numPine1 = numPine2 = numStump = numSedRock = numPine3 = numPine4 = 2;
+        }
+
+        if (tileZ < -138) {
+            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = numPine1 = numPine2 = 0;
+            numPine3 = numPine4 = numStump = numSedRock = 1;
+        }
+
+        if (tileZ < -144) {
+            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = numPine1 = numPine2 = numPine3 = numPine4 = numStump = numSedRock = 0;
         }
 
 
@@ -31,6 +46,13 @@ AFRAME.registerComponent('set-enviro-comp', {
             Context_AF.objectPlace("maple2", tileZ, numMaple2, scene, "#maple2_obj", "#maple_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("fallenTree1", tileZ, numFallen1, scene, "#fallen1_obj", "#fallen_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("fallenTree2", tileZ, numFallen2, scene, "#fallen2_obj", "#fallen_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine1", tileZ, numPine1, scene, "#pine1_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine2", tileZ, numPine2, scene, "#pine2_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine3", tileZ, numPine3, scene, "#pine3_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine4", tileZ, numPine4, scene, "#pine4_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("treeStump", tileZ, numStump, scene, "#treeStump_obj", "#treeStump_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("sedRock", tileZ, numSedRock, scene, "#sedRock_obj", "#sedRock_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("cattail", tileZ, numCattail, scene, "#cattail_obj", "#cattail_mat", tileX, curve, tileClass);
         });
         
     },
