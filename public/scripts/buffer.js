@@ -268,8 +268,8 @@ AFRAME.registerComponent('buffer-comp', {
         tile27.setAttribute("set-ground-comp", {});
         tile27.setAttribute("set-enviro-comp", {});
         tile27.id = "path27";
-        tile27.setAttribute("obj-model", {obj: "#straightPath_obj"});
-        tile27.setAttribute("material", {src: "#straightPath_mat"});
+        tile27.setAttribute("obj-model", {obj: "#wetTransit_path_obj"});
+        tile27.setAttribute("material", {src: "#wetTransit_path_mat"});
         tile27.setAttribute("position", {x: 0, y: 0, z: -144});
         pathTiles.push(tile27);
         
@@ -277,8 +277,8 @@ AFRAME.registerComponent('buffer-comp', {
         tile28.setAttribute("set-ground-comp", {});
         tile28.setAttribute("set-enviro-comp", {});
         tile28.id = "path28";
-        tile28.setAttribute("obj-model", {obj: "#straightPath_obj"});
-        tile28.setAttribute("material", {src: "#straightPath_mat"});
+        tile28.setAttribute("obj-model", {obj: "#wetGround_obj"});
+        tile28.setAttribute("material", {src: "#wetGround_mat"});
         tile28.setAttribute("position", {x: 0, y: 0, z: -150});
         pathTiles.push(tile28);
         
@@ -287,8 +287,8 @@ AFRAME.registerComponent('buffer-comp', {
         tile29.setAttribute("set-ground-comp", {});
         tile29.setAttribute("set-enviro-comp", {});
         tile29.id = "path29";
-        tile29.setAttribute("obj-model", {obj: "#straightPath_obj"});
-        tile29.setAttribute("material", {src: "#straightPath_mat"});
+        tile28.setAttribute("obj-model", {obj: "#wetGround_obj"});
+        tile28.setAttribute("material", {src: "#wetGround_mat"});
         tile29.setAttribute("position", {x: 0, y: 0, z: -156});
         pathTiles.push(tile29);
         
@@ -296,8 +296,8 @@ AFRAME.registerComponent('buffer-comp', {
         tile30.setAttribute("set-ground-comp", {});
         tile30.setAttribute("set-enviro-comp", {});
         tile30.id = "path30";
-        tile30.setAttribute("obj-model", {obj: "#straightPath_obj"});
-        tile30.setAttribute("material", {src: "#straightPath_mat"});
+        tile28.setAttribute("obj-model", {obj: "#wetGround_obj"});
+        tile28.setAttribute("material", {src: "#wetGround_mat"});
         tile30.setAttribute("position", {x: 0, y: 0, z: -162});
         pathTiles.push(tile30);
         
@@ -305,8 +305,8 @@ AFRAME.registerComponent('buffer-comp', {
         tile31.setAttribute("set-ground-comp", {});
         tile31.setAttribute("set-enviro-comp", {});
         tile31.id = "path31";
-        tile31.setAttribute("obj-model", {obj: "#straightPath_obj"});
-        tile31.setAttribute("material", {src: "#straightPath_mat"});
+        tile28.setAttribute("obj-model", {obj: "#wetGround_obj"});
+        tile28.setAttribute("material", {src: "#wetGround_mat"});
         tile31.setAttribute("position", {x: 0, y: 0, z: -168});
         pathTiles.push(tile31);
         
@@ -314,8 +314,8 @@ AFRAME.registerComponent('buffer-comp', {
         tile32.setAttribute("set-ground-comp", {});
         tile32.setAttribute("set-enviro-comp", {});
         tile32.id = "path32";
-        tile32.setAttribute("obj-model", {obj: "#straightPath_obj"});
-        tile32.setAttribute("material", {src: "#straightPath_mat"});
+        tile28.setAttribute("obj-model", {obj: "#wetGround_obj"});
+        tile28.setAttribute("material", {src: "#wetGround_mat"});
         tile32.setAttribute("position", {x: 0, y: 0, z: -174});
         pathTiles.push(tile32);
 
