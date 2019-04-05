@@ -285,7 +285,12 @@ AFRAME.registerComponent('action-obj-comp', {
         
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
-            animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
+            if (camZ > -100) {
+                animal.setAttribute("obj-model", {obj: "../models/snowyOwl_flying.obj"});
+            }
+            else if (camZ < -100) {
+                animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_flying.obj"});
+            }
             let animation = document.createElement('a-animation');
             animation.setAttribute("attribute","position");
             animation.setAttribute("from",xyzStart);

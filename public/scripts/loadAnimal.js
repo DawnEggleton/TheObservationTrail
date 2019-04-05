@@ -191,7 +191,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -216,7 +215,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -241,7 +239,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 1.0, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -266,7 +263,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -298,7 +294,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 2, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(perchModel);
@@ -323,8 +318,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "lynx"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+        arrow.setAttribute("position", {x: x, y: 0.9, z: z - 0.5});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -349,7 +343,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 1.0, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -373,8 +366,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "approach", animalType: "deer"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+        arrow.setAttribute("position", {x: x, y: 1.6, z: z - 0.5});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -399,7 +391,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -414,7 +405,7 @@ AFRAME.registerComponent('load-animal-comp', {
         animalModel.setAttribute("action-obj-comp", {objectType: "duck", correctAction: "duck", animalType: "hawk"});
         animalModel.setAttribute("obj-model", {obj: "../models/redTailedHawk_static.obj"});
         animalModel.setAttribute("material", {src: "../textures/redTailedHawk_tex.png"});
-        animalModel.setAttribute("position", {x: x, y: y + 1.1, z: z - 1});
+        animalModel.setAttribute("position", {x: x, y: y + 0.63, z: z - 1});
 
         //create perch
         let perchModel = document.createElement("a-entity");
@@ -430,8 +421,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "duck", animalType: "hawk"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 2, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
+        arrow.setAttribute("position", {x: x, y: 1.26, z: z - 0.5});
 
         //add to scene
         scene.appendChild(perchModel);
@@ -457,7 +447,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -482,7 +471,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
         arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
 
         //add to scene
         scene.appendChild(animalModel);
@@ -498,7 +486,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "path-left", correctAction: corrAction, animalType: animal});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("rotation", {x: 90, y: 90, z: 0});
+        arrow.setAttribute("rotation", {x: 90, y: 0, z: 0});
         arrow.setAttribute("position", {x: x - 2, y: 0.5, z: z});
 
         //add to scene
@@ -514,7 +502,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "path-right", correctAction: corrAction, animalType: animal});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("rotation", {x: -90, y: 90, z: 0});
+        arrow.setAttribute("rotation", {x: -90, y: 0, z: 0});
         arrow.setAttribute("position", {x: x + 2, y: 0.5, z: z});
 
         //add to scene
@@ -537,7 +525,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.className = animal + "-action";
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
         arrow.setAttribute("position", {x: x - 2, y: 0.5, z: z + 2});
 
         //add to scene
@@ -594,7 +581,6 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.className = animal + "-action";
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("rotation", {x: 0, y: 90, z: 0});
         arrow.setAttribute("position", {x: x + 2, y: 0.5, z: z + 2});
 
         //add to scene
