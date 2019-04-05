@@ -63,11 +63,8 @@ button {
     font-size: 24px;
     line-height: 20px;
 }
-.swatch.red {
-    background: #ce6950;
-}
 .swatch.brown {
-    background: #5b4a2d;
+    background: #5a3523;
 }
 .swatch.black {
     background: #000000;
@@ -76,7 +73,7 @@ button {
     background: #919191;
 }
 .swatch.orange {
-    background: #c67c03;
+    background: #d28602;
 }
 .swatch.white {
     background: #ffffff;
