@@ -288,7 +288,7 @@ AFRAME.registerComponent('action-obj-comp', {
             if (camZ > -100) {
                 animal.setAttribute("obj-model", {obj: "../models/snowyOwl_flying.obj"});
             }
-            else if (camZ < -100) {
+            if (camZ < -100) {
                 animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_flying.obj"});
             }
             let animation = document.createElement('a-animation');

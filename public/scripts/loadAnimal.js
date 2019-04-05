@@ -410,8 +410,8 @@ AFRAME.registerComponent('load-animal-comp', {
         //create perch
         let perchModel = document.createElement("a-entity");
         perchModel.id = "perch";
-        perchModel.setAttribute("obj-model", {obj: "#stump_obj"});
-        perchModel.setAttribute("material", {src: "#stump_mat"});
+        perchModel.setAttribute("obj-model", {obj: "#treeStump_obj"});
+        perchModel.setAttribute("material", {src: "#treeStump_mat"});
         perchModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes

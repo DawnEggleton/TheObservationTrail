@@ -13,17 +13,17 @@ AFRAME.registerComponent('set-ground-comp', {
             let num = 6 * (i + 1) + x;
             plane.id = "planeRight-row" + (z/6) + "-col" + i;
             plane.className = name;
-            if (z >=6) {        //-138, -144 for final        
+            if (z >=-138) {     
                 plane.setAttribute("obj-model", {obj: "#groundPlane_obj"});
                 plane.setAttribute("material", {src: "#groundPlane_mat"});
             }
-            if (z < 6 && z >= 0) {
-                plane.setAttribute("obj-model", {obj: "#curvePath_obj"});
-                plane.setAttribute("material", {src: "#groundPlane_mat"});
+            if (z < -138 && z >= -144) {
+                plane.setAttribute("obj-model", {obj: "#wetTransit_ground_obj"});
+                plane.setAttribute("material", {src: "#wetTransit_ground_mat"});
             }
-            if (z < 0) {
-                plane.setAttribute("obj-model", {obj: "#curvePath_obj"});
-                plane.setAttribute("material", {src: "#curvePath_mat"});
+            if (z < -144) {
+                plane.setAttribute("obj-model", {obj: "#wetGround_obj"});
+                plane.setAttribute("material", {src: "#wetGround_mat"});
             }
             plane.setAttribute("position", {x: num, y: 0, z: z});
             scene.appendChild(plane);                 
@@ -42,17 +42,17 @@ AFRAME.registerComponent('set-ground-comp', {
             let num = -6 * (i + 1) + x;
             plane.id = "planeLeft-row" + (z/6) + "-col" + i;
             plane.className = name;
-            if (z >=6) {        //-138, -144        
+            if (z >=-138) {        //-138, -144        
                 plane.setAttribute("obj-model", {obj: "#groundPlane_obj"});
                 plane.setAttribute("material", {src: "#groundPlane_mat"});
             }
-            if (z < 6 && z >= 0) {
-                plane.setAttribute("obj-model", {obj: "#curvePath_obj"});
-                plane.setAttribute("material", {src: "#groundPlane_mat"});
+            if (z < -138 && z >= -144) {
+                plane.setAttribute("obj-model", {obj: "#wetTransit_ground_obj"});
+                plane.setAttribute("material", {src: "#wetTransit_ground_mat"});
             }
-            if (z < 0) {
-                plane.setAttribute("obj-model", {obj: "#curvePath_obj"});
-                plane.setAttribute("material", {src: "#curvePath_mat"});
+            if (z < -144) {
+                plane.setAttribute("obj-model", {obj: "#wetGround_obj"});
+                plane.setAttribute("material", {src: "#wetGround_mat"});
             }
             plane.setAttribute("position", {x: num, y: 0, z: z});
             scene.appendChild(plane);
