@@ -56,6 +56,7 @@ AFRAME.registerComponent('set-enviro-comp', {
             Context_AF.objectPlace("cattail1", tileZ, numCattail, scene, "#cattail1_obj", "#cattail_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("cattail2", tileZ, numCattail, scene, "#cattail2_obj", "#cattail_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("cattail3", tileZ, numCattail, scene, "#cattail3_obj", "#cattail_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("cattail4", tileZ, numCattail, scene, "#cattail4_obj", "#cattail_mat", tileX, curve, tileClass);
         });
         
     },
