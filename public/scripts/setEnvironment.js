@@ -21,7 +21,8 @@ AFRAME.registerComponent('set-enviro-comp', {
 
         if (tileZ < -72) {
             numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 0;
-            numPine1 = numPine2 = numStump = numSedRock = numPine3 = numPine4 = 2;
+            numPine1 = numPine2 = numStump = numSedRock = 2;
+            numPine3 = numPine4 = 3;
         }
 
         if (tileZ < -138) {

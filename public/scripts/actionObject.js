@@ -102,6 +102,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }, 1000);
     },
@@ -170,6 +171,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -202,6 +204,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -235,6 +238,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -267,6 +271,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -305,6 +310,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -332,6 +338,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }, 1000);
     },
