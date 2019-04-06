@@ -26,12 +26,8 @@ AFRAME.registerComponent('set-enviro-comp', {
         }
 
         if (tileZ < -138) {
-            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = numPine1 = numPine2 = 0;
-            numPine3 = numPine4 = numStump = numSedRock = 1;
-        }
-
-        if (tileZ < -144) {
             numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = numPine1 = numPine2 = numPine3 = numPine4 = numStump = numSedRock = 0;
+            numCattail = 1;
         }
 
 
@@ -53,10 +49,7 @@ AFRAME.registerComponent('set-enviro-comp', {
             Context_AF.objectPlace("pine4", tileZ, numPine4, scene, "#pine4_obj", "#pine_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("treeStump", tileZ, numStump, scene, "#treeStump_obj", "#treeStump_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("sedRock", tileZ, numSedRock, scene, "#sedRock_obj", "#sedRock_mat", tileX, curve, tileClass);
-            Context_AF.objectPlace("cattail1", tileZ, numCattail, scene, "#cattail1_obj", "#cattail_mat", tileX, curve, tileClass);
-            Context_AF.objectPlace("cattail2", tileZ, numCattail, scene, "#cattail2_obj", "#cattail_mat", tileX, curve, tileClass);
-            Context_AF.objectPlace("cattail3", tileZ, numCattail, scene, "#cattail3_obj", "#cattail_mat", tileX, curve, tileClass);
-            Context_AF.objectPlace("cattail4", tileZ, numCattail, scene, "#cattail4_obj", "#cattail_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("cattail", tileZ, numCattail, scene, "#cattail_obj", "#cattail_mat", tileX, curve, tileClass);
         });
         
     },
@@ -64,10 +57,16 @@ AFRAME.registerComponent('set-enviro-comp', {
         for (i = 0; i < maxNum; i++) {
             let x = (Math.random() * (6 * numTiles)) + 2;
             let z = ((Math.random() * 6) * -1) + depth + 2;
+            if (type == "cattail"){
+                x = 7;
+                z = depth - 1;
+            }
             let lx = pos - 3;
             let rx = pos + 3;
             let randRot = Math.floor(Math.random() * 91);
-            
+            if (type == "cattail") {
+                randRot = 180;
+            }          
 
             if (curving == "right") {
                 rx += 6;
@@ -115,18 +114,24 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else {
                     sound.setAttribute("src", "../audio/wind.wav");
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("volume", 2);
                 }
                 item.appendChild(sound);
             }        
 
         }
         for (i = 0; i < maxNum; i++) {
-            let item = document.createElement("a-entity");
             let x = (Math.random() * (-6 * numTiles)) - 2;
             let z = ((Math.random() * 6) * -1) + depth + 3;
+            if (type == "cattail"){
+                x = -7;
+                z = depth - 1;
+            }
             let lx = pos - 3;
             let randRot = Math.floor(Math.random() * 91);
+            if (type == "cattail") {
+                randRot = 0;
+            }
             if (curving == "left") {
                 lx -= 6;
             }
@@ -174,7 +179,7 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else {
                     sound.setAttribute("src", "../audio/wind.wav");
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("volume", 2);
                 }
                 item.appendChild(sound);
             }

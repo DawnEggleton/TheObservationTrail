@@ -33,7 +33,7 @@ AFRAME.registerComponent('set-ground-comp', {
                 dockTile.id = "dock";
                 dockTile.setAttribute("obj-model", {obj: "#dockTile_obj"});
                 dockTile.setAttribute("material", {src: "#dockTile_mat"});
-                dockTile.setAttribute("position", {x: 0, y: 0, z: z});
+                dockTile.setAttribute("position", {x: 0, y: 0, z: z - 1});
                 scene.appendChild(dockTile);
             }
         }

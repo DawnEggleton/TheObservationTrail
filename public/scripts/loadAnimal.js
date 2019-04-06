@@ -450,7 +450,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "clap", animalType: "goose"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("position", {x: x, y: 0.8, z: z - 0.5});
 
         //add to scene
         scene.appendChild(animalModel);
