@@ -35,7 +35,7 @@ AFRAME.registerComponent('load-animal-comp', {
             }
             if (animalNum == 2) {
                 Context_AF.loadFox(tileX, tileY, tileZ);
-                Context_AF.loadRock(tileX, tileY, tileZ, "clap", "fox");
+                Context_AF.loadStick(tileX, tileY, tileZ, "clap", "fox");
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, "clap", "fox");
                 }
@@ -57,7 +57,7 @@ AFRAME.registerComponent('load-animal-comp', {
                 Context_AF.loadPorcupine(tileX, tileY, tileZ, path);
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, path, "porcupine");
-                    Context_AF.loadRock(tileX, tileY, tileZ, path, "porcupine");
+                    Context_AF.loadStick(tileX, tileY, tileZ, "clap", "porcupine");
                 }
                 else if (path == "path-right") {
                     Context_AF.loadRightArrow(tileX, tileY, tileZ, path, "porcupine");
@@ -67,12 +67,7 @@ AFRAME.registerComponent('load-animal-comp', {
             if (animalNum == 5) {
                 Context_AF.loadSnowOwl(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "duck", "snowOwl");
-                if (path == "path-left") {
-                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "duck", "snowOwl");
-                }
-                else if (path == "path-right") {
-                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "duck", "snowOwl");
-                }
+                Context_AF.loadStick(tileX, tileY, tileZ, "clap", "snowOwl");
             }
         }
         
@@ -97,7 +92,7 @@ AFRAME.registerComponent('load-animal-comp', {
             }
             if (animalNum == 2) {
                 Context_AF.loadBlackBear(tileX, tileY, tileZ);
-                Context_AF.loadRock(tileX, tileY, tileZ, "clap", "blackBear");
+                Context_AF.loadStick(tileX, tileY, tileZ, "clap", "blackBear");
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, "clap", "blackBear");
                 }
@@ -109,7 +104,7 @@ AFRAME.registerComponent('load-animal-comp', {
                 Context_AF.loadMoose(tileX, tileY, tileZ, path);
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, path, "moose");
-                    Context_AF.loadRock(tileX, tileY, tileZ, path, "moose");
+                    Context_AF.loadStick(tileX, tileY, tileZ, path, "moose");
                 }
                 else if (path == "path-right") {
                     Context_AF.loadRightArrow(tileX, tileY, tileZ, path, "moose");
@@ -120,7 +115,7 @@ AFRAME.registerComponent('load-animal-comp', {
                 Context_AF.loadLynx(tileX, tileY, tileZ, path);
                 if (path == "path-left") {
                     Context_AF.loadLeftArrow(tileX, tileY, tileZ, path, "lynx");
-                    Context_AF.loadRock(tileX, tileY, tileZ, path, "lynx");
+                    Context_AF.loadStick(tileX, tileY, tileZ, path, "lynx");
                 }
                 else if (path == "path-right") {
                     Context_AF.loadRightArrow(tileX, tileY, tileZ, path, "lynx");
@@ -130,12 +125,7 @@ AFRAME.registerComponent('load-animal-comp', {
             if (animalNum == 5) {
                 Context_AF.loadHawk(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "duck", "hawk");
-                if (path == "path-left") {
-                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "duck", "hawk");
-                }
-                else if (path == "path-right") {
-                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "duck", "hawk");
-                }
+                Context_AF.loadStick(tileX, tileY, tileZ, "duck", "hawk");
             }
         }
 
@@ -152,23 +142,13 @@ AFRAME.registerComponent('load-animal-comp', {
             
             if (animalNum == 1) {
                 Context_AF.loadBeaver(tileX, tileY, tileZ);
+                Context_AF.loadRock(tileX, tileY, tileZ, "stick", "beaver");
                 Context_AF.loadStick(tileX, tileY, tileZ, "stick", "beaver");
-                if (path == "path-left") {
-                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "stick", "beaver");
-                }
-                else if (path == "path-right") {
-                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "stick", "beaver");
-                }
             }
             if (animalNum == 2) {
                 Context_AF.loadGoose(tileX, tileY, tileZ);
                 Context_AF.loadRock(tileX, tileY, tileZ, "clap", "goose");
-                if (path == "path-left") {
-                    Context_AF.loadLeftArrow(tileX, tileY, tileZ, "clap", "goose");
-                }
-                else if (path == "path-right") {
-                    Context_AF.loadRightArrow(tileX, tileY, tileZ, "clap", "goose");
-                }
+                Context_AF.loadStick(tileX, tileY, tileZ, "clap", "goose");
             }
         }
     },
@@ -517,7 +497,7 @@ AFRAME.registerComponent('load-animal-comp', {
         rock.setAttribute("action-obj-comp", {objectType: "rock", correctAction: corrAction, animalType: animal});
         rock.setAttribute("obj-model", {obj: "#throwRock_obj"});
         rock.setAttribute("material", {src: "#throwRock_mat"});
-        rock.setAttribute("position", {x: x - 2, y: y + 0.06, z: z + 2});
+        rock.setAttribute("position", {x: x - 2, y: y + 0.06, z: z + 1});
 
         //indicator arrow
         let arrow = document.createElement("a-entity");
@@ -525,7 +505,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.className = animal + "-action";
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x - 2, y: 0.5, z: z + 2});
+        arrow.setAttribute("position", {x: x - 2, y: 0.5, z: z + 1});
 
         //add to scene
         scene.appendChild(rock);
@@ -538,42 +518,9 @@ AFRAME.registerComponent('load-animal-comp', {
         let stick = document.createElement("a-entity");
         stick.id = animal + "-throw-stick";
         stick.setAttribute("action-obj-comp", {objectType: "stick", correctAction: corrAction, animalType: animal});
-        stick.setAttribute("obj-model", {obj: "#arrow_obj"});
-        stick.setAttribute("material", {src: "#arrow_mat"});
-        stick.setAttribute("position", {x: x + 2, y: y, z: z + 2});
-
-        //create animations
-        let anim1 = document.createElement("a-animation");
-        anim1.setAttribute('begin', "animTrigger2");
-        anim1.setAttribute('attribute', 'position');
-        anim1.setAttribute('from', {x: x + 2, y: y, z: z + 2});
-        anim1.setAttribute('to', {x: x + 1, y: y + 2, z: z + 0.5});
-        anim1.setAttribute('easing', "linear");
-        anim1.setAttribute("dur", 500);
-        anim1.setAttribute("fill", "none");
-        anim1.setAttribute("repeat", 0);
-
-        let anim2 = document.createElement("a-animation");
-        anim2.setAttribute('begin', "click");
-        anim2.setAttribute('attribute', 'position');
-        anim2.setAttribute('from', {x: x + 1, y: y + 2, z: z + 0.5});
-        anim2.setAttribute('to', {x: x, y: y, z: z - 1});
-        anim2.setAttribute('easing', "linear");
-        anim2.setAttribute("dur", 500);
-        anim2.setAttribute("fill", "none");
-        anim2.setAttribute("repeat", 0);
-        anim2.setAttribute("delay", 500);
-
-        let anim3 = document.createElement("a-animation");
-        anim3.setAttribute('begin', "click");
-        anim3.setAttribute('attribute', 'position');
-        anim3.setAttribute('from', {x: x, y: y, z: z - 1});
-        anim3.setAttribute('to', {x: x, y: y, z: z - 1});
-        anim3.setAttribute('easing', "linear");
-        anim3.setAttribute("dur", 500);
-        anim3.setAttribute("fill", "none");
-        anim3.setAttribute("repeat", "indefinite");
-        anim3.setAttribute("delay", 1000);
+        stick.setAttribute("obj-model", {obj: "#throwStick_obj"});
+        stick.setAttribute("material", {src: "#throwStick_mat"});
+        stick.setAttribute("position", {x: x + 2, y: y + 0.1, z: z + 1});
 
         //indicator arrow
         let arrow = document.createElement("a-entity");
@@ -581,13 +528,10 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.className = animal + "-action";
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x + 2, y: 0.5, z: z + 2});
+        arrow.setAttribute("position", {x: x + 2, y: 0.5, z: z + 1});
 
         //add to scene
         scene.appendChild(stick);
         scene.appendChild(arrow);
-        stick.appendChild(anim1);
-        stick.appendChild(anim2);
-        stick.appendChild(anim3);
     }
 });
