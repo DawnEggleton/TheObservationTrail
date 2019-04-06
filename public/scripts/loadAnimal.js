@@ -486,7 +486,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "path-left", correctAction: corrAction, animalType: animal});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("rotation", {x: 90, y: 0, z: 0});
+        arrow.setAttribute("rotation", {x: 0, y: 0, z: -90});
         arrow.setAttribute("position", {x: x - 2, y: 0.5, z: z});
 
         //add to scene
@@ -502,7 +502,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "path-right", correctAction: corrAction, animalType: animal});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("rotation", {x: -90, y: 0, z: 0});
+        arrow.setAttribute("rotation", {x: 0, y: 0, z: 90});
         arrow.setAttribute("position", {x: x + 2, y: 0.5, z: z});
 
         //add to scene

@@ -448,7 +448,7 @@ AFRAME.registerComponent('action-obj-comp', {
                     animationEnd.setAttribute("dur",500);
                     rock.appendChild(animationEnd);
                 }        
-                if (act == "stick") {  
+                else if (act == "stick") {  
                     let stickID = ani + "-throw-stick";
                     let stick = document.getElementById(stickID);
             
@@ -486,7 +486,10 @@ AFRAME.registerComponent('action-obj-comp', {
                 }      
                 setTimeout(function() {
                     if (animal.id == "snowOwl") {
-                        animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
+                        animal.setAttribute("obj-model", {obj: "../models/snowyOwl_flying.obj"});
+                    }
+                    if (animal.id == "hawk") {
+                        animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_flying.obj"});
                     }
                     animal.appendChild(animationStart);
                     setTimeout(function() {
@@ -494,7 +497,10 @@ AFRAME.registerComponent('action-obj-comp', {
                         setTimeout(function() {
                             animal.appendChild(animationEnd);
                             if (animal.id == "snowOwl") {
-                                animal.setAttribute("obj-model", {obj: "#snowyOwl_static_obj"});
+                                animal.setAttribute("obj-model", {obj: "../models/snowyOwl_static.obj"});
+                            }
+                            if (animal.id == "hawk") {
+                                animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_static.obj"});
                             }
                         }, 500);   
                     }, 500); 
