@@ -53,7 +53,9 @@ AFRAME.registerComponent('set-enviro-comp', {
             Context_AF.objectPlace("pine4", tileZ, numPine4, scene, "#pine4_obj", "#pine_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("treeStump", tileZ, numStump, scene, "#treeStump_obj", "#treeStump_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("sedRock", tileZ, numSedRock, scene, "#sedRock_obj", "#sedRock_mat", tileX, curve, tileClass);
-            Context_AF.objectPlace("cattail", tileZ, numCattail, scene, "#cattail_obj", "#cattail_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("cattail1", tileZ, numCattail, scene, "#cattail1_obj", "#cattail_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("cattail2", tileZ, numCattail, scene, "#cattail2_obj", "#cattail_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("cattail3", tileZ, numCattail, scene, "#cattail3_obj", "#cattail_mat", tileX, curve, tileClass);
         });
         
     },
@@ -92,6 +94,22 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else if (type == "birch3") {                    
                     sound.setAttribute("src", "../audio/crow.wav");
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "pine1" || type =="pine4") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //birds
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "pine2" || type =="pine3") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //rainforest birds
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "treeStump") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //deer
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "cattail1" || type == "cattail3") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //frogs
                     sound.setAttribute("volume", 3);
                 }
                 else {
@@ -135,6 +153,22 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else if (type == "birch3") {                    
                     sound.setAttribute("src", "../audio/crow.wav");
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "pine1" || type =="pine4") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //birds
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "pine2" || type =="pine3") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //rainforest birds
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "treeStump") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //deer
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "cattail1" || type == "cattail3") {                    
+                    sound.setAttribute("src", "../audio/crow.wav"); //frogs
                     sound.setAttribute("volume", 3);
                 }
                 else {
