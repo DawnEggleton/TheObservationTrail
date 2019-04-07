@@ -495,7 +495,7 @@ AFRAME.registerComponent('action-obj-comp', {
                     if (animal.id == "snowOwl") {
                         animal.setAttribute("obj-model", {obj: "../models/snowyOwl_flying.obj"});
                     }
-                    if (animal.id == "hawk") {
+                    else if (animal.id == "hawk") {
                         animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_flying.obj"});
                     }
                     animal.appendChild(animationStart);
@@ -506,7 +506,7 @@ AFRAME.registerComponent('action-obj-comp', {
                             if (animal.id == "snowOwl") {
                                 animal.setAttribute("obj-model", {obj: "../models/snowyOwl_static.obj"});
                             }
-                            if (animal.id == "hawk") {
+                            else if (animal.id == "hawk") {
                                 animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_static.obj"});
                             }
                         }, 500);   

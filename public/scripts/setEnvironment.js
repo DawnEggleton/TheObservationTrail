@@ -82,11 +82,14 @@ AFRAME.registerComponent('set-enviro-comp', {
                 place.appendChild(item); 
 
                 let sound = document.createElement("a-sound");
+                let soundClassNum = ((depth * -1) + 18) / 6;
+                let soundClass = "path" + soundClassNum;
+                sound.className = soundClass;
                 sound.setAttribute("autoplay", true);
                 sound.setAttribute("loop", true);
                 if (type == "birch1" || type == "birch2") {
                     sound.setAttribute("src", "../audio/chickadee.wav");
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("volume", 2);
                 }
                 else if (type == "maple1" || type == "maple2") {                    
                     sound.setAttribute("src", "../audio/redSquirrel.wav");
@@ -94,27 +97,23 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else if (type == "birch3") {                    
                     sound.setAttribute("src", "../audio/crow.wav");
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("volume", 2);
                 }
                 else if (type == "pine1" || type =="pine4") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //birds
+                    sound.setAttribute("src", "../audio/birds.wav"); //birds
                     sound.setAttribute("volume", 3);
                 }
                 else if (type == "pine2" || type =="pine3") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //rainforest birds
-                    sound.setAttribute("volume", 3);
-                }
-                else if (type == "treeStump") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //deer
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("src", "../audio/rainforestBird.wav"); //rainforest birds
+                    sound.setAttribute("volume", 2);
                 }
                 else if (type == "cattail1" || type == "cattail3") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //frogs
+                    sound.setAttribute("src", "../audio/frogs.wav"); //frogs
                     sound.setAttribute("volume", 3);
                 }
                 else {
                     sound.setAttribute("src", "../audio/wind.wav");
-                    sound.setAttribute("volume", 2);
+                    sound.setAttribute("volume", 1.5);
                 }
                 item.appendChild(sound);
             }        
@@ -155,31 +154,27 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else if (type == "maple1" || type == "maple2") {                    
                     sound.setAttribute("src", "../audio/redSquirrel.wav");
-                    sound.setAttribute("volume", 5);
+                    sound.setAttribute("volume", 3);
                 }
                 else if (type == "birch3") {                    
                     sound.setAttribute("src", "../audio/crow.wav");
                     sound.setAttribute("volume", 3);
                 }
                 else if (type == "pine1" || type =="pine4") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //birds
+                    sound.setAttribute("src", "../audio/birds.wav"); //birds
                     sound.setAttribute("volume", 3);
                 }
                 else if (type == "pine2" || type =="pine3") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //rainforest birds
-                    sound.setAttribute("volume", 3);
-                }
-                else if (type == "treeStump") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //deer
+                    sound.setAttribute("src", "../audio/rainforestBird.wav"); //rainforest birds
                     sound.setAttribute("volume", 3);
                 }
                 else if (type == "cattail1" || type == "cattail3") {                    
-                    sound.setAttribute("src", "../audio/crow.wav"); //frogs
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("src", "../audio/frogs.wav"); //frogs
+                    sound.setAttribute("volume", 2);
                 }
                 else {
                     sound.setAttribute("src", "../audio/wind.wav");
-                    sound.setAttribute("volume", 2);
+                    sound.setAttribute("volume", 1.5);
                 }
                 item.appendChild(sound);
             }

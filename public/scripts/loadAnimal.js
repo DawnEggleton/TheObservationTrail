@@ -415,8 +415,8 @@ AFRAME.registerComponent('load-animal-comp', {
         let animalModel = document.createElement("a-entity");
         animalModel.id = "beaver";
         animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: "stick", animalType: "beaver"});
-        animalModel.setAttribute("obj-model", {obj: "../models/skunk.obj"});
-        animalModel.setAttribute("material", {src: "../textures/skunk_tex.png"});
+        animalModel.setAttribute("obj-model", {obj: "../models/beaver.obj"});
+        animalModel.setAttribute("material", {src: "../textures/beaver_tex.png"});
         animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes
@@ -450,7 +450,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: "clap", animalType: "goose"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 0.8, z: z - 0.5});
+        arrow.setAttribute("position", {x: x, y: 1.2, z: z - 0.5});
 
         //add to scene
         scene.appendChild(animalModel);
