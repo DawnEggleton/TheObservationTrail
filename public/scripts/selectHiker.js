@@ -11,7 +11,7 @@ AFRAME.registerComponent('select-hiker-comp', {
         //clear elements
         const Context_AF = this;
         Context_AF.el.parentNode.removeChild(Context_AF.el);
-        let elem = document.querySelector("#instructLoad");
+        let elem = document.querySelector("#guideButton");
         elem.parentNode.removeChild(elem);
 
         //create timer
