@@ -359,8 +359,8 @@ AFRAME.registerComponent('load-animal-comp', {
         let animalModel = document.createElement("a-entity");
         animalModel.id = "moose";
         animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: dir, animalType: "moose"});
-        animalModel.setAttribute("obj-model", {obj: "../models/skunk.obj"});
-        animalModel.setAttribute("material", {src: "../textures/skunk_tex.png"});
+        animalModel.setAttribute("obj-model", {obj: "../models/moose.obj"});
+        animalModel.setAttribute("material", {src: "../textures/moose_tex.png"});
         animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes
@@ -370,7 +370,7 @@ AFRAME.registerComponent('load-animal-comp', {
         arrow.setAttribute("action-obj-comp", {objectType: "approach", correctAction: dir, animalType: "moose"});
         arrow.setAttribute("obj-model", {obj: "#arrow_obj"});
         arrow.setAttribute("material", {src: "#arrow_mat"});
-        arrow.setAttribute("position", {x: x, y: 0.6, z: z - 0.5});
+        arrow.setAttribute("position", {x: x, y: 3.64, z: z - 0.5});
 
         //add to scene
         scene.appendChild(animalModel);
