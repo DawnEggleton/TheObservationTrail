@@ -311,8 +311,8 @@ AFRAME.registerComponent('load-animal-comp', {
         let animalModel = document.createElement("a-entity");
         animalModel.id = "blackBear";
         animalModel.setAttribute("action-obj-comp", {objectType: "clap", correctAction: "clap", animalType: "blackBear"});
-        animalModel.setAttribute("obj-model", {obj: "../models/porcupine.obj"});
-        animalModel.setAttribute("material", {src: "../textures/porcupine_tex.png"});
+        animalModel.setAttribute("obj-model", {obj: "../models/blackBear.obj"});
+        animalModel.setAttribute("material", {src: "../textures/blackbear_tex.png"});
         animalModel.setAttribute("position", {x: x, y: y, z: z - 1});
 
         //approach arrow, created with animal for positioning purposes
