@@ -15,7 +15,7 @@ AFRAME.registerComponent('hide-instructions-comp', {
 
         //re-create start button
         let startButton = document.createElement('a-entity');
-        startButton.setAttribute("hiker-start-comp", {});
+        startButton.setAttribute("start-comp", {});
         startButton.id = "startGame";
         startButton.setAttribute("geometry", {primitive: "plane", width: 0.75, height: 0.25});
         startButton.setAttribute("material", {src: "#startButton_mat"});

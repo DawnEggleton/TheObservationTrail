@@ -74,6 +74,17 @@
                 <a-asset-item id="maple1_obj" src="/models/tree_maple_01.obj"></a-asset-item>
                 <a-asset-item id="maple2_obj" src="/models/tree_maple_02.obj"></a-asset-item>
                 <img id="maple_mat" src="/textures/mapleTree_tex.png">
+                <a-asset-item id="pine1_obj" src="/models/tree_pine_01.obj"></a-asset-item>
+                <a-asset-item id="pine2_obj" src="/models/tree_pine_02.obj"></a-asset-item>
+                <a-asset-item id="pine3_obj" src="/models/tree_pine_03.obj"></a-asset-item>
+                <a-asset-item id="pine4_obj" src="/models/tree_pine_04.obj"></a-asset-item>
+                <img id="pine_mat" src="/textures/pineTree_tex.png">
+                <a-asset-item id="treeStump_obj" src="/models/treeStump.obj"></a-asset-item>
+                <img id="treeStump_mat" src="/textures/treeStump_tex.png">
+                <a-asset-item id="sedRock_obj" src="/models/sedRock.obj"></a-asset-item>
+                <img id="sedRock_mat" src="/textures/sedRock_tex.png">
+                <a-asset-item id="cattail2_obj" src="/models/cattail_tile2.obj"></a-asset-item>
+                <img id="cattail_mat" src="/textures/CatTail_tex.png">
             </a-assets>  
 
             <!-- camera -->
@@ -82,16 +93,16 @@
             </a-entity>
 
             <!-- selection screen -->
-            <a-entity   select-hiker-comp
-                        id="selectHiker" 
-                        geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                        material="src: #hikerButton_mat;" 
+            <a-entity   show-instructions-comp
+                        id="instructLoad" 
+                        geometry="primitive: plane; width: 1.4; height: 0.25;" 
+                        material="src: #instructButton_mat;" 
                         position="0 1.6 1">
             </a-entity>
-            <a-entity   select-guide-comp
-                    id="selectGuide" 
+            <a-entity   start-comp
+                    id="startGame" 
                     geometry="primitive: plane; width: 0.75; height: 0.25;" 
-                    material="src: #guideButton_mat;" 
+                    material="src: #startButton_mat;" 
                     position="0 1.2 1">
             </a-entity>
 
@@ -124,6 +135,14 @@
             <a-entity id="rock1" obj-model="obj: #rock1_obj" material="src: #rock_mat" position="-4.6 0 -5.4"></a-entity>
             <a-entity id="rock2" obj-model="obj: #rock2_obj" material="src: #rock_mat" position="2 0 -3.6"></a-entity>
             <a-entity id="rock3" obj-model="obj: #rock3_obj" material="src: #rock_mat" position="-0.1 0 -7.1"></a-entity>
+            <a-entity id="pine1" obj-model="obj: #pine1_obj" material="src: #pine_mat" position="6.6 0 3.7"></a-entity>
+            <a-entity id="pine2" obj-model="obj: #pine2_obj" material="src: #pine_mat" position="-3.5 0 4.4"></a-entity>
+            <a-entity id="pine3" obj-model="obj: #pine3_obj" material="src: #pine_mat" position="-6.6 0 1.8"></a-entity>
+            <a-entity id="pine4" obj-model="obj: #pine4_obj" material="src: #pine_mat" position="2.4 0 4.8"></a-entity>
+            <a-entity id="treeStump" obj-model="obj: #treeStump_obj" material="src: #treeStump_mat" position="3.3 0 2.4"></a-entity>
+            <a-entity id="treeStump" obj-model="obj: #treeStump_obj" material="src: #treeStump_mat" position="-2.2 0 2"></a-entity>
+            <a-entity id="sedRock" obj-model="obj: #sedRock_obj" material="src: #sedRock_mat" position="7.4 0 1.6"></a-entity>
+            <a-entity id="cattail" obj-model="obj: #cattail2_obj" material="src: #cattail_mat" position="-3.1 0 9.5" rotation="0 64 0"></a-entity>
             
 
         </a-scene>
