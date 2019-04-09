@@ -15,7 +15,7 @@ AFRAME.registerComponent('timer-comp', {
         seconds = seconds < 10 ? "0" + seconds : seconds; 
         timer.setAttribute("value", minutes + ":" + seconds);
         console.log(completedAni);
-        if (minutes == 5 || completedAni == 7) {
+        if (seconds == 5 || completedAni == 7) {
             timer.parentNode.removeChild(timer);
             cam.setAttribute("wasd-controls", {enabled: false});
             scene.appendChild(results);

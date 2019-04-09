@@ -45,10 +45,10 @@ AFRAME.registerComponent('show-results-comp', {
             }
         }
         //add wetlands animal
-        if (wetlandAnimals[i] == 1) {
+        if (wetlandAnimals[0] == 1) {
             animalList.push("../images/beaverResult.png");
         }
-        else if (wetlandAnimals[i] == 2) {
+        else if (wetlandAnimals[0] == 2) {
             animalList.push("../images/gooseResult.png");
         }
 

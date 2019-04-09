@@ -5,21 +5,19 @@ AFRAME.registerComponent('result-change-comp', {
     init : function() {
         const Context_AF = this;
         let direction = Context_AF.el.getAttribute('result-change-comp').dir;
+        let animalsSeen = deciAnimals.length + borealAnimals.length + wetlandAnimals.length;
+        console.log(animalsSeen);
         Context_AF.el.addEventListener('click', function(event) {
             if (direction == "right") {
-                if (animNum < 7) {
-                    animNum ++;
-                }
-                else {
+                animNum ++;
+                if (animNum == animalsSeen) {
                     animNum = 0;
                 }
             }
             else if (direction == "left") {
-                if (animNum > 0) {
-                    animNum --;
-                }
-                else {
-                    animNum = 7;
+                animNum--;
+                if (animNum == -1) {
+                    animNum = animalsSeen - 1;
                 }
             }
         });
