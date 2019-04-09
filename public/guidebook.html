@@ -1,85 +1,3 @@
-<!--///////////////////////////////////
-ANIMAL CARD INSTALLATION NOTES
-1. Make sure to only place animal cards in the designated area marked below.
-2. Make sure to use the following HTML template, filled out properly.
-   A list of the grid-item filters will be kept up to date below, following the structure:
-   filtername:
-        Filter - indicator
-   In which filterName is which filter you're looking at (e.g., biome),
-   Filter is the common name of the filter (e.g., Deciduous Forest),
-   and indicator is what you should type where it says filterIndicator in the code.
-   If you are uncertain, reference completed cards or speak to Dawn for help!
-3. After adding the animal card, make sure you have replaced 'animalName' with the animal's name.
-   This should be in camelcase.
-4. Then, scroll further down and create a pop-up box for the animal.
-   The code for this is also below. 'animalName' should match the name you used in the card.
-   All other content is in common-language, as it will display on screen to the user.
-   Do not miss the file name instance for the image! It is in a background-image style tag.
-CARD CODE:
-<div class="grid-item biomeIndicator speciesIndicator sizeIndicator colorIndicator">
-    <div class="cardbg"></div>
-    <a href="#" class="modal-link" data-modal-target="animalName">
-        <div class="card">
-            <img src="images/fileName.png" />
-        </div>
-    </a>
-</div>
-THE FILTER LIST:
-biomeName:
-    Deciduous Forest - deciduous
-    Boreal Forest - boreal
-    Wetlands - wetlands
-    Grasslands - grasslands
-    Mountains - mountains
-    Coastal Forest/Temperate Rainforest - coastal
-    Tundra - tundra
-speciesIndicator:
-    Birds - avian
-    Dog-like - canine
-    Cat-like - feline
-    Hooved Animals - hooved
-    Rodents - rodent
-    Bear-like - ursine
-    All Other Mammals - mammal
-sizeIndicator:
-    Small - sml
-    Medium - med
-    Large - lrg
-colorIndicator:
-    Red - red
-    Brown - brown
-    Black - black
-    Grey - grey
-    Orange - orange
-POP UP CODE:
-<div id="animalName" class="modal-content">
-    <div class="popupContain">
-        <div class="modal-close">x</div>
-        <div class="animalPhoto" style="background-image: url(images/fileName.png)"></div>
-        <div class="animalAttr">
-            <div class="column">
-                <h2>Biome</h2>
-                <span>text</span>
-                <h2>Species</h2>
-                <span>actual animal name (general species group)</span>
-            </div>
-            <div class="column last">
-                <h2>Size</h2>
-                <span>Small/Medium/Large</span>
-                <h2>Color</h2>
-                <div class="swatch colorName"></div>
-            </div>
-        </div>
-        <div class="animalInstruct">
-            <p>When encountering this animal,<br>you should...</p>
-            <span>Encounter Instruction</span>
-        </div>
-    </div>
-</div>
-///////////////////////////////////-->
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -109,13 +27,7 @@ POP UP CODE:
                     <button class="button is-checked" data-filter="">reset</button>
                     <button class="button" data-filter=".deciduous">deciduous forest</button>
                     <button class="button" data-filter=".boreal">boreal forest</button>
-                    <!--
                     <button class="button" data-filter=".wetlands">wetlands</button>
-                    <button class="button" data-filter=".grasslands">grasslands</button>
-                    <button class="button" data-filter=".mountains">mountains</button>
-                    <button class="button" data-filter=".coastal">coastal forest</button>
-                    <button class="button" data-filter=".tundra">tundra</button>
-                    -->
                 </div>
             </div>
 
@@ -147,7 +59,6 @@ POP UP CODE:
             <div class="nav color">
                 <div class="button-group color" data-filter-group="color">
                     <button class="button is-checked" data-filter=""><div class="swatch reset">/</div></button>
-                    <button class="button" data-filter=".red"><div class="swatch red"></div></button>
                     <button class="button" data-filter=".brown"><div class="swatch brown"></div></button>
                     <button class="button" data-filter=".black"><div class="swatch black"></div></button>
                     <button class="button" data-filter=".grey"><div class="swatch grey"></div></button>
@@ -233,28 +144,27 @@ POP UP CODE:
                     </a>
                 </div>
 
-                <!-- NOT DONE YET 
-                <div class="grid-item boreal feline sml grey">
+                <div class="grid-item boreal feline sml grey white">
                     <div class="cardbg"></div>
                     <a href="#" class="modal-link" data-modal-target="lynx">
                         <div class="card">
-                            <img src="http://placehold.it/200" />
+                            <img src="/images/lynx_sq.png" />
                         </div>
                     </a>
                 </div>
-                <div class="grid-item boreal ursine med black">
+                <div class="grid-item boreal ursine med black brown">
                     <div class="cardbg"></div>
                     <a href="#" class="modal-link" data-modal-target="blackBear">
                         <div class="card">
-                            <img src="http://placehold.it/200" />
+                            <img src="/images/blackBear_sq.png" />
                         </div>
                     </a>
                 </div>
-                <div class="grid-item boreal hooved med brown">
+                <div class="grid-item boreal hooved med brown white">
                     <div class="cardbg"></div>
                     <a href="#" class="modal-link" data-modal-target="deer">
                         <div class="card">
-                            <img src="http://placehold.it/200" />
+                            <img src="/images/deer_sq.png" />
                         </div>
                     </a>
                 </div>
@@ -262,15 +172,15 @@ POP UP CODE:
                     <div class="cardbg"></div>
                     <a href="#" class="modal-link" data-modal-target="moose">
                         <div class="card">
-                            <img src="http://placehold.it/200" />
+                            <img src="/images/moose_sq.png" />
                         </div>
                     </a>
                 </div>
-                <div class="grid-item boreal avian med red">
+                <div class="grid-item boreal avian med red white brown">
                     <div class="cardbg"></div>
-                    <a href="#" class="modal-link" data-modal-target="redTailedHawk">
+                    <a href="#" class="modal-link" data-modal-target="hawk">
                         <div class="card">
-                            <img src="http://placehold.it/200" />
+                            <img src="/images/hawk_sq.png" />
                         </div>
                     </a>
                 </div>
@@ -278,19 +188,18 @@ POP UP CODE:
                     <div class="cardbg"></div>
                     <a href="#" class="modal-link" data-modal-target="beaver">
                         <div class="card">
-                            <img src="http://placehold.it/200" />
+                            <img src="/images/beaver_sq.png" />
                         </div>
                     </a>
                 </div>
-                <div class="grid-item wetlands avian med brown">
+                <div class="grid-item wetlands avian med brown white black">
                     <div class="cardbg"></div>
-                    <a href="#" class="modal-link" data-modal-target="canadianGoose">
+                    <a href="#" class="modal-link" data-modal-target="goose">
                         <div class="card">
-                            <img src="http://placehold.it/200" />
+                            <img src="/images/goose_sq.png" />
                         </div>
                     </a>
                 </div>
-                -->
 
 
                 <!--///////////////////////////////////
@@ -322,7 +231,7 @@ POP UP CODE:
                         <h2>Size</h2>
                         <span>Small</span>
                         <h2>Color</h2>
-                        <div class="swatch-cont">
+                        <div style="width: 50px;" class="swatch-cont">
                             <div class="swatch grey"></div>
                             <div class="swatch black"></div>
                         </div>
@@ -350,7 +259,7 @@ POP UP CODE:
                         <h2>Size</h2>
                         <span>Small</span>
                         <h2>Color</h2>
-                        <div style="width: 45px;" class="swatch-cont">
+                        <div style="width: 50px;" class="swatch-cont">
                             <div class="swatch orange"></div>
                             <div class="swatch black"></div>
                         </div>
@@ -405,7 +314,7 @@ POP UP CODE:
                         <h2>Size</h2>
                         <span>Medium</span>
                         <h2>Color</h2>
-                        <div style="width: 45px;" class="swatch-cont">
+                        <div style="width: 50px;" class="swatch-cont">
                             <div class="swatch grey"></div>
                             <div class="swatch white"></div>
                         </div>
@@ -433,7 +342,7 @@ POP UP CODE:
                         <h2>Size</h2>
                         <span>Medium</span>
                         <h2>Color</h2>
-                        <div style="width: 45px;" class="swatch-cont">
+                        <div style="width: 50px;" class="swatch-cont">
                             <div class="swatch black"></div>
                             <div class="swatch white"></div>
                         </div>
@@ -442,6 +351,202 @@ POP UP CODE:
                 <div class="animalInstruct">
                     <p>When encountering this animal,<br>you should...</p>
                     <span>Make noise</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="lynx" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(/images/lynx.png)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Boreal Forest</span>
+                        <h2>Species</h2>
+                        <span>Lynx (feline)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div style="width: 50px;" class="swatch-cont">
+                            <div class="swatch grey"></div>
+                            <div class="swatch white"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Change paths</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="moose" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(/images/moose.png)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Boreal Forest</span>
+                        <h2>Species</h2>
+                        <span>Moose (hooved)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Large</span>
+                        <h2>Color</h2>
+                        <div style="width: 20px;" class="swatch-cont">
+                            <div class="swatch brown"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Change paths</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="deer" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(/images/deer.png)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Boreal Forest</span>
+                        <h2>Species</h2>
+                        <span>Whitetail Deer (hooved)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Medium</span>
+                        <h2>Color</h2>
+                        <div style="width: 50px;" class="swatch-cont">
+                            <div class="swatch brown"></div>
+                            <div class="swatch white"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Approach</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="blackBear" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(/images/blackBear.png)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Boreal Forest</span>
+                        <h2>Species</h2>
+                        <span>Black Bear (ursine)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Medium</span>
+                        <h2>Color</h2>
+                        <div style="width: 50px;" class="swatch-cont">
+                            <div class="swatch brown"></div>
+                            <div class="swatch black"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Make noise</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="hawk" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(/images/hawk.png)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Boreal Forest</span>
+                        <h2>Species</h2>
+                        <span>Red-tailed Hawk (avian)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Medium</span>
+                        <h2>Color</h2>
+                        <div style="width: 75px;" class="swatch-cont">
+                            <div class="swatch brown"></div>
+                            <div class="swatch orange"></div>
+                            <div class="swatch white"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Duck</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="beaver" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(/images/beaver.png)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Wetlands</span>
+                        <h2>Species</h2>
+                        <span>Beaver (rodent)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Small</span>
+                        <h2>Color</h2>
+                        <div style="width: 20px;" class="swatch-cont">
+                            <div class="swatch brown"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Give it a stick</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="goose" class="modal-content">
+            <div class="popupContain">
+                <div class="modal-close">x</div>
+                <div class="animalPhoto" style="background-image: url(/images/goose.png)"></div>
+                <div class="animalAttr">
+                    <div class="column">
+                        <h2>Biome</h2>
+                        <span>Wetlands</span>
+                        <h2>Species</h2>
+                        <span>Canadian Goose (avian)</span>
+                    </div>
+                    <div class="column last">
+                        <h2>Size</h2>
+                        <span>Medium</span>
+                        <h2>Color</h2>
+                        <div style="width: 75px;" class="swatch-cont">
+                            <div class="swatch black"></div>
+                            <div class="swatch brown"></div>
+                            <div class="swatch white"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animalInstruct">
+                    <p>When encountering this animal,<br>you should...</p>
+                    <span>Make Noise</span>
                 </div>
             </div>
         </div>

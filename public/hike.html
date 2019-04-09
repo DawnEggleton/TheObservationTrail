@@ -17,8 +17,9 @@
         <script src="/scripts/buffer.js"></script>
         <script src="/scripts/duck.js"></script>
         <script src="/scripts/hideInstructions.js"></script>
-        <script src="/scripts/hikerStart.js"></script>
+        <script src="/scripts/startGame.js"></script>
         <script src="/scripts/loadAnimal.js"></script>
+        <script src="/scripts/resultChange.js"></script>
         <script src="/scripts/selectGuide.js"></script>
         <script src="/scripts/selectHiker.js"></script>
         <script src="/scripts/setCurveLeft.js"></script>
@@ -26,13 +27,18 @@
         <script src="/scripts/setEnvironment.js"></script>
         <script src="/scripts/setGround.js"></script>
         <script src="/scripts/showInstructions.js"></script>
+        <script src="/scripts/showResults.js"></script>
         <script src="/scripts/timer.js"></script>
 
         <!-- required global variables -->
         <script>
-            const numTiles = 5;    
+            const numTiles = 3;    
             let timeStart = 0;
             let deciAnimals = [];
+            let borealAnimals = [];
+            let wetlandAnimals = [];
+            let animNum = 0;
+            let completedAni = 0;
         </script>
 
         <!-- styles -->
@@ -72,25 +78,20 @@
                 <img id="curvePath_mat" src="/textures/curvePath_tex.png">
                 <a-asset-item id="groundPlane_obj" src="/models/ground_plane.obj"></a-asset-item>
                 <img id="groundPlane_mat" src="/textures/groundPlane_tex.png">
+                <a-asset-item id="dockTile_obj" src="/models/dock.obj"></a-asset-item>
+                <img id="dockTile_mat" src="/textures/dockTile_tex.png">
+                <a-asset-item id="wetTransit_path_obj" src="/models/path_transition.obj"></a-asset-item>
+                <img id="wetTransit_path_mat" src="/textures/pathTransition_tex.png">
+                <a-asset-item id="wetTransit_ground_obj" src="/models/ground_transition.obj"></a-asset-item>
+                <img id="wetTransit_ground_mat" src="/textures/groundTransition_tex.png">
+                <a-asset-item id="wetGround_obj" src="/models/wet_plane.obj"></a-asset-item>
+                <img id="wetGround_mat" src="/textures/wetPlane_tex.png">
 
                 <!-- arrow -->
                 <a-asset-item id="arrow_obj" src="/models/arrow.obj"></a-asset-item>
                 <img id="arrow_mat" src="/textures/arrow_tex.png">
 
-                <!-- animals -->
-                <a-asset-item id="skunk_obj" src="/models/skunk.obj"></a-asset-item>
-                <img id="skunk_mat" src="/textures/skunk_tex.png">
-                <a-asset-item id="fox_obj" src="/models/fox.obj"></a-asset-item>
-                <img id="fox_mat" src="/textures/fox_tex.png">
-                <a-asset-item id="racoon_obj" src="/models/raccoon.obj"></a-asset-item>
-                <img id="racoon_mat" src="/textures/raccoon_tex.png">
-                <a-asset-item id="snowyOwl_static_obj" src="/models/snowyOwl_static.obj"></a-asset-item>
-                <a-asset-item id="snowyOwl_flying_obj" src="/models/snowyOwl_flying.obj"></a-asset-item>
-                <img id="snowyOwl_mat" src="/textures/snowyOwl_tex.png">
-                <a-asset-item id="porcupine_obj" src="/models/porcupine.obj"></a-asset-item>
-                <img id="porcupine_mat" src="/textures/porcupine_tex.png">
-
-                <!-- environment -->
+                <!-- deciduous environment -->
                 <a-asset-item id="rock1_obj" src="/models/bigRock1.obj"></a-asset-item>
                 <a-asset-item id="rock2_obj" src="/models/bigRock2.obj"></a-asset-item>
                 <a-asset-item id="rock3_obj" src="/models/bigRock3.obj"></a-asset-item>
@@ -107,9 +108,26 @@
                 <a-asset-item id="maple2_obj" src="/models/tree_maple_02.obj"></a-asset-item>
                 <img id="maple_mat" src="/textures/mapleTree_tex.png">
 
+                <!-- boreal environment -->
+                <a-asset-item id="pine1_obj" src="/models/tree_pine_01.obj"></a-asset-item>
+                <a-asset-item id="pine2_obj" src="/models/tree_pine_02.obj"></a-asset-item>
+                <a-asset-item id="pine3_obj" src="/models/tree_pine_03.obj"></a-asset-item>
+                <a-asset-item id="pine4_obj" src="/models/tree_pine_04.obj"></a-asset-item>
+                <img id="pine_mat" src="/textures/pineTree_tex.png">
+                <a-asset-item id="treeStump_obj" src="/models/treeStump.obj"></a-asset-item>
+                <img id="treeStump_mat" src="/textures/treeStump_tex.png">
+                <a-asset-item id="sedRock_obj" src="/models/sedRock.obj"></a-asset-item>
+                <img id="sedRock_mat" src="/textures/sedRock_tex.png">
+
+                <!-- wetlands environment -->
+                <a-asset-item id="cattail_obj" src="/models/cattail_tile.obj"></a-asset-item>
+                <img id="cattail_mat" src="/textures/CatTail_tex.png">
+
                 <!-- action objects -->
                 <a-asset-item id="throwRock_obj" src="/models/throw_rock.obj"></a-asset-item>
                 <img id="throwRock_mat" src="/textures/bigRock_tex.png">
+                <a-asset-item id="throwStick_obj" src="/models/stick.obj"></a-asset-item>
+                <img id="throwStick_mat" src="/textures/stick_tex.png">
             </a-assets>  
 
 

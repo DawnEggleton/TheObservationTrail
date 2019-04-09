@@ -4,8 +4,8 @@ AFRAME.registerComponent('set-enviro-comp', {
     },
     init : function() {
         const Context_AF = this;
-        let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 1;
-        let numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 2;
+        let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 1;
+        let numPine1 = numPine2 = numPine3 = numPine4 = numStump = numSedRock = numCattail = 0;
         
         let scene = document.querySelector("a-scene");
         let tileX = Context_AF.el.getAttribute('position').x;
@@ -14,8 +14,20 @@ AFRAME.registerComponent('set-enviro-comp', {
         let tileClass = Context_AF.el.id;
 
         if (tileZ < -60) {
-            let numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 0;
-            let numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 1;
+            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = 0;
+            numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 1;
+            numPine1 = numPine2 = numStump = numSedRock = 1;
+        }
+
+        if (tileZ < -72) {
+            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = 0;
+            numPine1 = numPine2 = numStump = numSedRock = 2;
+            numPine3 = numPine4 = 3;
+        }
+
+        if (tileZ < -138) {
+            numBigRock1 = numBigRock3 = numFallen1 = numFallen2 = numBigRock2 = numBirch1 = numBirch2 = numBirch3 = numBirch4 = numMaple1 = numMaple2 = numPine1 = numPine2 = numPine3 = numPine4 = numStump = numSedRock = 0;
+            numCattail = 1;
         }
 
 
@@ -31,6 +43,13 @@ AFRAME.registerComponent('set-enviro-comp', {
             Context_AF.objectPlace("maple2", tileZ, numMaple2, scene, "#maple2_obj", "#maple_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("fallenTree1", tileZ, numFallen1, scene, "#fallen1_obj", "#fallen_mat", tileX, curve, tileClass);
             Context_AF.objectPlace("fallenTree2", tileZ, numFallen2, scene, "#fallen2_obj", "#fallen_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine1", tileZ, numPine1, scene, "#pine1_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine2", tileZ, numPine2, scene, "#pine2_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine3", tileZ, numPine3, scene, "#pine3_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("pine4", tileZ, numPine4, scene, "#pine4_obj", "#pine_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("treeStump", tileZ, numStump, scene, "#treeStump_obj", "#treeStump_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("sedRock", tileZ, numSedRock, scene, "#sedRock_obj", "#sedRock_mat", tileX, curve, tileClass);
+            Context_AF.objectPlace("cattail", tileZ, numCattail, scene, "#cattail_obj", "#cattail_mat", tileX, curve, tileClass);
         });
         
     },
@@ -38,10 +57,16 @@ AFRAME.registerComponent('set-enviro-comp', {
         for (i = 0; i < maxNum; i++) {
             let x = (Math.random() * (6 * numTiles)) + 2;
             let z = ((Math.random() * 6) * -1) + depth + 2;
+            if (type == "cattail"){
+                x = 7;
+                z = depth - 1;
+            }
             let lx = pos - 3;
             let rx = pos + 3;
             let randRot = Math.floor(Math.random() * 91);
-            
+            if (type == "cattail") {
+                randRot = 180;
+            }          
 
             if (curving == "right") {
                 rx += 6;
@@ -57,11 +82,14 @@ AFRAME.registerComponent('set-enviro-comp', {
                 place.appendChild(item); 
 
                 let sound = document.createElement("a-sound");
+                let soundClassNum = ((depth * -1) + 18) / 6;
+                let soundClass = "path" + soundClassNum;
+                sound.className = soundClass;
                 sound.setAttribute("autoplay", true);
                 sound.setAttribute("loop", true);
                 if (type == "birch1" || type == "birch2") {
                     sound.setAttribute("src", "../audio/chickadee.wav");
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("volume", 2);
                 }
                 else if (type == "maple1" || type == "maple2") {                    
                     sound.setAttribute("src", "../audio/redSquirrel.wav");
@@ -69,22 +97,40 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else if (type == "birch3") {                    
                     sound.setAttribute("src", "../audio/crow.wav");
+                    sound.setAttribute("volume", 2);
+                }
+                else if (type == "pine1" || type =="pine4") {                    
+                    sound.setAttribute("src", "../audio/birds.wav"); //birds
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "pine2" || type =="pine3") {                    
+                    sound.setAttribute("src", "../audio/rainforestBird.wav"); //rainforest birds
+                    sound.setAttribute("volume", 2);
+                }
+                else if (type == "cattail1" || type == "cattail3") {                    
+                    sound.setAttribute("src", "../audio/frogs.wav"); //frogs
                     sound.setAttribute("volume", 3);
                 }
                 else {
                     sound.setAttribute("src", "../audio/wind.wav");
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("volume", 1.5);
                 }
                 item.appendChild(sound);
             }        
 
         }
         for (i = 0; i < maxNum; i++) {
-            let item = document.createElement("a-entity");
             let x = (Math.random() * (-6 * numTiles)) - 2;
             let z = ((Math.random() * 6) * -1) + depth + 3;
+            if (type == "cattail"){
+                x = -7;
+                z = depth - 1;
+            }
             let lx = pos - 3;
             let randRot = Math.floor(Math.random() * 91);
+            if (type == "cattail") {
+                randRot = 0;
+            }
             if (curving == "left") {
                 lx -= 6;
             }
@@ -108,15 +154,27 @@ AFRAME.registerComponent('set-enviro-comp', {
                 }
                 else if (type == "maple1" || type == "maple2") {                    
                     sound.setAttribute("src", "../audio/redSquirrel.wav");
-                    sound.setAttribute("volume", 5);
+                    sound.setAttribute("volume", 3);
                 }
                 else if (type == "birch3") {                    
                     sound.setAttribute("src", "../audio/crow.wav");
                     sound.setAttribute("volume", 3);
                 }
+                else if (type == "pine1" || type =="pine4") {                    
+                    sound.setAttribute("src", "../audio/birds.wav"); //birds
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "pine2" || type =="pine3") {                    
+                    sound.setAttribute("src", "../audio/rainforestBird.wav"); //rainforest birds
+                    sound.setAttribute("volume", 3);
+                }
+                else if (type == "cattail1" || type == "cattail3") {                    
+                    sound.setAttribute("src", "../audio/frogs.wav"); //frogs
+                    sound.setAttribute("volume", 2);
+                }
                 else {
                     sound.setAttribute("src", "../audio/wind.wav");
-                    sound.setAttribute("volume", 3);
+                    sound.setAttribute("volume", 1.5);
                 }
                 item.appendChild(sound);
             }

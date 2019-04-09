@@ -102,6 +102,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }, 1000);
     },
@@ -170,6 +171,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -202,6 +204,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -235,6 +238,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -267,6 +271,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -285,7 +290,12 @@ AFRAME.registerComponent('action-obj-comp', {
         
         //if close to correct animal, do action
         if(camZ - zVal < 5 && camZ - zVal > 0) {
-            animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
+            if (camZ > -100) {
+                animal.setAttribute("obj-model", {obj: "../models/snowyOwl_flying.obj"});
+            }
+            if (camZ < -100) {
+                animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_flying.obj"});
+            }
             let animation = document.createElement('a-animation');
             animation.setAttribute("attribute","position");
             animation.setAttribute("from",xyzStart);
@@ -300,6 +310,7 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }
     },
@@ -327,24 +338,25 @@ AFRAME.registerComponent('action-obj-comp', {
                 actions.forEach(function(item) {
                     item.parentNode.removeChild(item);
                 });
+                completedAni++;
             }, 1000);
         }, 1000);
     },
-    throwStickAnimation : function (ani) {   
+    throwStickAnimation : function (ani) {  
         let stickID = ani + "-throw-stick";
         let stick = document.getElementById(stickID);
 
         let xVal = stick.getAttribute('position').x;
-        let yVal = stick.getAttribute('position').y;
+        let yVal = stick.getAttribute('position').y + 0.06;
         let zVal = stick.getAttribute('position').z;        
         let xyzStart = xVal.toString() + " "+ yVal.toString() + " " + zVal.toString();
 
-        let animMidX = xVal + 0.5;
+        let animMidX = xVal - 0.5;
         let animMidY = yVal + 1;
         let animMidZ = zVal - 1;
         let xyzMid = animMidX.toString() + " "+ animMidY.toString() + " " + animMidZ.toString();
 
-        let animFinalX = animMidX + 0.5;
+        let animFinalX = animMidX - 0.5;
         let animFinalY = animMidY - 1;
         let animFinalZ = animMidZ - 1;
         let xyzFinal = animFinalX.toString() + " "+ animFinalY.toString() + " " + animFinalZ.toString();
@@ -443,7 +455,7 @@ AFRAME.registerComponent('action-obj-comp', {
                     animationEnd.setAttribute("dur",500);
                     rock.appendChild(animationEnd);
                 }        
-                if (act == "stick") {  
+                else if (act == "stick") {  
                     let stickID = ani + "-throw-stick";
                     let stick = document.getElementById(stickID);
             
@@ -452,12 +464,12 @@ AFRAME.registerComponent('action-obj-comp', {
                     let zStick = stick.getAttribute('position').z;        
                     let xyzStart = xStick.toString() + " "+ yStick.toString() + " " + zStick.toString();
             
-                    let animMidX = xStick + 0.5;
+                    let animMidX = xStick - 0.5;
                     let animMidY = yStick + 1;
                     let animMidZ = zStick - 1;
                     let xyzMid = animMidX.toString() + " "+ animMidY.toString() + " " + animMidZ.toString();
             
-                    let animFinalX = animMidX + 0.5;
+                    let animFinalX = animMidX - 0.5;
                     let animFinalY = animMidY - 1;
                     let animFinalZ = animMidZ - 1;
                     let xyzFinal = animFinalX.toString() + " "+ animFinalY.toString() + " " + animFinalZ.toString();
@@ -481,7 +493,10 @@ AFRAME.registerComponent('action-obj-comp', {
                 }      
                 setTimeout(function() {
                     if (animal.id == "snowOwl") {
-                        animal.setAttribute("obj-model", {obj: "#snowyOwl_flying_obj"});
+                        animal.setAttribute("obj-model", {obj: "../models/snowyOwl_flying.obj"});
+                    }
+                    else if (animal.id == "hawk") {
+                        animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_flying.obj"});
                     }
                     animal.appendChild(animationStart);
                     setTimeout(function() {
@@ -489,7 +504,10 @@ AFRAME.registerComponent('action-obj-comp', {
                         setTimeout(function() {
                             animal.appendChild(animationEnd);
                             if (animal.id == "snowOwl") {
-                                animal.setAttribute("obj-model", {obj: "#snowyOwl_static_obj"});
+                                animal.setAttribute("obj-model", {obj: "../models/snowyOwl_static.obj"});
+                            }
+                            else if (animal.id == "hawk") {
+                                animal.setAttribute("obj-model", {obj: "../models/redTailedHawk_static.obj"});
                             }
                         }, 500);   
                     }, 500); 

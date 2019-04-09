@@ -13,12 +13,6 @@ AFRAME.registerComponent('show-instructions-comp', {
         let elem = document.querySelector("#startGame");
         elem.parentNode.removeChild(elem);
 
-        //save line text as variables
-        const line1 = "Line 1";
-        const line2 = "Line 2";
-        const line3 = "Line 3";
-        const line4 = "Line 4";
-
         //create box
         let instructBox = document.createElement('a-entity');
         instructBox.id = "instructionsBox";
